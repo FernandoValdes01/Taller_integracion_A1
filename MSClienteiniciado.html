@@ -44,15 +44,21 @@ body {
     left: 20px;
     cursor: pointer;
 }
+
 </style>
 </head>
 <body>
 <div id="menu">
 <ul>
     <li id="perfil">Perfil</li>
-    <li id="config">Config</li>
-    <li id="quienes-somos">Quienes somos</li>
-    <li id="Tus Direcciones">direcciones</li>
+    <li> <a href="configuracion de cliente.html">Configuracion</a></li>
+    <li> <a href="quienes-somos.html">Quienes somos</li>
+    <li> <a href="Direcciones1.html">Direcciones</a></li>
+    <li> <a href="soporte.html">Soporte</a></li>
+    <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+    <li> <a href="clientevisita.html">Cerrar sesion</a></li>
+
+
 </ul>
 </div>
 <div id="content">
@@ -67,6 +73,9 @@ const perfil = document.getElementById('perfil');
 const config = document.getElementById('config');
 const quienesSomos = document.getElementById('quienes-somos');
 const direcciones = document.getElementById('direcciones');
+const soporte = document.getElementById('soporte');
+const politicadeprivacidad = document.getElementById('politica');
+const cerrarsesion = document.getElementById('cerrarsesion');
 
   /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
 menuToggle.addEventListener('click', () => {
@@ -87,6 +96,11 @@ quienesSomos.addEventListener('click', () => {
     // Agregar aquí el código para la acción de "Quienes somos"
     console.log('Clic en Quienes Somos');
 });
+
+
+
+
+
 </script>
 </body>
 </html>

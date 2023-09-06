@@ -38,19 +38,18 @@
 
         }
 
-          /* Estilos para el menú deslizante */
         #menu {
             position: fixed;
             top: 0;
-            right: -250px; /* Inicialmente oculto fuera de la pantalla */
+            right: -250px; 
             width: 250px;
             height: 100%;
             background-color: #9b9b9b;
             color: #fff;
-            transition: right 0.3s; /* Transición suave para deslizar el menú */
+            transition: right 0.3s; 
         }
         #menu.active {
-            right: 0; /* Mostrar el menú deslizante desplazándolo a la izquierda */
+            right: 0; 
         }
         #menu ul {
             list-style: none;
@@ -68,7 +67,7 @@
         }
         #menu-toggle {
             position: fixed;
-            top: 30px;
+            top: 20px;
             right: 20px;
             cursor: pointer;
             color: #fff;
@@ -76,8 +75,18 @@
         #maintext{
 
             color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
 
         }
+
+        #nextText{
+
+            margin-left: 10px;
+
+        }
+
         #sesion-btn{
 
             display: block;
@@ -135,7 +144,7 @@
             background-color: #9b9b9b;
             border-radius: 50px;
             padding: 8px;
-            margin-top: -41px;
+            margin-top: -35px;
             margin-left: 250px;
 
         }
@@ -149,7 +158,7 @@
             background-color: #9b9b9b;
             border-radius: 50px;
             padding: 8px;
-            margin-top: -41px;
+            margin-top: -35px;
             margin-left: 480px;
 
         }
@@ -163,7 +172,7 @@
             background-color: #9b9b9b;
             border-radius: 50px;
             padding: 8px;
-            margin-top: -41px;
+            margin-top: -36px;
             margin-left: 710px;
 
         }
@@ -177,7 +186,7 @@
             background-color: #9b9b9b;
             border-radius: 50px;
             padding: 8px;
-            margin-top: -41px;
+            margin-top: -35px;
             margin-left: 940px;
 
         }
@@ -191,31 +200,33 @@
             <h1>
                 Bievenido a TecHome
             </h1>
-            <h2>¡Nuestros servicios!</h2>
         </div>
         
 
 
     </header>
-
-    <h2>¡Nuestros servicios!</h2>
-    <h3>Categorias:</h3>
+    
+    <div id ="nextText">
+        <h2>¡Nuestros servicios!</h2>
+        <h3>Categorias:</h3>
+    
+    </div>
 
     <div id="elec-service">
-        <a href="">Servicio de electricidad</a>
+        <a href="MElectricista1.html">Servicio de electricidad</a>
     </div>
     <div id="info-service">
-        <a href="">Servicio de informatica</a>
+        <a href="MInformaticos1.html">Servicio de informatica</a>
     </div>
     <div id="meca-service">
-        <a href="">Servicio de mecanico</a>
+        <a href="MMecanicos1.html">Servicio de mecanico</a>
     </div>
     <div id="gafi-service">
-        <a href="">Servicio de gafiteria</a>
+        <a href="MGasfiter1.html">Servicio de gafiteria</a>
     </div>
 
     <div id="carpi-service">
-        <a href="">Servicio de carpinteria</a>
+        <a href="Mcarpintero1.html">Servicio de carpinteria</a>
     </div>
 
     
@@ -223,10 +234,13 @@
     <div id="menu">
         <ul>
             <li id="perfil">Perfil</li>
-            <li id="config">Configuración</li>
-            <li id="quienes-somos">Quienes somos</li>
-            <li id="direcciones">Direcciones</li>
-            <li id="cerrar-sersion">Cerrar Sesión</li>
+            <li> <a href="configuracion de cliente.html">Configuracion</a></li>
+            <li> <a href="quienes-somos.html">Quienes somos</li>
+            <li> <a href="Direcciones1.html">Direcciones</a></li>
+            <li> <a href="soporte.html">Soporte</a></li>
+            <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+            <li> <a href="clientevisita.html">Cerrar sesion</a></li>
+    
         </ul>
         </div>
         <div id="content">

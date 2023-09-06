@@ -61,6 +61,16 @@
     </style>
 </head>
 <body>
+    <div id="menu">
+        <ul>
+            <li id="perfil">Perfil</li>
+            <li id="config">Config</li>
+            <li id="quienes-somos">Quienes somos</li>
+            <li id="Tus Direcciones">direcciones</li>
+        </ul>
+        </div>
+        <div id="menu-toggle">&#9776;</div>
+
     <div class="trabajador-info">
         <div class="trabajador-avatar"></div>
         <div class="trabajador-nombre">Trabajador Conectado</div>
@@ -94,5 +104,33 @@
             </li>
         </ul>
     </div>
+        <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const perfil = document.getElementById('perfil');
+        const config = document.getElementById('config');
+        const quienesSomos = document.getElementById('quienes-somos');
+        const direcciones = document.getElementById('direcciones');
+        
+        /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+        });
+        
+        perfil.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Perfil"
+            console.log('Clic en Perfil');
+        });
+        
+        config.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Config"
+            console.log('Clic en Config');
+        });
+        
+        quienesSomos.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Quienes somos"
+            console.log('Clic en Quienes Somos');
+        });
+        </script>
 </body>
 </html>

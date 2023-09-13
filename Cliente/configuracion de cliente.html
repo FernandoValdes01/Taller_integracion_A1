@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración del Cliente - TecHome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .profile-section {
+            margin-top: 30px;
+        }
+        .profile-section h2 {
+            margin-bottom: 10px;
+        }
+        .profile-section label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .profile-section input[type="text"],
+        .profile-section input[type="password"],
+        .profile-section input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        .profile-section button {
+            float: right;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .profile-section button:hover {
+        }
+        h1 {    
+            margin: 0;
+        }
+        .trabajador-info {
+            text-align: center;
+            padding: 20px;
+        }
+        .trabajador-avatar {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            display: inline-block;
+        }
+        .trabajador-nombre {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .trabajos-disponibles {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            list-style-type: none;
+            padding: 0;
+        }
+        .trabajo {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Configuración del Cliente - TecHome</h1>
+    </header>
+    <div class="container">
+        <div class="profile-section">
+            <h2>Tu Perfil</h2>
+            <div class="container">
+                    <div class="trabajo">
+                        <h3></h3>
+                        <label for="nombre">Nombre:</label>
+                        <label for="gmail">Correo Electrónico (Gmail):</label>
+                        <button type="button" id="cambiar-informacion">Cambiar Información</button>
+                        <p></p>
+                    </div>
+                </li>
+            </div>
+
+            <h2>Cambiar Contraseña</h2>
+            <label for="old-password">Antigua Contraseña:</label>
+            <input type="password" id="old-password" name="old-password" required>
+
+            <label for="new-password">Nueva Contraseña:</label>
+            <input type="password" id="new-password" name="new-password" required>
+
+            <label for="confirm-password">Confirmar Contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <p id="password-error" style="color: red;"></p>
+
+            <button type="button" id="cambiar-contraseña">Cambiar Contraseña</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('cambiar-informacion').addEventListener('click', function() {
+            alert('Esta opción no está disponible todavía');
+        });
+
+        // Agregamos un listener al botón de Cambiar Contraseña
+        document.getElementById('cambiar-contraseña').addEventListener('click', function() {
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (newPassword !== confirmPassword) {
+                document.getElementById('password-error').textContent = "Las contraseñas no coinciden.";
+            } else {
+                document.getElementById('password-error').textContent = "";
+                alert('Contraseña cambiada con éxito');
+            }
+        });
+    </script>
+</body>
+</html>

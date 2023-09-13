@@ -11,7 +11,7 @@
             margin-left: 0;
             margin-right: 0;
             padding: 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         a{
 
@@ -211,7 +211,7 @@
         <ul>
             <li><a href="Inicio.html">Iniciar sesion</a></li>
             <li><a href="Registro.html">Registro</a></li>
-            <li><a href="Quienes somos">Quienes somos</a></li>
+            <li><a href="NuestrahistoriaC1.html">Quienes somos</a></li>
             <li><a href="soporte.html">Soporte</a></li>
             <li><a href="politica de privacidad.html">Politica de privacidad</a></li>
         </ul>
@@ -238,9 +238,10 @@
             <script>
             const menu = document.getElementById('menu');
             const menuToggle = document.getElementById('menu-toggle');
+            const Nuestrahistoria = document.getElmentById('NustrahistoriaC1')
+            const politicas_de_privacidad = document.getElementById('Politicas de privacidad')
             const Inicio = document.getElementById("Iniciar sesion");
             const config = document.getElementById('config');
-            const quienesSomos = document.getElementById('quienes-somos');
             
               /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
             menuToggle.addEventListener('click', () => {
@@ -259,8 +260,13 @@
             
             quienesSomos.addEventListener('click', () => {
                 // Agregar aquí el código para la acción de "Quienes somos"
-                console.log('Clic en Quienes Somos');
+                console.log('Clic en Nuestra Historia');
             });
+
+            politicas_de_privacidad.addEventListener('clic', () => {
+                console.log('Clic en Politicas de Privacidad')
+            });
+
             </script>
             </body>
     <footer>TecHome® 2023 | Derechos reservados</footer>

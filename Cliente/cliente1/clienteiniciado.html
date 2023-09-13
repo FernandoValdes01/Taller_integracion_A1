@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,13 +41,14 @@
         #menu {
             position: fixed;
             top: 0;
-            right: -250px; 
+            right: -250px; /* Asegúrate de que esté oculto al inicio */
             width: 250px;
             height: 100%;
             background-color: #9b9b9b;
             color: #fff;
-            transition: right 0.3s; 
+            transition: right 0.3s;
         }
+
         #menu.active {
             right: 0; 
         }
@@ -233,15 +234,15 @@
 
     <div id="menu">
         <ul>
-            <li id="perfil">Perfil</li>
-            <li> <a href="configuracion de cliente.html">Configuracion</a></li>
-            <li> <a href="quienes-somos.html">Quienes somos</li>
-            <li> <a href="Direcciones1.html">Direcciones</a></li>
-            <li> <a href="soporte.html">Soporte</a></li>
-            <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
-            <li> <a href="clientevisita.html">Cerrar sesion</a></li>
-    
+            <li id="config"> <a href="configuracion de cliente.html">Configuracion de perfil</a></li>
+            <li id="quienes-somos"> <a href="Nuestrahistoria2.html">Quienes somos</a></li>
+            <li id="direcciones"> <a href="Direcciones1.html">Direcciones</a></li>
+            <li id="soporte"> <a href="soporte.html">Soporte</a></li>
+            <li id="politica_de_privacidadc"> <a href="politica de privacidadc.html">Politíca de Privacidad</a></li>
+            <li id="cerrar-sesion"> <a href="/cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
+            <li id="Eliminar_cuenta"> <a href="EliminarCuentaC.html"> Eliminar Cuenta</a></li>
         </ul>
+
         </div>
         <div id="content">
         <h1>Servicios Mejor Evaluados</h1>
@@ -264,33 +265,45 @@
         <script>
         const menu = document.getElementById('menu');
         const menuToggle = document.getElementById('menu-toggle');
-        const perfil = document.getElementById('perfil');
-        const config = document.getElementById('config');
-        const quienesSomos = document.getElementById('quienes-somos');
+        const configuracion_de_perfil = document.getElementById('config');
+        const quienesSomos = document.getElementById('Nuestrahistoria2');
         const direcciones = document.getElementById('direcciones');
-        const cerrarsesion = document.getElementById('cerrar-sesion');
+        const soporte = document.getElementById('soporte');
+        const cerrarSesion = document.getElementById('cerrar-sesion');
+        const politica_de_privacidad = document.getElementById('politica_de_privacidadc');
+        const Eliminar_Cuenta = document.getElementById('EliminarcuentaC')
         
-          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
         });
         
-        perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
-            console.log('Clic en Perfil');
-        });
-        
-        config.addEventListener('click', () => {
+        configuracion_de_perfil.addEventListener('click', () => {
             // Agregar aquí el código para la acción de "Config"
-            console.log('Clic en Config');
+            console.log('Clic en Configuración');
         });
         
         quienesSomos.addEventListener('click', () => {
             // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
+
+        politica_de_privacidadc.addEventListener('click', () => {
+            console.log('Clic en Politicas de Privacidad')
+        });
+
+        direcciones.addEventListener('click', ()=> {
+            console.log('Clic en Direcciones')
+        });
+
+        cerrarsesion.addEventListener('click', () => {
+            console.log('Click en Cerrar Sesión')
+        });
+
+        Eliminar_Cuenta.addEventListener('clic', () => {
+            console.log('Clic en Eliminar Cuenta')
+        });
         </script>
-    
+
     <footer>TecHome® 2023 | Derechos reservados</footer>
 </body>
 </html>

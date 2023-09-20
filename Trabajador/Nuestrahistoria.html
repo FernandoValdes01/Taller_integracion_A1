@@ -13,36 +13,73 @@
                 overflow: hidden;
             }
 
-            h1, h2, h3, p {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            body{
+
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
             }
             
             p {
-                padding-left: 100px;
-                padding-right:  100px;
+                margin-top: 70px;
+                margin-left: 100px;
+                margin-right:  100px;
+            }
+            
+            header{
+
+                background-color: #0d3c6e;
+                margin-top: -20px;
+                margin-left: -8px;
+                margin-bottom: 0px;
+                margin-right: -8px;
+                padding: 9px;
             }
 
-            .header {
-                padding-top: 20px;
-                padding-left:50px; ;
-                padding-right: 50px;
+            footer{
+                
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                color: #fff;
+                text-align: center;
+                background-color: #0d3c6e;
+                margin-bottom: -13px;
+                margin-left: -8px;
+                margin-right: -8px;
+
             }
 
             .imgs {
                 display: block;
                 text-align: center;
-                padding: 30px;
+                margin-top: 0px;
+                margin-bottom: 30px;
+            }
+
+            #maintext{
+
+                color: #fff;
+                text-align: center;
+
+            }
+
+            #empty{
+
+                color: #fff;
+                margin-left: -15px;
+                margin-bottom: 28px;
+
             }
 
         </style>
     </head>
     <body>
-        <div class="header">
-            <h2>Nuestra Historia</h2>
-            <h3>Techome </h3>
-        </div>
 
-        </div><br>
+        <header>
+            <div id="maintext">
+                <h2>Nuestra Historia</h2>
+                <h3>Techome </h3>
+            </div>
+        </header>
+
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, dui elementum porttitor imperdiet,
             tortor neque volutpat sapien, ut ullamcorper metus massa eu est. Vivamus dolor massa, euismod non dapibus at,
             laoreet vitae lacus. Ut dapibus, leo eget commodo cursus, tortor ex lobortis tortor,
@@ -88,9 +125,15 @@
             at varius lectus. Nullam id molestie ex. Cras libero orci, tincidunt ut rutrum ac, dictum et tortor. 
             Pellentesque lobortis sapien et lorem rhoncus feugiat. </p>
 
+            <div id="empty">
+                <h6>.</h6>
+            </div>
+
             <div class = "imgs">
                 <img src="UCTlogo1.png"> 
                 <img src="UCTlogo2.png" width="100" height="100px">
             </div>
+
+            <footer>TecHome® 2023 | Derechos reservados</footer>
     </body>
 </html>

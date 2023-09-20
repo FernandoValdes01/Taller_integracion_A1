@@ -12,15 +12,75 @@
             padding: 0;
         }
         header {
-            background-color:"";
+            background-color: #0d3c6e;
+            color: #fff;
             text-align: center;
+            margin-top: -1px;
             padding: 20px;
         }
+        footer{ 
+
+            color: #fff;
+            text-align: center;
+            background-color: #0d3c6e;
+            margin-bottom: -10px;
+
+        }
+
+        a{
+
+            text-decoration: none;
+            color: #fff;
+
+        }
+
         .container {
             max-width: 960px;
             margin: 20px auto;
             padding: 20px;
         }
+
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -250px; 
+            width: 250px;
+            height: 100%;
+            background-color: #0f66c3;
+            color: #fff;
+            transition: right 0.3s; 
+        }
+        
+        #menu.active {
+            right: 0; 
+        }
+        
+        #menu ul {
+            list-style: none;
+            padding: 0;
+    
+        }
+        
+        #menu ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #0f66c3;
+        }
+        
+        #content {
+            margin-right: 250px; 
+            padding: 20px;
+        }
+        
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
@@ -40,66 +100,15 @@
             Nullam cursus lorem ac orci congue, sed ullamcorper velit aliquam. Nulla magna lectus, rutrum sit amet urna nec, tristique tincidunt mauris. Suspendisse nec risus nulla. Mauris feugiat tempor risus vitae maximus. Mauris vitae sapien dictum, dictum velit at, semper purus. Donec porta, dui sit amet porttitor porta, tortor enim consequat purus, vel vestibulum lectus quam vel magna. Vestibulum iaculis varius dui, sit amet hendrerit libero blandit id. Nullam porta, enim ut accumsan dignissim, odio orci egestas elit, vel porttitor tellus nunc non arcu. Nullam ultricies, tellus nec ullamcorper pretium, felis ipsum congue tellus, nec molestie nibh enim sit amet odio. Aliquam vestibulum tortor felis, sed rhoncus mauris commodo ac. Duis hendrerit iaculis sapien.
     
     </p>
-        <h2> como utilizamos su informacion personal </h2>
+        <h2>Como utilizamos su informacion personal </h2>
         <p>Suspendisse gravida gravida diam, a placerat enim consequat in. Nullam at augue euismod, sollicitudin elit a, varius enim. Ut convallis dui nisi, nec scelerisque ipsum fermentum ut. Nunc tincidunt magna in leo tincidunt, ut pretium augue suscipit. Fusce eu accumsan ligula, id consectetur sapien. Pellentesque consequat ultrices tortor ac tempor. Nulla vel metus arcu. Integer iaculis neque ante, nec consequat libero laoreet in.
 
             Pellentesque non hendrerit turpis. Donec consequat, tortor et auctor laoreet, orci eros varius turpis, vitae posuere lacus purus nec ex. Aliquam iaculis mauris sed sapien fringilla, non efficitur mauris consequat. Maecenas sit amet convallis orci. Maecenas a erat id ex lacinia molestie. Mauris ex leo, fermentum at elit vel, scelerisque sodales nibh. Ut in eros nibh. Aliquam erat volutpat. Nam dignissim augue mi, ut pellentesque est gravida nec. Morbi in ullamcorper enim. Praesent pellentesque nisi ac leo volutpat, vel tincidunt dolor fringilla. Quisque venenatis elit est, vel fringilla sem efficitur sit amet. Donec sodales vitae ante sit amet accumsan. Donec sodales dapibus vehicula. Donec eget placerat ex. Fusce vel augue lacus.
             </p>
     </div>
-</body>
 
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú Deslizante</title>
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+    <footer>TecHome® 2023 | Derechos reservados</footer>
 
-#menu {
-        position: fixed;
-        top: 0;
-        right: -250px; 
-        width: 250px;
-        height: 100%;
-        background-color: #555;
-        color: #fff;
-        transition: right 0.3s; 
-    }
-    #menu.active {
-        right: 0; 
-    }
-    #menu ul {
-        list-style: none;
-        padding: 0;
-    }
-    #menu ul li {
-        padding: 15px;
-        text-align: center;
-        cursor: pointer;
-        border-bottom: 1px solid #555;
-    }
-    #content {
-        margin-right: 250px; 
-        padding: 20px;
-    }
-    #menu-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        color: #fff;
-    }
-
-</style>
-</head>
-<body>
 <div id="menu">
 <ul>
     <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
@@ -157,9 +166,6 @@ politica.addEventListener('click', () => {
 cerrarsesion.addEventListener('click', () => {
     console.log('Clic en cerrarcesion ');
 });
-
-
-
 
 </script>
 </body>

@@ -25,6 +25,14 @@
             margin-bottom: -10px;
 
         }
+
+        a{
+
+            text-decoration: none;
+            color: #fff;
+
+        }
+
         .container {
             max-width: 960px;
             margin: 20px auto;
@@ -105,9 +113,52 @@
             padding-top: 50px;
 
         }
+
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -250px; 
+            width: 250px;
+            height: 100%;
+            background-color: #0f66c3;
+            color: #fff;
+            transition: right 0.3s; 
+        }
+        
+        #menu.active {
+            right: 0; 
+        }
+        
+        #menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #menu ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #0f66c3;
+        }
+        
+        #content {
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    
     <header>
         <h1>Configuración del Cliente - TecHome</h1>
     </header>
@@ -144,7 +195,51 @@
         </div>
     </div>
 
+    <div id="menu">
+        <ul>
+            <li><a href="clienteiniciado.html">Inicio</a></li>
+            <li> <a href="configuracion de cliente.html">Configuracion</a></li>
+            <li> <a href="NuestrahistoriaC1.html">Quienes somos</li>
+            <li> <a href="Direcciones1.html">Direcciones</a></li>
+            <li> <a href="soportec1.html">Soporte</a></li>
+            <li> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
+            <li> <a href="/Cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
+    
+        </ul>
+    </div>
+
     <footer>TecHome® 2023 | Derechos reservados</footer>
+
+</div>
+    <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+    <script>
+    const menu = document.getElementById('menu');
+    const menuToggle = document.getElementById('menu-toggle');
+    const perfil = document.getElementById('perfil');
+    const config = document.getElementById('config');
+    const quienesSomos = document.getElementById('quienes-somos');
+    const direcciones = document.getElementById('direcciones');
+
+  /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+    });
+
+    perfil.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Perfil"
+        console.log('Clic en Perfil');
+    });
+
+    config.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Config"
+        console.log('Clic en Config');
+    });
+
+    quienesSomos.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Quienes somos"
+        console.log('Clic en Quienes Somos');
+    });
+    </script>
 
     <script>
         document.getElementById('cambiar-informacion').addEventListener('click', function() {

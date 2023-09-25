@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Deslizante</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100%;
+    background-color: #87CEEB;
+    color: #fff;
+    transition: left 0.3s; 
+}
+#menu.active {
+    left: 0; 
+}
+#menu ul {
+    list-style: none;
+    padding: 0;
+}
+#menu ul li {
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+}
+#content {
+    margin-left: 250px; /* Dejar espacio para el menú */
+    padding: 20px;
+}
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="menu">
+<ul>
+    <li id="Iniciar sesion">Iniciar sesion</li>
+    <li id="Registrarse ">Registro</li>
+    <li id="Quienes somos">Quienes somos</li>
+    <li> <a href="Direcciones1.html">Direcciones</a></li>
+    <li> <a href="soporte.html">Soporte</a></li>
+    <li> <a href="politica de privacidad.html">Política de Privacidad</a></li>
+
+</ul>
+</div>
+<div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+<script>
+const menu = document.getElementById('menu');
+const menuToggle = document.getElementById('menu-toggle');
+const perfil = document.getElementById('perfil');
+const config = document.getElementById('config');
+const quienesSomos = document.getElementById('quienes-somos');
+const direcciones = document.getElementById('direcciones');
+
+  /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+});
+
+perfil.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Perfil"
+    console.log('Clic en Perfil');
+});
+
+config.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Config"
+    console.log('Clic en Config');
+});
+
+quienesSomos.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Quienes somos"
+    console.log('Clic en Quienes Somos');
+});
+</script>
+</body>
+</html>

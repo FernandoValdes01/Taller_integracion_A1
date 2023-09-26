@@ -117,7 +117,7 @@
     <div id="content">
     <h3>¡Estas son las direcciones que haz compartido con nosotros!.</h3>
     </div>
-    <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+    <div id="menu-toggle">&#9776;</div> 
     <script>
     const menu = document.getElementById('menu');
     const menuToggle = document.getElementById('menu-toggle');
@@ -126,40 +126,33 @@
     const quienesSomos = document.getElementById('quienes-somos');
     const direcciones = document.getElementById('direcciones');
     
-      /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
     menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+        menu.classList.toggle('active'); 
     });
     
     perfil.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Perfil"
         console.log('Clic en Perfil');
     });
     
     config.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Config"
         console.log('Clic en Config');
     });
     
     quienesSomos.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Quienes somos"
         console.log('Clic en Quienes Somos');
     });
     </script>
 <body>
     <h2>Lista de Direcciones:</h2>
     <ul id="direccion-menu" class="direccion-menu">
-        <!-- Aquí se agregará la lista numerada de direcciones -->
     </ul>
     <div id="direcciones">
-        <!-- Aquí se agregarán las secciones de direcciones -->
-    </div>
+        </div>
     <button onclick="agregarDireccion()">Agregar Dirección</button>
 
     <footer>TecHome® 2023 | Derechos reservados</footer>
 
     <script>
-        // Define las regiones y sus ciudades correspondientes
         var regionesYCiudades = {
             "Región de Arica y Parinacota": ["Arica", "Camarones", "General lagos","Putre"],
             "Región de Tarapacá": ["Alto Hospicio", "Camiña", "Colchane","Huara", "Iquique", "Pica","Pozo Almonte"],
@@ -179,42 +172,37 @@
             "Región de Magallanes": ["Antartica","Cabo de hornos","Laguna blanca","natales","porvenir","primavera","punta arenas","Rio verde","san gregorio","timaukel","torres del paine"],
         };
 
-        var direccionCount = 0; // Contador de direcciones
+        var direccionCount = 0;
 
         function agregarDireccion() {
-            // Incrementar el contador de direcciones antes de agregar una nueva dirección
             direccionCount++;
 
-            // Crear un elemento section
+
             var section = document.createElement("section");
 
-            // Crear un elemento div para el número de dirección
             var numeroDireccion = document.createElement("div");
             numeroDireccion.textContent = direccionCount + "°";
 
-            // Crear selección para la región
             var labelRegion = document.createElement("label");
             labelRegion.textContent = "Region: ";
             var selectRegion = document.createElement("select");
 
-            // Agregar opciones de región al select
+
             for (var region in regionesYCiudades) {
                 var option = document.createElement("option");
                 option.text = region;
                 selectRegion.add(option);
             }
 
-            // Crear selección para la ciudad
             var labelCiudad = document.createElement("label");
             labelCiudad.textContent = "Ciudad: ";
             var selectCiudad = document.createElement("select");
 
-            // Función para actualizar las opciones de ciudad cuando se cambia la región
             selectRegion.addEventListener("change", function () {
                 var selectedRegion = selectRegion.value;
-                selectCiudad.innerHTML = ""; // Limpiar opciones anteriores
+                selectCiudad.innerHTML = ""; 
 
-                // Agregar las opciones de ciudad específicas para la región seleccionada
+
                 var ciudades = regionesYCiudades[selectedRegion];
                 for (var i = 0; i < ciudades.length; i++) {
                     var option = document.createElement("option");
@@ -223,7 +211,6 @@
                 }
             });
 
-            // Crear elementos para los otros campos
             var labelDireccion = document.createElement("label");
             labelDireccion.textContent = "Dirección: ";
             var inputDireccion = document.createElement("input");
@@ -232,28 +219,27 @@
             labelIndicaciones.textContent = "Indicaciones Extra: ";
             var inputIndicaciones = document.createElement("input");
 
-            // Crear botón para eliminar la dirección
             var eliminarBoton = document.createElement("button");
             eliminarBoton.textContent = "Eliminar Dirección";
             eliminarBoton.addEventListener("click", function () {
-                // Obtener el número de dirección de la sección actual
+
                 var numDireccion = parseInt(numeroDireccion.textContent);
                 
-                // Eliminar esta sección de dirección cuando se hace clic en el botón
+
                 document.getElementById("direcciones").removeChild(section);
                 
-                // Actualizar el contador de direcciones
+
                 direccionCount--;
                 
-                // Actualizar los números de dirección en las secciones restantes
+
                 actualizarNumerosDirecciones(numDireccion);
                 
-                // Actualizar la lista numerada de direcciones
+
                 actualizarListaDirecciones();
             });
 
-            // Agregar los elementos al section
-            section.appendChild(numeroDireccion); // Agregar el número de dirección
+
+            section.appendChild(numeroDireccion);
             section.appendChild(labelRegion);
             section.appendChild(selectRegion);
             section.appendChild(labelCiudad);
@@ -262,19 +248,19 @@
             section.appendChild(inputDireccion);
             section.appendChild(labelIndicaciones);
             section.appendChild(inputIndicaciones);
-            section.appendChild(eliminarBoton); // Agregar el botón de eliminación
+            section.appendChild(eliminarBoton); 
 
-            // Agregar el section al contenedor de direcciones
+
             document.getElementById("direcciones").appendChild(section);
 
-            // Actualizar la lista numerada de direcciones
+
             actualizarListaDirecciones();
         }
 
-        // Función para actualizar la lista numerada de direcciones
+
         function actualizarListaDirecciones() {
             var direccionMenu = document.getElementById("direccion-menu");
-            direccionMenu.innerHTML = ""; // Limpiar la lista
+            direccionMenu.innerHTML = "";
 
             var direcciones = document.querySelectorAll("#direcciones section");
             for (var i = 0; i < direcciones.length; i++) {
@@ -285,7 +271,6 @@
             }
         }
 
-        // Función para obtener el texto de la dirección en una sección dada
         function obtenerTextoDireccion(section) {
             var numero = section.querySelector("div").textContent;
             var region = section.querySelector("select[name='region']").value;
@@ -295,8 +280,7 @@
 
             return numero +"  Direccion  "+ " Region: '" + region + "' / Ciudad: '" + ciudad + "' / Dirección: '" + direccion + "' / Indicaciones Extra: '" + indicaciones + "'";
         }
-        
-        // Función para actualizar los números de dirección después de eliminar una dirección
+
         function actualizarNumerosDirecciones(numDireccionEliminada) {
             var secciones = document.querySelectorAll("#direcciones section");
             for (var i = numDireccionEliminada; i <= secciones.length; i++) {

@@ -50,15 +50,14 @@ body {
 <body>
 <div id="menu">
 <ul>
+    <!-- Agrega un ID a este elemento para que puedas seleccionarlo en JavaScript -->
     <li id="perfil">Perfil</li>
-    <li> <a href="configuracion de cliente.html">Configuracion</a></li>
-    <li> <a href="quienes-somos.html">Quienes somos</li>
+    <li> <a href="configuracion de cliente.html">Configuración</a></li>
+    <li> <a href="quienes-somos.html">Quiénes somos</li>
     <li> <a href="Direcciones1.html">Direcciones</a></li>
     <li> <a href="soporte.html">Soporte</a></li>
-    <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
-    <li> <a href="clientevisita.html">Cerrar sesion</a></li>
-
-
+    <li> <a href="politica de privacidad.html">Política de Privacidad</a></li>
+    <li> <a href="clientevisita.html">Cerrar sesión</a></li>
 </ul>
 </div>
 <div id="content">
@@ -69,15 +68,9 @@ body {
 <script>
 const menu = document.getElementById('menu');
 const menuToggle = document.getElementById('menu-toggle');
-const perfil = document.getElementById('perfil');
-const config = document.getElementById('config');
-const quienesSomos = document.getElementById('quienes-somos');
-const direcciones = document.getElementById('direcciones');
-const soporte = document.getElementById('soporte');
-const politicadeprivacidad = document.getElementById('politica');
-const cerrarsesion = document.getElementById('cerrarsesion');
+const perfil = document.getElementById('perfil'); // Obtener el elemento con el ID 'perfil'
 
-  /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+/* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
 menuToggle.addEventListener('click', () => {
     menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
 });
@@ -87,19 +80,8 @@ perfil.addEventListener('click', () => {
     console.log('Clic en Perfil');
 });
 
-config.addEventListener('click', () => {
-    // Agregar aquí el código para la acción de "Config"
-    console.log('Clic en Config');
-});
-
-quienesSomos.addEventListener('click', () => {
-    // Agregar aquí el código para la acción de "Quienes somos"
-    console.log('Clic en Quienes Somos');
-});
-
-
-
-
+// Agrega listeners y funcionalidad para otros elementos del menú si es necesario
+// Puedes seguir el mismo patrón que se utilizó para 'perfil' para los demás elementos
 
 </script>
 </body>

@@ -262,3 +262,31 @@ a{
     </script>
 </body>
 </html>
+
+<!-- JavaScript para manejar la lógica del formulario y el menú desplegable -->
+<script>
+    // Función para mostrar u ocultar el campo de otro motivo
+    function mostrarOtroMotivo() {
+        // Obtiene el motivo seleccionado
+        var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;
+        var otroMotivoCampo = document.querySelector('.Otro_motivo');
+        
+        // Muestra u oculta el campo de texto si el motivo es "Otro"
+        if (motivoSeleccionado === 'Other') {
+            otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+        } else {
+            otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+        }
+    }
+
+    // Función para validar el formulario antes de enviarlo
+    function validarFormulario() {
+        // Validación simple: Verifica si el campo de correo está lleno
+        var correo = document.getElementById('correo').value;
+        if (correo === '') {
+            alert('Por favor, ingrese su correo electrónico.');
+            return false; // Detiene el envío del formulario
+        }
+        return true; // Continúa con el envío del formulario
+    }
+</script>

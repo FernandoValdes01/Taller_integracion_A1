@@ -11,21 +11,19 @@
             var otroMotivoCampo = document.querySelector('.Otro_motivo');
             
             if (motivoSeleccionado === 'Other') {
-                otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+                otroMotivoCampo.style.display = 'block'; 
             } else {
-                otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+                otroMotivoCampo.style.display = 'none'; 
             }
         }
 
         function validarFormulario() {
-            // Aquí puedes agregar más validaciones si es necesario
-            // Por ejemplo, asegurarte de que el campo de correo esté lleno
             var correo = document.getElementById('correo').value;
             if (correo === '') {
                 alert('Por favor, ingrese su correo electrónico.');
-                return false; // Detener el envío del formulario
+                return false; 
             }
-            return true; // Continuar con el envío del formulario
+            return true; 
         }
     </script>
 <style>
@@ -240,23 +238,19 @@ a{
     const quienesSomos = document.getElementById('quienes-somos');
     const direcciones = document.getElementById('direcciones');
     
-      /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
     menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+        menu.classList.toggle('active');
     });
     
     perfil.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Perfil"
         console.log('Clic en Perfil');
     });
     
     config.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Config"
         console.log('Clic en Config');
     });
     
     quienesSomos.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Quienes somos"
         console.log('Clic en Quienes Somos');
     });
     </script>
@@ -265,28 +259,23 @@ a{
 
 <!-- JavaScript para manejar la lógica del formulario y el menú desplegable -->
 <script>
-    // Función para mostrar u ocultar el campo de otro motivo
     function mostrarOtroMotivo() {
-        // Obtiene el motivo seleccionado
         var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;
         var otroMotivoCampo = document.querySelector('.Otro_motivo');
         
-        // Muestra u oculta el campo de texto si el motivo es "Otro"
         if (motivoSeleccionado === 'Other') {
-            otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+            otroMotivoCampo.style.display = 'block'; 
         } else {
-            otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+            otroMotivoCampo.style.display = 'none'; 
         }
     }
 
-    // Función para validar el formulario antes de enviarlo
     function validarFormulario() {
-        // Validación simple: Verifica si el campo de correo está lleno
         var correo = document.getElementById('correo').value;
         if (correo === '') {
             alert('Por favor, ingrese su correo electrónico.');
-            return false; // Detiene el envío del formulario
+            return false; 
         }
-        return true; // Continúa con el envío del formulario
+        return true; 
     }
 </script>

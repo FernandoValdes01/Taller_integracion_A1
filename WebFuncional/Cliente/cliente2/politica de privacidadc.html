@@ -57,7 +57,7 @@
             border-bottom: 1px solid #0f66c3;
         }
         #content {
-            margin-right: 250px; /* Dejar espacio para el menú */
+            margin-right: 250px; 
             padding: 20px;
         }
         a{
@@ -116,33 +116,29 @@
     <footer>TecHome® 2023 | Derechos reservados</footer>
 
     <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
-        <script>
-            
-            const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menu-toggle');
-            const Inicio = document.getElementById("Iniciar sesion");
-            const config = document.getElementById('config');
-            const quienesSomos = document.getElementById('quienes-somos');
+    <script>
         
-          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
-        menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
-        });
-        
-        perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
-            console.log('Clic en Perfil');
-        });
-        
-        config.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
-            console.log('Clic en Config');
-        });
-        
-        quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
-            console.log('Clic en Quienes Somos');
-        });
-        </script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const Inicio = document.getElementById("Iniciar sesion");
+        const config = document.getElementById('config');
+        const quienesSomos = document.getElementById('quienes-somos');
+    
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active'); 
+    });
+    
+    perfil.addEventListener('click', () => {
+        console.log('Clic en Perfil');
+    });
+    
+    config.addEventListener('click', () => {
+        console.log('Clic en Config');
+    });
+    
+    quienesSomos.addEventListener('click', () => {
+        console.log('Clic en Quienes Somos');
+    });
+    </script>
 </body>
 </html>

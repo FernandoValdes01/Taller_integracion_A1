@@ -11,21 +11,19 @@
             var otroMotivoCampo = document.querySelector('.Otro_motivo');
             
             if (motivoSeleccionado === 'Other') {
-                otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+                otroMotivoCampo.style.display = 'block'; 
             } else {
-                otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+                otroMotivoCampo.style.display = 'none'; 
             }
         }
 
         function validarFormulario() {
-            // Aquí puedes agregar más validaciones si es necesario
-            // Por ejemplo, asegurarte de que el campo de correo esté lleno
             var correo = document.getElementById('correo').value;
             if (correo === '') {
                 alert('Por favor, ingrese su correo electrónico.');
-                return false; // Detener el envío del formulario
+                return false;
             }
-            return true; // Continuar con el envío del formulario
+            return true; 
         }
     </script>
 <style>

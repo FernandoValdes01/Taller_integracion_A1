@@ -212,59 +212,23 @@
         const quienesSomos = document.getElementById('quienes-somos');
         const direcciones = document.getElementById('direcciones');
         const cerrarsesion = document.getElementById('cerrar-sesion');
-        
-          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+            menu.classList.toggle('active'); 
         });
         
         perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
             console.log('Clic en Perfil');
         });
         
         config.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
             console.log('Clic en Config');
         });
         
         quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
         </script>
 </body>
 </html>
 
-<!-- JavaScript para el menú desplegable y acciones de clic -->
-<script>
-    // Obtener elementos importantes del documento
-    const menu = document.getElementById('menu');
-    const menuToggle = document.getElementById('menu-toggle');
-    const perfil = document.getElementById('perfil');
-    const config = document.getElementById('config');
-    const quienesSomos = document.getElementById('quienes-somos');
-    const direcciones = document.getElementById('direcciones');
-    const cerrarsesion = document.getElementById('cerrar-sesion');
-
-    // Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
-    });
-
-    // Agregar acciones de clic para elementos importantes del menú
-    perfil.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Perfil"
-        console.log('Clic en Perfil');
-    });
-
-    config.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Configuración"
-        console.log('Clic en Configuración');
-    });
-
-    quienesSomos.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Quiénes Somos"
-        console.log('Clic en Quiénes Somos');
-    });
-</script>

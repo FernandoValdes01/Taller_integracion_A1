@@ -41,19 +41,18 @@
             margin-top: 10px;
         }
 
-          /* Estilos para el menú deslizante */
         #menu {
             position: fixed;
             top: 0;
-            right: -250px; /* Inicialmente oculto fuera de la pantalla */
+            right: -250px; 
             width: 250px;
             height: 100%;
             background-color: #0f66c3;
             color: #fff;
-            transition: right 0.3s; /* Transición suave para deslizar el menú */
+            transition: right 0.3s; 
         }
         #menu.active {
-            right: 0; /* Mostrar el menú deslizante desplazándolo a la izquierda */
+            right: 0; 
         }
         #menu ul {
             list-style: none;
@@ -237,23 +236,19 @@
             const config = document.getElementById('config');
             const quienesSomos = document.getElementById('quienes-somos');
         
-          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+            menu.classList.toggle('active'); 
         });
         
         perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
             console.log('Clic en Perfil');
         });
         
         config.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
             console.log('Clic en Config');
         });
         
         quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
         </script>

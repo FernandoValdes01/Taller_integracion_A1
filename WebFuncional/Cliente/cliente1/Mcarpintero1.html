@@ -131,7 +131,7 @@
         border-bottom: 1px solid #0f66c3;
     }
     #content {
-        margin-right: 250px; /* Dejar espacio para el menú */
+        margin-right: 250px; 
         padding: 20px;
     }
     a{
@@ -212,23 +212,19 @@
         const direcciones = document.getElementById('direcciones');
         const cerrarsesion = document.getElementById('cerrar-sesion');
         
-          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+            menu.classList.toggle('active'); 
         });
         
         perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
             console.log('Clic en Perfil');
         });
         
         config.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
             console.log('Clic en Config');
         });
         
         quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
         </script>

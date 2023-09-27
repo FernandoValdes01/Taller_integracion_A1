@@ -45,11 +45,11 @@
             margin-bottom: 20px;
             margin-top: 10px;
         }
-
+        
         #menu {
             position: fixed;
             top: 0;
-            right: -250px; /* Asegúrate de que esté oculto al inicio */
+            right: -250px; 
             width: 250px;
             height: 100%;
             background-color: #0f66c3;
@@ -272,8 +272,8 @@
         </div>
 
         <footer>TecHome® 2023 | Derechos reservados</footer>
-
-        <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+        <!-- Ícono de tres líneas horizontales -->
+        <div id="menu-toggle">&#9776;</div> 
         <script>
         const menu = document.getElementById('menu');
         const menuToggle = document.getElementById('menu-toggle');
@@ -286,16 +286,14 @@
         const Eliminar_Cuenta = document.getElementById('EliminarcuentaC')
         
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+            menu.classList.toggle('active'); 
         });
         
         configuracion_de_perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
             console.log('Clic en Configuración');
         });
         
         quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
 

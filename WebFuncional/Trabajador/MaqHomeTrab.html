@@ -7,7 +7,7 @@
     <style>
         body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #0d3c6e;
     margin: 0;
     padding: 0;
     }
@@ -69,7 +69,7 @@
         right: -250px; 
         width: 250px;
         height: 100%;
-        background-color: #555;
+        background-color: #0f66c3;
         color: #fff;
         transition: right 0.3s; 
     }
@@ -84,7 +84,7 @@
         padding: 15px;
         text-align: center;
         cursor: pointer;
-        border-bottom: 1px solid #555;
+        border-bottom: 1px solid #0f66c3;
     }
     #content {
         margin-right: 250px; 
@@ -97,6 +97,7 @@
         cursor: pointer;
         color: #fff;
     }
+    
 
     </style>
 </head>
@@ -159,38 +160,31 @@
         const ganancias = document.getElementById('ganancias');
         const historial = document.getElementById('historial');
         
-        /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+            menu.classList.toggle('active'); 
         });
         
         perfil.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Perfil"
             console.log('Clic en Perfil');
         });
         
         config.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Config"
             console.log('Clic en Config');
         });
         
         quienesSomos.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Quienes Somos');
         });
 
         direcciones.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Direcciones');
         });
 
         ganancias.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Sus ganancias');
         });
 
         historial.addEventListener('click', () => {
-            // Agregar aquí el código para la acción de "Quienes somos"
             console.log('Clic en Historial de Pedidos');
         });
         </script>

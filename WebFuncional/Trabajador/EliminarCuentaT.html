@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="EliminarCuentaT.css">
+    <title>Eliminar cuenta Trabajador</title>
+    <script>
+        function mostrarOtroMotivo() {
+            var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;
+            var otroMotivoCampo = document.querySelector('.Otro_motivo');
+            
+            if (motivoSeleccionado === 'Other') {
+                otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+            } else {
+                otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+            }
+        }
+
+        function validarFormulario() {
+            // Aquí puedes agregar más validaciones si es necesario
+            // Por ejemplo, asegurarte de que el campo de correo esté lleno
+            var correo = document.getElementById('correo').value;
+            if (correo === '') {
+                alert('Por favor, ingrese su correo electrónico.');
+                return false; // Detener el envío del formulario
+            }
+            return true; // Continuar con el envío del formulario
+        }
+    </script>
+<style>
+
+body{
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+p{
+    margin-left: 15%;
+    margin-top: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+h3{
+
+    color: #fff;
+    margin-left: -15px;
+    margin-bottom: 219px;
+
+}
+
+a{
+
+    color: #fff;
+    text-decoration: none;
+
+}
+
+header{
+    text-align: center;
+    color: #fff;
+    background-color: #0d3c6e;
+    padding: 24px;
+    margin-top: -11px;
+    margin-right: -8px;
+    margin-left: -8px;
+
+}
+
+footer{ 
+
+    color: #fff;
+    text-align: center;
+    background-color: #0d3c6e;
+    margin-bottom: -10px;
+    margin-left: -8px;
+    margin-right: -8px;
+
+}
+
+.Correo{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 700px;
+    margin-right: 700px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.Contraseña{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 700px;
+    margin-right: 700px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.Contraseña label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Correo label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Botón_de_enviar{
+    margin-left: 710px;
+}
+
+.Opciones{
+
+    margin-left: 545px;
+
+}
+
+.Otro_motivo{
+
+    margin-left: 525px;
+
+}
+
+#menu {
+        position: fixed;
+        top: 0;
+        right: -250px; 
+        width: 250px;
+        height: 100%;
+        background-color: #0f66c3;
+        color: #fff;
+        transition: right 0.3s; 
+    }
+    #menu.active {
+        right: 0; 
+    }
+    #menu ul {
+        list-style: none;
+        padding: 0;
+    }
+    #menu ul li {
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid #0f66c3;
+    }
+    #content {
+        margin-right: 250px; 
+        padding: 20px;
+    }
+    #menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>¿Por qué desea eliminar su cuenta?</h1>
+    </header>
+
+    <form action="eliminar_cuentaC.php" method="post" onsubmit="return validarFormulario();">
+        
+        <div class="Correo">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="Contraseña">
+            <label for="contrasena">Contraseña:</label>
+            <input type="text" id="contrasena" required>
+        </div>
+        <div class="Opciones">
+            <p>
+                <input type="radio" name="motivo" value="No longer need the account" onclick="mostrarOtroMotivo()"> Trabajo Mucho, ofrecen poco<br>
+                <input type="radio" name="motivo" value="Found a better service" onclick="mostrarOtroMotivo()"> Encontré un servicio mejor<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> La empresa no respalda mi seguridad<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Abuso laboral<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Acoso laboral<br>
+                <input type="radio" name="motivo" value="Other" onclick="mostrarOtroMotivo()"> Otro<br>
+            </p>
+        </div>
+        <div class="Otro_motivo" style="display: none;">
+            <p>
+                Especifique la razón: <br>
+                <textarea name="otro_motivo" rows="4" cols="50"></textarea>
+            </p>
+        </div>
+        <div class="Botón_de_enviar">
+            <button type="submit" id="botonEnviar">Enviar</button>
+        </div>
+    </form>
+
+    <h3>.</h3>
+    <footer>TecHome® 2023 | Derechos reservados</footer>
+
+<div id="menu">
+<ul>
+    <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
+    <li> <a href="ganancias.html">Ganancias</li>
+    <li> <a href="historial_de_pedidos.html">Pedidos  anteriores</a></li>
+    <li> <a href="billetera.html">Billetera</a></li>
+    <li> <a href="soporte.html">Soporte</a></li>
+    <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+    <li><a href="EliminarCuentaT.html">Eliminar cuenta</a></li>
+    <li> <a href="InicioT.html">Cerrar sesion</a></li>
+
+
+</ul>
+</div>
+
+<div id="menu-toggle">&#9776;</div> 
+<script>
+const menu = document.getElementById('menu');
+const menuToggle = document.getElementById('menu-toggle');
+const perfil = document.getElementById('perfil');
+const config = document.getElementById('configuracion');
+const quienesSomos = document.getElementById('ganancias');
+const direcciones = document.getElementById('billetera');
+const soporte = document.getElementById('soporte');
+const politicadeprivacidad = document.getElementById('politica');
+const cerrarsesion = document.getElementById('cerrarsesion');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
+
+perfil.addEventListener('click', () => {
+    console.log('Clic en Perfil');
+});
+
+config.addEventListener('click', () => {
+    console.log('Clic en Config');
+});
+
+Ganancias.addEventListener('click', () => {
+    console.log('Clic en Ganancias');
+});
+billetera.addEventListener('click', () => {
+    console.log('Clic en Billetera');
+});
+
+soporte.addEventListener('click', () => {
+    console.log('Clic en soporte');
+});
+
+politica.addEventListener('click', () => {
+    console.log('Clic en politica ');
+});
+
+cerrarsesion.addEventListener('click', () => {
+    console.log('Clic en cerrarcesion ');
+});
+
+</script>
+</body>
+</html>

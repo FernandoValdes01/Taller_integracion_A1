@@ -38,6 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Comprobar si la contraseña ingresada coincide con la almacenada en la base de datos
         if ($contrasena == $contrasena_db) {
             $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
+            session_start();
+            header();
+            exit();
         } else {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
         }

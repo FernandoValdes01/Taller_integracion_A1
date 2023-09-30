@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($contrasena == $contrasena_db) {
             $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
             session_start();
-            header();
+            header('Location: Menu.php'); // Corregido 'location' a 'Location'
             exit();
         } else {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
@@ -56,19 +56,72 @@ $conexion->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Iniciar Sesión</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecHome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .Box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .Form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        label,
+        input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <p><?php echo $mensaje; ?></p>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required><br><br>
-        
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required><br><br>
-        
-        <input type="submit" value="Iniciar Sesión">
-    </form>
+    <div class="Box">
+        <div class="Form">
+            <h2>Inicia Sesión</h2>
+            <form method="POST" action="inicioclientes.php"> <!-- Reemplaza 'nombre_de_esta_pagina.php' con el nombre de tu archivo PHP -->
+                <div class="InputBox">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
+                </div>
+                <div class="InputBox">
+                    <label for="contrasena">Contraseña:</label> <!-- Corregimos el id de la etiqueta 'input' -->
+                    <input type="password" id="contrasena" name="contrasena" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
+                </div>
+                <div class="link">
+                    <a href="#">¿Olvidaste la clave?</a>
+                </div>
+                <div class="Buttons"></div>
+                <button type="submit">Listo</button>
+            </form>
+            <button type="button" onclick="window.location.href='registroclientes.php'">Registrarse</button>
+            <?php echo $mensaje;  ?>
+        </div>
+    </div>
 </body>
 </html>

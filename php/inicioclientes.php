@@ -7,7 +7,7 @@ $basededatos = "techome";
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
-$mensaje = ""; // Variable para almacenar mensajes de resultado
+$mensaje = ""; 
 
 // Comprobar si la conexión a la base de datos fue exitosa
 if ($conexion->connect_error) {
@@ -16,15 +16,14 @@ if ($conexion->connect_error) {
 
 // Comprobar si la solicitud HTTP es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los valores del formulario
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
 
-    // Crear una consulta SQL para buscar un usuario por correo
-    $sql = "SELECT correo, contraseña FROM clientes WHERE correo = '$correo'";
+
+    $sql = "SELECT correo, contraseña,nombre_cliente FROM clientes WHERE correo = '$correo'";
     $result = $conexion->query($sql);
 
-    // Comprobar si la consulta SQL fue exitosa
+
     if ($result === false) {
         die("Error en la consulta SQL: " . $conexion->error);
     }
@@ -34,12 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Obtener la primera fila de resultados
         $row = $result->fetch_assoc();
         $contrasena_db = $row['contraseña'];
+        $nombre=$row["nombre_cliente"];
 
         // Comprobar si la contraseña ingresada coincide con la almacenada en la base de datos
         if ($contrasena == $contrasena_db) {
             $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
             session_start();
-            header('Location: Menu.php'); // Corregido 'location' a 'Location'
+            $_SESSION['correo'] = $correo;
+            $_SESSION['contraseña'] = $contrasena_db;
+            $_SESSION['nombre_cliente'] = $nombre;
+            header('Location: Menu.php'); 
             exit();
         } else {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
@@ -49,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Cerrar la conexión a la base de datos
 $conexion->close();
 ?>
 

@@ -5,7 +5,7 @@
 session_start();
 
 // Verificar si el usuario ha iniciado sesión
-if (isset($_SESSION['correo'])) {
+if (!isset($_SESSION['correo'])) {
     // Si el usuario no ha iniciado sesión, mostrar otro maquetado
 ?>
 <!DOCTYPE html>
@@ -267,7 +267,7 @@ if (isset($_SESSION['correo'])) {
 </body>
 </html>
 <?php
-    exit(); // Salir del script si el usuario no ha iniciado sesión
+    exit(); 
 }
 
 // Si el usuario ha iniciado sesión, mostrar el contenido de la página de inicio
@@ -519,7 +519,7 @@ if (isset($_SESSION['correo'])) {
 
     <div id="menu">
         <ul>
-            <li id="config"> <a href="Perfilcliente.php">Configuracion de perfil</a></li>
+            <li id="config"> <a href="PerfilclienteBoceto.php">Configuracion de perfil</a></li>
             <li id="quienes-somos"> <a href="NuestrahistoriaC1.html">Quienes somos</a></li>
             <li id="direcciones"> <a href="Direcciones1.html">Direcciones</a></li>
             <li id="soporte"> <a href="soportec1.html">Soporte</a></li>

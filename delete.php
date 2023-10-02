@@ -1,12 +1,10 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$password = ' ';
-$database = 'integracion1'; //Cambiarlo cuando se haga la corrección de la BD
 
 
+//$basededatos = 'integracion1'; Cambiarlo cuando se haga la corrección de la BD
 
-$conn = new mysqli($host, $username, $password, $database);
+
+$conn = mysqli_connect("localhost","root","","integracion1"); //Conexion, hay que cambiarlo a futuro.
 
 
 if ($conn->connect_error) {
@@ -14,28 +12,27 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $contrasena = $_POST["contrasena"];
+    $passwd = $_POST["passwd"];
 
-    // Verifica la contraseña (debes agregar más seguridad aquí)
-    $sql = "SELECT id FROM usuarios WHERE id = ? AND contrasena = ?";
+    //Hay que agregarle la doble verificación (La confirmacion de contraseña) para que funcione correctamente.
+    $sql = "SELECT ID_trabajador FROM trabajadores WHERE ID_trabajador = ? AND passwd = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("is", $usuario_id, $contrasena);
+    $stmt->bind_param("is", $trabajador_id, $passwd);
 
-    // Reemplaza $usuario_id con el ID del usuario actual
-    $usuario_id = 1; // Cambia esto con la forma en que obtienes el ID del usuario actual
+    //Reemplazo de la id del trabajador, aquí podemos cambiar el usuario para eliminar la cuenta después.
+    $trabajador_id = 1;
 
     $stmt->execute();
     $stmt->store_result();
     
     if ($stmt->num_rows === 1) {
-        // Elimina la cuenta del usuario
-        $delete_sql = "DELETE FROM usuarios WHERE id = ?";
-        $delete_stmt = $conn->prepare($delete_sql);
-        $delete_stmt->bind_param("i", $usuario_id);
+        //Proceso de eliminación de la cuenta (WORK IN PROGRESS). Queda adaptarlo con el html final.
+        $borrar_cuenta = "DELETE FROM usuarios WHERE id = ?";
+        $delete_stmt = $conn->prepare($borrar_cuenta);
+        $delete_stmt->bind_param("i", $trabajador_id);
 
         if ($delete_stmt->execute()) {
-            // Cuenta eliminada con éxito
-            header("Location: cuenta_eliminada.php");
+            header("Location: delete.php");
             exit();
         } else {
             echo "Error al eliminar la cuenta.";

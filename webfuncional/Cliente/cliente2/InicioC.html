@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecHome</title>
+    <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container h1{
+    color: royalblue;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="Box">
+        <div class="Form">
+            <h2>Inicia Sesión</h2>
+            <div class="InputBox">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" required>
+            </div>
+            <div class="InputBox">
+                <label for="password">Correo electrónico:</label>
+                <input type="text" id="contraseña" required>
+            </div>
+            <div class="link">
+                <a href="#">¿Olvidaste la clave?</a>
+            </div>
+            <div class="Buttons"></div>
+            <button type="submit">Listo</button>
+            <button type="button" onclick="window.location.href='Registro.html'">Registrarse</button>
+        </div>
+    </div>
+</body>

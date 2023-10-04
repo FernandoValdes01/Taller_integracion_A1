@@ -9,16 +9,26 @@
     <header>
         <h1>Mi Perfil de Trabajador</h1>
     </header>
+    <form>
+        <h1>Mi Perfil de Trabajador</h1>
     <div class="perfil-trabajador">
         <h2>Información del Trabajador</h2>
-
-        <p class="Nombre">Nombre: Nombre del Trabajador</p>
-        <p class="Apellido">Apellido: Apellido del Trabajador</p>
-        <p class="Correo">Correo: Correo del trabajador</p>
-        <p class="Especialización">Especialización: Especialización del Trabajador</p>
-        <p class="Numero">Número de Contacto: +56912345678</p>
-        
-        <button id="editar">Editar</button>
+        <div class="configuracion-perfil-trabajador">
+            <h2>Editar Perfil</h2>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre Trabajaor">
+    
+                <label for="correo">Correo Electronico:</label>
+                <input type="text" id="correo" name="correo" placeholder="Correo electronico Trabajador">
+    
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña Trabajador">
+    
+                <label for="numero">Numero de Teléfono:</label>
+                <input type="text" id="numero" name="contrasena" placeholder="Ej: +569">
+                <button type="submit">Guardar</button>
+    
     </div>
+    </form>
 </body>
 </html>

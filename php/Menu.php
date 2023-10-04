@@ -267,7 +267,7 @@ if (!isset($_SESSION['correo'])) {
 </body>
 </html>
 <?php
-    exit(); 
+    exit(); // Salir del script si el usuario no ha iniciado sesión
 }
 
 // Si el usuario ha iniciado sesión, mostrar el contenido de la página de inicio
@@ -525,7 +525,7 @@ if (!isset($_SESSION['correo'])) {
             <li id="soporte"> <a href="soportec1.html">Soporte</a></li>
             <li id="politica_de_privacidadc"> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
             <li id="cerrar-sesion"> <a href="/cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
-            <li id="Eliminar_cuenta"> <a href="EliminarCuentaC.html"> Eliminar Cuenta</a></li>
+            <li id="Eliminar_cuenta"> <a href="EliminarCuenta.php"> Eliminar Cuenta</a></li>
         </ul>
 
         </div>

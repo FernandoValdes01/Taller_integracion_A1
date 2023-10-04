@@ -7,7 +7,7 @@ $basededatos = "techome";
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
-$mensaje = ""; 
+$mensaje = ""; // Variable para almacenar mensajes de resultado
 
 // Comprobar si la conexión a la base de datos fue exitosa
 if ($conexion->connect_error) {
@@ -16,14 +16,15 @@ if ($conexion->connect_error) {
 
 // Comprobar si la solicitud HTTP es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener los valores del formulario
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
 
-
+    // Crear una consulta SQL para buscar un usuario por correo
     $sql = "SELECT correo, contraseña,nombre_cliente FROM clientes WHERE correo = '$correo'";
     $result = $conexion->query($sql);
 
-
+    // Comprobar si la consulta SQL fue exitosa
     if ($result === false) {
         die("Error en la consulta SQL: " . $conexion->error);
     }
@@ -52,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Cerrar la conexión a la base de datos
 $conexion->close();
 ?>
 

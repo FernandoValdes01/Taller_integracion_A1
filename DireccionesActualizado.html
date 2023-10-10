@@ -155,191 +155,193 @@
                     <button type="button" onclick="agregarDireccion()">Agregar Dirección</button>
                     <input  type="submit" value="Guardar">
                 </div>
-                <script>
-                    // Define las regiones y sus ciudades correspondientes
-                    var regionesYCiudades = {
-                        "Región de Arica y Parinacota": ["Arica", "Camarones", "General lagos","Putre"],
-                        "Región de Tarapacá": ["Alto Hospicio", "Camiña", "Colchane","Huara", "Iquique", "Pica","Pozo Almonte"],
-                        "Región de Antofagasta": ["Antofagasta", "Calama", "Maria Elena","Mejillones", "Ollague", "San Pedro de Atacama","Sierra Gorda", "Taltal", "Tocopilla"],
-                        "Región de Atacama": ["Alto del Carmen", "Caldera", "Chañaral","Copiapo", "Diego De almagro", "Freirina","Huasco", "Tierra amarilla", "Vallenar"],
-                        "Región de Coquimbo": ["Andacollo", "Canela", "Combarbala","Coquimbo", "Illapel", "La Higuera","La Serena", "Los Vilos", "Monte Patria","Ovalle", "PaiHuano", "Punitaqui","Rio Hurtado", "Salamanca", "Vicuña"],
-                        "Región de Valparaíso": ["Algarrobo", "Cabildo", "Calera","Calle Larga", "Cartagena","Casablanca", "Catemu", "Concon","El Quisco", "El Tabo","Hijuelas", "Isla de Pascua", "Juan Fernandez","La Cruz", "La ligua","Limache", "Llaillay", "Los andes","Nogales", "Olmue","Panquehue", "Papudo", "Petorca","Puchuncavi", "Putaendo","Quillota", "Quilpue", "Quintero","Rinconada", "San antonio","San Esteban", "San Felipe", "Santa Maria","Santo Domingo", "Valparaiso","Villa alemana","Viña del mar","Zapallar"],
-                        "Región Metropolitana":["Santiago", "Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Bernardo", "San Joaquín", "San Miguel", "San Ramón", "Vitacura"],
-                        "Region de Ohiggins" : ["Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "La Estrella", "Las Cabras", "Litueche", "Machalí", "Malloa", "Marchihue", "Mostazal", "Navidad", "Olivar", "Peredones", "Peumo", "Pichidegua", "Pichilemu", "Quinta de Tilcoco", "Rancagua", "Rengo", "Requínoa", "San Vicente"],
-                        "Región del Maule":["Cauquenes", "Chanco", "Colbún", "Constitución", "Curepto", "Curicó", "Empedrado", "Hualañé", "Licantén", "Linares", "Longaví", "Maule", "Molina", "Parral", "Pelarco", "Pelluhue", "Pencahue", "Rauco", "Retiro", "Río Claro", "Romeral", "Sagrada Familia", "San Clemente", "San Javier", "San Rafael", "Talca", "Teno", "Vichuquén", "Villa Alegre", "Yerbas Buenas"],                            "Región del Ñuble":["Bulnes", "Chillán", "Chillán Viejo", "Cobquecura", "Coelemu", "Coihueco", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"],
-                        "Región del Biobío":["Alto Biobío", "Antuco", "Arauco", "Bulnes", "Cabrero", "Cañete", "Chiguayante", "Chillán", "Chillán Viejo", "Cobquecura", "Coelemu", "Coihueco", "Concepción", "Contulmo", "Coronel", "Curanilahue", "El Carmen", "Florida", "Hualpén", "Hualqui", "Laja", "Lebu", "Los Álamos", "Los Ángeles", "Lota", "Monte Ángel", "Mulchén", "Nacimiento", "Negrete", "Ninhue", "Ñiquén", "Pemuco", "Penco", "Pinto", "Portezuelo", "Quilaco", "Quilleco", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "San Pedro de la Paz", "Santa Bárbara", "Santa Juana", "Talcahuano", "Tirúa", "Tomé", "Treguaco", "Tucapel", "Yumbel", "Yungay"],
-                        "Región de La Araucanía":["Angol", "Carahue", "Cholchol", "Collipulli", "Cunco", "Curacautín", "Curarrehue", "Ercilla", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Lonquimay", "Los Sauces", "Lumaco", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Purén", "Renaico", "Saavedra", "Temuco", "Teodoro Schmidt", "Toltén", "Traiguén", "Victoria", "Vilcún", "Villarrica"],
-                        "Región de Los Ríos": ["Corral", "Futrono", "La Unión", "Lago Ranco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "Río Bueno"],
-                        "Región de Los Lagos":  ["Ancud","Calbuco","Castro","Chaiten","Chonchi","Cochamo","Curaco de Velez","Dalcahue","Fresia","Frutillar","Futaleufu","Hualaihue","llanquihue","los muermos","maullin","osorno","palena","Puerto montt","Puerto octay","Puerto varas","puqueldon","purranque","puyehue","quellen","quellon","quemchi","quinchao","Rio negro","san juan de la costa","san pablo"],
-                        "Región de Aysén":["Aysen","Chile chico","Cisnes","Cochrane","Coyhaique","Guaitecas","Lago verde","o´higgins","Rio ibañez","Tortel"] ,
-                        "Región de Magallanes": ["Antartica","Cabo de hornos","Laguna blanca","natales","porvenir","primavera","punta arenas","Rio verde","san gregorio","timaukel","torres del paine"],
-                    };
-        
-                    var id = 1; // Inicializa el contador de ID
-                    var regionesConId = {};
-                    var ciudadesConId = {};
-        
-                    // Asigna identificadores únicos a las regiones y ciudades
-                    for (var region in regionesYCiudades) {
-                        regionesConId[region] = "region" + id;
-                        for (var ciudad of regionesYCiudades[region]) {
-                            ciudadesConId[ciudad] = "ciudad" + id;
-                        }
-                        id++;
-                    }
-        
-                    // Combina los objetos de regiones y ciudades con identificadores únicos
-                    var regionesYCiudadesConId = {
-                        regiones: regionesConId,
-                        ciudades: ciudadesConId
-                    };
-        
-                    var direccionCount = 0; // Contador de direcciones
-        
-                    function agregarDireccion() {
-                        // Incrementar el contador de direcciones antes de agregar una nueva dirección
-                        direccionCount++;
-        
-                        // Crear un elemento section con un id único
-                        var section = document.createElement("section");
-                        section.id = "direccion" + direccionCount;
-        
-                        // Crear un elemento div para el número de dirección con un id único
-                        var numeroDireccion = document.createElement("div");
-                        numeroDireccion.textContent = direccionCount + "°";
-                        numeroDireccion.id = "numeroDireccion" + direccionCount;
-        
-                        // Crear selección para la región con un id único
-                        var labelRegion = document.createElement("label");
-                        labelRegion.textContent = "Región: ";
-        
-                        var selectRegion = document.createElement("select");
-                        selectRegion.name = "region"; // Establecer el nombre del campo
-                        selectRegion.id = "selectRegion" + direccionCount;
-        
-                        // Llenar opciones de región
+                <select name="JavaScript" id="Eleccion">
+                    <script>
+                        // Define las regiones y sus ciudades correspondientes
+                        var regionesYCiudades = {
+                            "Región de Arica y Parinacota": ["Arica", "Camarones", "General lagos","Putre"],
+                            "Región de Tarapacá": ["Alto Hospicio", "Camiña", "Colchane","Huara", "Iquique", "Pica","Pozo Almonte"],
+                            "Región de Antofagasta": ["Antofagasta", "Calama", "Maria Elena","Mejillones", "Ollague", "San Pedro de Atacama","Sierra Gorda", "Taltal", "Tocopilla"],
+                            "Región de Atacama": ["Alto del Carmen", "Caldera", "Chañaral","Copiapo", "Diego De almagro", "Freirina","Huasco", "Tierra amarilla", "Vallenar"],
+                            "Región de Coquimbo": ["Andacollo", "Canela", "Combarbala","Coquimbo", "Illapel", "La Higuera","La Serena", "Los Vilos", "Monte Patria","Ovalle", "PaiHuano", "Punitaqui","Rio Hurtado", "Salamanca", "Vicuña"],
+                            "Región de Valparaíso": ["Algarrobo", "Cabildo", "Calera","Calle Larga", "Cartagena","Casablanca", "Catemu", "Concon","El Quisco", "El Tabo","Hijuelas", "Isla de Pascua", "Juan Fernandez","La Cruz", "La ligua","Limache", "Llaillay", "Los andes","Nogales", "Olmue","Panquehue", "Papudo", "Petorca","Puchuncavi", "Putaendo","Quillota", "Quilpue", "Quintero","Rinconada", "San antonio","San Esteban", "San Felipe", "Santa Maria","Santo Domingo", "Valparaiso","Villa alemana","Viña del mar","Zapallar"],
+                            "Región Metropolitana":["Santiago", "Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Bernardo", "San Joaquín", "San Miguel", "San Ramón", "Vitacura"],
+                            "Region de Ohiggins" : ["Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "La Estrella", "Las Cabras", "Litueche", "Machalí", "Malloa", "Marchihue", "Mostazal", "Navidad", "Olivar", "Peredones", "Peumo", "Pichidegua", "Pichilemu", "Quinta de Tilcoco", "Rancagua", "Rengo", "Requínoa", "San Vicente"],
+                            "Región del Maule":["Cauquenes", "Chanco", "Colbún", "Constitución", "Curepto", "Curicó", "Empedrado", "Hualañé", "Licantén", "Linares", "Longaví", "Maule", "Molina", "Parral", "Pelarco", "Pelluhue", "Pencahue", "Rauco", "Retiro", "Río Claro", "Romeral", "Sagrada Familia", "San Clemente", "San Javier", "San Rafael", "Talca", "Teno", "Vichuquén", "Villa Alegre", "Yerbas Buenas"],                            "Región del Ñuble":["Bulnes", "Chillán", "Chillán Viejo", "Cobquecura", "Coelemu", "Coihueco", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"],
+                            "Región del Biobío":["Alto Biobío", "Antuco", "Arauco", "Bulnes", "Cabrero", "Cañete", "Chiguayante", "Chillán", "Chillán Viejo", "Cobquecura", "Coelemu", "Coihueco", "Concepción", "Contulmo", "Coronel", "Curanilahue", "El Carmen", "Florida", "Hualpén", "Hualqui", "Laja", "Lebu", "Los Álamos", "Los Ángeles", "Lota", "Monte Ángel", "Mulchén", "Nacimiento", "Negrete", "Ninhue", "Ñiquén", "Pemuco", "Penco", "Pinto", "Portezuelo", "Quilaco", "Quilleco", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "San Pedro de la Paz", "Santa Bárbara", "Santa Juana", "Talcahuano", "Tirúa", "Tomé", "Treguaco", "Tucapel", "Yumbel", "Yungay"],
+                            "Región de La Araucanía":["Angol", "Carahue", "Cholchol", "Collipulli", "Cunco", "Curacautín", "Curarrehue", "Ercilla", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Lonquimay", "Los Sauces", "Lumaco", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Purén", "Renaico", "Saavedra", "Temuco", "Teodoro Schmidt", "Toltén", "Traiguén", "Victoria", "Vilcún", "Villarrica"],
+                            "Región de Los Ríos": ["Corral", "Futrono", "La Unión", "Lago Ranco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "Río Bueno"],
+                            "Región de Los Lagos":  ["Ancud","Calbuco","Castro","Chaiten","Chonchi","Cochamo","Curaco de Velez","Dalcahue","Fresia","Frutillar","Futaleufu","Hualaihue","llanquihue","los muermos","maullin","osorno","palena","Puerto montt","Puerto octay","Puerto varas","puqueldon","purranque","puyehue","quellen","quellon","quemchi","quinchao","Rio negro","san juan de la costa","san pablo"],
+                            "Región de Aysén":["Aysen","Chile chico","Cisnes","Cochrane","Coyhaique","Guaitecas","Lago verde","o´higgins","Rio ibañez","Tortel"] ,
+                            "Región de Magallanes": ["Antartica","Cabo de hornos","Laguna blanca","natales","porvenir","primavera","punta arenas","Rio verde","san gregorio","timaukel","torres del paine"],
+                        };
+            
+                        var id = 1; // Inicializa el contador de ID
+                        var regionesConId = {};
+                        var ciudadesConId = {};
+            
+                        // Asigna identificadores únicos a las regiones y ciudades
                         for (var region in regionesYCiudades) {
-                            var option = document.createElement("option");
-                            option.value = region;
-                            option.text = region;
-                            selectRegion.appendChild(option);
-                        }
-        
-                        // Crear selección para la ciudad con un id único
-                        var labelCiudad = document.createElement("label");
-                        labelCiudad.textContent = "Ciudad: ";
-        
-                        var selectCiudad = document.createElement("select");
-                        selectCiudad.name = "ciudad"; // Establecer el nombre del campo
-                        selectCiudad.id = "selectCiudad" + direccionCount;
-        
-                        // Función para actualizar las opciones de ciudad cuando se cambia la región
-                        selectRegion.addEventListener("change", function () {
-                            var selectedRegion = selectRegion.value;
-                            var ciudades = regionesYCiudades[selectedRegion] || [];
-        
-                            // Limpiar opciones anteriores
-                            selectCiudad.innerHTML = "";
-        
-                            // Agregar las opciones de ciudad específicas para la región seleccionada
-                            for (var i = 0; i < ciudades.length; i++) {
-                                var option = document.createElement("option");
-                                option.value = ciudades[i];
-                                option.text = ciudades[i];
-                                selectCiudad.appendChild(option);
+                            regionesConId[region] = "region" + id;
+                            for (var ciudad of regionesYCiudades[region]) {
+                                ciudadesConId[ciudad] = "ciudad" + id;
                             }
-                        });
-        
-                        // Código JavaScript para generar campos de formulario dinámicamente
-                        var labelDireccion = document.createElement("label");
-                        labelDireccion.textContent = "Dirección: ";
-        
-                        var inputDireccion = document.createElement("input");
-                        inputDireccion.type = "text";
-                        inputDireccion.name = "direccion"; // El nombre debe coincidir con el nombre utilizado en el script PHP
-        
-                        var labelIndicaciones = document.createElement("label");
-                        labelIndicaciones.textContent = "Indicaciones Extra: ";
-        
-                        var inputIndicaciones = document.createElement("input");
-                        inputIndicaciones.type = "text";
-                        inputIndicaciones.name = "indicaciones"; // El nombre debe coincidir con el nombre utilizado en el script PHP
-        
-                        // Crear botón para eliminar la dirección
-                        var eliminarBoton = document.createElement("button");
-                        eliminarBoton.textContent = "Eliminar Dirección";
-                        eliminarBoton.addEventListener("click", function () {
-                            // Obtener el número de dirección de la sección actual
-                            var numDireccion = parseInt(numeroDireccion.textContent);
-        
-                            // Eliminar esta sección de dirección cuando se hace clic en el botón
-                            document.getElementById("direcciones").removeChild(section);
-        
-                            // Actualizar el contador de direcciones
-                            direccionCount--;
-        
-                            // Actualizar los números de dirección en las secciones restantes
-                            actualizarNumerosDirecciones(numDireccion);
-        
+                            id++;
+                        }
+            
+                        // Combina los objetos de regiones y ciudades con identificadores únicos
+                        var regionesYCiudadesConId = {
+                            regiones: regionesConId,
+                            ciudades: ciudadesConId
+                        };
+            
+                        var direccionCount = 0; // Contador de direcciones
+            
+                        function agregarDireccion() {
+                            // Incrementar el contador de direcciones antes de agregar una nueva dirección
+                            direccionCount++;
+            
+                            // Crear un elemento section con un id único
+                            var section = document.createElement("section");
+                            section.id = "direccion" + direccionCount;
+            
+                            // Crear un elemento div para el número de dirección con un id único
+                            var numeroDireccion = document.createElement("div");
+                            numeroDireccion.textContent = direccionCount + "°";
+                            numeroDireccion.id = "numeroDireccion" + direccionCount;
+            
+                            // Crear selección para la región con un id único
+                            var labelRegion = document.createElement("label");
+                            labelRegion.textContent = "Región: ";
+            
+                            var selectRegion = document.createElement("select");
+                            selectRegion.name = "region"; // Establecer el nombre del campo
+                            selectRegion.id = "selectRegion" + direccionCount;
+            
+                            // Llenar opciones de región
+                            for (var region in regionesYCiudades) {
+                                var option = document.createElement("option");
+                                option.value = region;
+                                option.text = region;
+                                selectRegion.appendChild(option);
+                            }
+            
+                            // Crear selección para la ciudad con un id único
+                            var labelCiudad = document.createElement("label");
+                            labelCiudad.textContent = "Ciudad: ";
+            
+                            var selectCiudad = document.createElement("select");
+                            selectCiudad.name = "ciudad"; // Establecer el nombre del campo
+                            selectCiudad.id = "selectCiudad" + direccionCount;
+            
+                            // Función para actualizar las opciones de ciudad cuando se cambia la región
+                            selectRegion.addEventListener("change", function () {
+                                var selectedRegion = selectRegion.value;
+                                var ciudades = regionesYCiudades[selectedRegion] || [];
+            
+                                // Limpiar opciones anteriores
+                                selectCiudad.innerHTML = "";
+            
+                                // Agregar las opciones de ciudad específicas para la región seleccionada
+                                for (var i = 0; i < ciudades.length; i++) {
+                                    var option = document.createElement("option");
+                                    option.value = ciudades[i];
+                                    option.text = ciudades[i];
+                                    selectCiudad.appendChild(option);
+                                }
+                            });
+            
+                            // Código JavaScript para generar campos de formulario dinámicamente
+                            var labelDireccion = document.createElement("label");
+                            labelDireccion.textContent = "Dirección: ";
+            
+                            var inputDireccion = document.createElement("input");
+                            inputDireccion.type = "text";
+                            inputDireccion.name = "direccion"; // El nombre debe coincidir con el nombre utilizado en el script PHP
+            
+                            var labelIndicaciones = document.createElement("label");
+                            labelIndicaciones.textContent = "Indicaciones Extra: ";
+            
+                            var inputIndicaciones = document.createElement("input");
+                            inputIndicaciones.type = "text";
+                            inputIndicaciones.name = "indicaciones"; // El nombre debe coincidir con el nombre utilizado en el script PHP
+            
+                            // Crear botón para eliminar la dirección
+                            var eliminarBoton = document.createElement("button");
+                            eliminarBoton.textContent = "Eliminar Dirección";
+                            eliminarBoton.addEventListener("click", function () {
+                                // Obtener el número de dirección de la sección actual
+                                var numDireccion = parseInt(numeroDireccion.textContent);
+            
+                                // Eliminar esta sección de dirección cuando se hace clic en el botón
+                                document.getElementById("direcciones").removeChild(section);
+            
+                                // Actualizar el contador de direcciones
+                                direccionCount--;
+            
+                                // Actualizar los números de dirección en las secciones restantes
+                                actualizarNumerosDirecciones(numDireccion);
+            
+                                // Actualizar la lista numerada de direcciones
+                                actualizarListaDirecciones();
+                            });
+            
+                            // Agregar los elementos al section
+                            section.appendChild(numeroDireccion); // Agregar el número de dirección
+                            section.appendChild(labelRegion);
+                            section.appendChild(selectRegion);
+                            section.appendChild(labelCiudad);
+                            section.appendChild(selectCiudad);
+                            section.appendChild(labelDireccion);
+                            section.appendChild(inputDireccion);
+                            section.appendChild(labelIndicaciones);
+                            section.appendChild(inputIndicaciones);
+                            section.appendChild(eliminarBoton); // Agregar el botón de eliminación
+            
+                            // Agregar el section al contenedor de direcciones
+                            document.getElementById("direcciones").appendChild(section);
+            
                             // Actualizar la lista numerada de direcciones
                             actualizarListaDirecciones();
-                        });
-        
-                        // Agregar los elementos al section
-                        section.appendChild(numeroDireccion); // Agregar el número de dirección
-                        section.appendChild(labelRegion);
-                        section.appendChild(selectRegion);
-                        section.appendChild(labelCiudad);
-                        section.appendChild(selectCiudad);
-                        section.appendChild(labelDireccion);
-                        section.appendChild(inputDireccion);
-                        section.appendChild(labelIndicaciones);
-                        section.appendChild(inputIndicaciones);
-                        section.appendChild(eliminarBoton); // Agregar el botón de eliminación
-        
-                        // Agregar el section al contenedor de direcciones
-                        document.getElementById("direcciones").appendChild(section);
-        
-                        // Actualizar la lista numerada de direcciones
-                        actualizarListaDirecciones();
-                    }
-        
-                    // Función para actualizar la lista numerada de direcciones
-                    function actualizarListaDirecciones() {
-                        var direccionMenu = document.getElementById("direccion-menu");
-                        direccionMenu.innerHTML = ""; // Limpiar la lista
-        
-                        var direcciones = document.querySelectorAll("#direcciones section");
-                        for (var i = 0; i < direcciones.length; i++) {
-                            var listItem = document.createElement("li");
-                            listItem.className = "direccion-menu-item";
-                            listItem.textContent = (i + 1) + "° " + obtenerTextoDireccion(direcciones[i]);
-                            direccionMenu.appendChild(listItem);
                         }
-                    }
-        
-                    function obtenerTextoDireccion(section) {
-                        var numero = section.querySelector("div").textContent;
-                        var selectRegion = section.querySelector("select[name='region']");
-                        var region = selectRegion.options[selectRegion.selectedIndex].value;
-        
-                        var selectCiudad = section.querySelector("select[name='ciudad']");
-                        var ciudad = selectCiudad.options[selectCiudad.selectedIndex].value;
-        
-                        var direccion = section.querySelector("input[name='direccion']").value;
-                        var indicaciones = section.querySelector("input[name='indicaciones']").value;
-        
-                        return numero + "  Direccion  " + " Region: '" + region + "' / Ciudad: '" + ciudad + "' / Dirección: '" + direccion + "' / Indicaciones Extra: '" + indicaciones + "'";
-                    }
-        
-                    // Función para actualizar los números de dirección después de eliminar una dirección
-                    function actualizarNumerosDirecciones(numDireccionEliminada) {
-                        var secciones = document.querySelectorAll("#direcciones section");
-                        for (var i = numDireccionEliminada; i <= secciones.length; i++) {
-                            secciones[i - 1].querySelector("div").textContent = i + "°";
+            
+                        // Función para actualizar la lista numerada de direcciones
+                        function actualizarListaDirecciones() {
+                            var direccionMenu = document.getElementById("direccion-menu");
+                            direccionMenu.innerHTML = ""; // Limpiar la lista
+            
+                            var direcciones = document.querySelectorAll("#direcciones section");
+                            for (var i = 0; i < direcciones.length; i++) {
+                                var listItem = document.createElement("li");
+                                listItem.className = "direccion-menu-item";
+                                listItem.textContent = (i + 1) + "° " + obtenerTextoDireccion(direcciones[i]);
+                                direccionMenu.appendChild(listItem);
+                            }
                         }
-                    }
-                </script>
+            
+                        function obtenerTextoDireccion(section) {
+                            var numero = section.querySelector("div").textContent;
+                            var selectRegion = section.querySelector("select[name='region']");
+                            var region = selectRegion.options[selectRegion.selectedIndex].value;
+            
+                            var selectCiudad = section.querySelector("select[name='ciudad']");
+                            var ciudad = selectCiudad.options[selectCiudad.selectedIndex].value;
+            
+                            var direccion = section.querySelector("input[name='direccion']").value;
+                            var indicaciones = section.querySelector("input[name='indicaciones']").value;
+            
+                            return numero + "  Direccion  " + " Region: '" + region + "' / Ciudad: '" + ciudad + "' / Dirección: '" + direccion + "' / Indicaciones Extra: '" + indicaciones + "'";
+                        }
+            
+                        // Función para actualizar los números de dirección después de eliminar una dirección
+                        function actualizarNumerosDirecciones(numDireccionEliminada) {
+                            var secciones = document.querySelectorAll("#direcciones section");
+                            for (var i = numDireccionEliminada; i <= secciones.length; i++) {
+                                secciones[i - 1].querySelector("div").textContent = i + "°";
+                            }
+                        }
+                    </script>
+                </select>
         </form>
     </div>
     <footer>TecHome® 2023 | Derechos reservados</footer>

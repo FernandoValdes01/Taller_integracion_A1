@@ -1,35 +1,43 @@
 <?php
-// Datos de conexión a la base de datos
-$servername = "localhost"; // Nombre del servidor de la base de datos
-$username = "root"; // Nombre de usuario de la base de datos
-$password = ""; // Contraseña de la base de datos
-$dbname = "techome"; // Nombre de la base de datos
+// Verifica si se recibieron datos del formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Conexión a la base de datos (ajusta los valores según tu configuración)
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "techome";
 
-// Crear una conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("La conexión a la base de datos falló: " . $conn->connect_error);
-}
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("La conexión a la base de datos falló: " . $conn->connect_error);
+    }
 
-// Recopilar los datos del formulario después de realizar la validación y limpieza
-$ID_Direccion = isset($_POST["ID_Direccion"]) ? $conn->real_escape_string($_POST["ID_Direccion"]) : "";
-$Region = isset($_POST["Region"]) ? $conn->real_escape_string($_POST["Region"]) : "";
-$Ciudad = isset($_POST["Ciudad"]) ? $conn->real_escape_string($_POST["Ciudad"]) : "";
-$Direccion = isset($_POST["Direccion"]) ? $conn->real_escape_string($_POST["Direccion"]) : "";
-$Indicaciones = isset($_POST["Indicaciones"]) ? $conn->real_escape_string($_POST["Indicaciones"]) : "";
+    // Obtener los datos del formulario
+    $region = $_POST["region"];
+    $ciudad = $_POST["ciudad"];
+    $direccion = $_POST["direccion"];
+    $indicaciones = $_POST["indicaciones"];
 
-$sql = "INSERT INTO direccion (Direccion, Indicaciones, Ciudad, Region) 
-        VALUES ('$Direccion', '$Indicaciones', '$Ciudad', '$Region')";
+    // Preparar y ejecutar la consulta SQL para insertar los datos en la base de datos
+    $sql = "INSERT INTO direccion (direccion, indicaciones, ciudad, region) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $direccion, $indicaciones, $ciudad,$region);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Los datos se han insertado correctamente.";
+    if ($stmt->execute()) {
+        // La inserción fue exitosa
+        echo "Los datos se han insertado correctamente en la base de datos.";
+    } else {
+        // Ocurrió un error durante la inserción
+        echo "Error al insertar los datos en la base de datos: " . $stmt->error;
+    }
+
+    // Cerrar la conexión a la base de datos
+    $stmt->close();
+    $conn->close();
 } else {
-    echo "Error al insertar los datos: " . $conn->error;
+    // Si se intenta acceder a este archivo sin enviar datos por POST, mostrar un mensaje de error
+    echo "Acceso no permitido.";
 }
-
-// Cerrar la conexión a la base de datos
-$conn->close();
 ?>
-

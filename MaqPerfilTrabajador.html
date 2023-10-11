@@ -9,26 +9,82 @@
     <header>
         <h1>Mi Perfil de Trabajador</h1>
     </header>
-    <form>
-        <h1>Mi Perfil de Trabajador</h1>
-    <div class="perfil-trabajador">
+    <div id="perfil-trabajador">
         <h2>Información del Trabajador</h2>
-        <div class="configuracion-perfil-trabajador">
-            <h2>Editar Perfil</h2>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre Trabajaor">
-    
-                <label for="correo">Correo Electronico:</label>
-                <input type="text" id="correo" name="correo" placeholder="Correo electronico Trabajador">
-    
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña Trabajador">
-    
-                <label for="numero">Numero de Teléfono:</label>
-                <input type="text" id="numero" name="contrasena" placeholder="Ej: +569">
-                <button type="submit">Guardar</button>
-    
+
+        <p class="Nombre">Nombre: Nombre del Trabajador</p>
+        <p class="Apellido">Apellido: Apellido del Trabajador</p>
+        <p class="Correo">Correo: Correo del trabajador</p>
+        <p class="Especialización">Especialización: Especialización del Trabajador</p>
+        <p class="Numero">Número de Contacto: +56912345678</p>
+        
+        <a href="EditarPerfilTrabajador.html">
+        <button>Editar</button></a>
     </div>
-    </form>
 </body>
+
+<div id="menu">
+<ul>
+    <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
+    <li> <a href="ganancias.html">Ganancias</li>
+    <li> <a href="historial_de_pedidos.html">Pedidos  anteriores</a></li>
+    <li> <a href="billetera.html">Billetera</a></li>
+    <li> <a href="soporte.html">Soporte</a></li>
+    <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+    <li><a href="EliminarCuentaT.html">Eliminar cuenta</a></li>
+    <li> <a href="InicioT.html">Cerrar sesion</a></li>
+
+
+</ul>
+</div>
+
+<div id="menu-toggle">&#9776;</div> 
+<script>
+const menu = document.getElementById('menu');
+const menuToggle = document.getElementById('menu-toggle');
+const perfil = document.getElementById('perfil');
+const config = document.getElementById('configuracion');
+const quienesSomos = document.getElementById('ganancias');
+const direcciones = document.getElementById('billetera');
+const soporte = document.getElementById('soporte');
+const politicadeprivacidad = document.getElementById('politica');
+const cerrarsesion = document.getElementById('cerrarsesion');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
+
+perfil.addEventListener('click', () => {
+    console.log('Clic en Perfil');
+});
+
+config.addEventListener('click', () => {
+    console.log('Clic en Config');
+});
+
+Ganancias.addEventListener('click', () => {
+    console.log('Clic en Ganancias');
+});
+billetera.addEventListener('click', () => {
+    console.log('Clic en Billetera');
+});
+
+soporte.addEventListener('click', () => {
+    console.log('Clic en soporte');
+});
+
+politica.addEventListener('click', () => {
+    console.log('Clic en politica ');
+});
+
+cerrarsesion.addEventListener('click', () => {
+    console.log('Clic en cerrarcesion ');
+});
+
+
+</script>
+<footer>TecHome® 2023 | Derechos reservados</footer>
+</body>
+</html>
+
 </html>

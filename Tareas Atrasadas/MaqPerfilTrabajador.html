@@ -93,20 +93,25 @@
         <h1>Mi Perfil de Trabajador</h1>
     </header>
     <div id="perfil-trabajador">
-        <h2>Información del Trabajador</h2>
+        <h2>Editar Perfil de Trabajador</h2>
+        
+            <form action="#" id="editarperfiltrabajador" name="" method="POST" enctype="multipart/form-data">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre Trabajaor">
+    
+                <label for="correo">Correo Electronico:</label>
+                <input type="text" id="correo" name="correo" placeholder="Correo electronico Trabajador">
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre Trabajaor"><br><br>
+                <label for="especializacion">Especialización:</label>
+                <input type="text" id="especializacion" name="especializacion" placeholder="Tu Especialización"><br><br>
 
-        <label for="correo">Correo Electronico:</label>
-        <input type="text" id="correo" name="correo" placeholder="Correo electronico Trabajador"><br><br>
-
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña Trabajador"><br><br>
-
-        <label for="numero">Numero de Teléfono:</label>
-        <input type="text" id="numero" name="contrasena" placeholder="Ej: +569"><br><br>
-        <button type="submit">Guardar</button>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña Trabajador">
+    
+                <label for="numero">Numero de Teléfono:</label>
+                <input type="text" id="numero" name="contrasena" placeholder="Ej: +569">
+                <button type="submit">Guardar</button>
+            </form>
     </div>
 </body>
 <div id="menu">

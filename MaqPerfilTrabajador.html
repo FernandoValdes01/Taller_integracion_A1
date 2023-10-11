@@ -4,6 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Trabajador</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    a{
+
+        color: #fff;
+        text-decoration: none;
+
+    }
+
+    header{
+
+        background-color: #0d3c6e;
+        color: #fff;
+        margin-top: -1px;
+        padding: 20px;
+        text-align: center;
+
+    }
+
+    footer{ 
+
+            text-align: center;
+            background-color: #0d3c6e;
+            color: #fff;
+            margin-top: 375px;
+            margin-bottom: -10px;
+
+    }
+
+
+    #perfil-trabajador{
+        padding: 15px;
+        margin-top: 90px;
+        margin-right: 200px;
+        margin-left: 200px;
+        margin-bottom: 100px;
+        text-align: center;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+    }
+
+    #menu {
+        position: fixed;
+        top: 0;
+        right: -250px; 
+        width: 250px;
+        height: 100%;
+        background-color: #0f66c3;
+        color: #fff;
+        transition: right 0.3s; 
+    }
+    #menu.active {
+        right: 0; 
+    }
+    #menu ul {
+        list-style: none;
+        padding: 0;
+    }
+    #menu ul li {
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid #0f66c3;
+    }
+    #content {
+        margin-right: 250px; 
+        padding: 20px;
+    }
+    #menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    </style>
+
 </head>
 <body>
     <header>

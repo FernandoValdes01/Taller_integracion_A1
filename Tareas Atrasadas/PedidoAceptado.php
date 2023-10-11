@@ -10,7 +10,7 @@ if($_POST){
 
     $sentencia=$conexion->prepare("INSERT INTO 
     pedido aceptado(ID_pedido, nombre_pedido, precio, fecha, ID_solicitud, Rut_Trabajador) 
-    VALUES (NULL, :nombre_pedido, :precio, :fecha, NULL, NULL;");
+    VALUES (NULL, :nombre_pedido, :precio, :fecha, NULL, NULL)");
 
      $sentencia->bindParam(":nombre_pedido",$tipo_servicio);
      $sentencia->bindParam(":precio",$descripcion);

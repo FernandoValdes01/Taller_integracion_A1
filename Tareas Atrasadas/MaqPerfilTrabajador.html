@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Trabajador</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    a{
+
+        color: #fff;
+        text-decoration: none;
+
+    }
+
+    header{
+
+        background-color: #0d3c6e;
+        color: #fff;
+        margin-top: -1px;
+        padding: 20px;
+        text-align: center;
+
+    }
+
+    footer{ 
+
+            text-align: center;
+            background-color: #0d3c6e;
+            color: #fff;
+            margin-top: 375px;
+            margin-bottom: -10px;
+
+    }
+
+
+    #perfil-trabajador{
+        padding: 15px;
+        margin-top: 90px;
+        margin-right: 200px;
+        margin-left: 200px;
+        margin-bottom: 100px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+    }
+
+    #menu {
+        position: fixed;
+        top: 0;
+        right: -250px; 
+        width: 250px;
+        height: 100%;
+        background-color: #0f66c3;
+        color: #fff;
+        transition: right 0.3s; 
+    }
+    #menu.active {
+        right: 0; 
+    }
+    #menu ul {
+        list-style: none;
+        padding: 0;
+    }
+    #menu ul li {
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid #0f66c3;
+    }
+    #content {
+        margin-right: 250px; 
+        padding: 20px;
+    }
+    #menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    </style>
+
+<body>
+    <header>
+        <h1>Mi Perfil de Trabajador</h1>
+    </header>
+    <div id="perfil-trabajador">
+        <h2>Información del Trabajador</h2>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre Trabajaor"><br><br>
+
+        <label for="correo">Correo Electronico:</label>
+        <input type="text" id="correo" name="correo" placeholder="Correo electronico Trabajador"><br><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña Trabajador"><br><br>
+
+        <label for="numero">Numero de Teléfono:</label>
+        <input type="text" id="numero" name="contrasena" placeholder="Ej: +569"><br><br>
+        <button type="submit">Guardar</button>
+    </div>
+</body>
+<div id="menu">
+<ul>
+    <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
+    <li> <a href="ganancias.html">Ganancias</li>
+    <li> <a href="historial_de_pedidos.html">Pedidos  anteriores</a></li>
+    <li> <a href="billetera.html">Billetera</a></li>
+    <li> <a href="soporte.html">Soporte</a></li>
+    <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+    <li><a href="EliminarCuentaT.html">Eliminar cuenta</a></li>
+    <li> <a href="InicioT.html">Cerrar sesion</a></li>
+
+
+</ul>
+</div>
+
+<div id="menu-toggle">&#9776;</div> 
+<script>
+const menu = document.getElementById('menu');
+const menuToggle = document.getElementById('menu-toggle');
+const perfil = document.getElementById('perfil');
+const config = document.getElementById('configuracion');
+const quienesSomos = document.getElementById('ganancias');
+const direcciones = document.getElementById('billetera');
+const soporte = document.getElementById('soporte');
+const politicadeprivacidad = document.getElementById('politica');
+const cerrarsesion = document.getElementById('cerrarsesion');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
+
+perfil.addEventListener('click', () => {
+    console.log('Clic en Perfil');
+});
+
+config.addEventListener('click', () => {
+    console.log('Clic en Config');
+});
+
+Ganancias.addEventListener('click', () => {
+    console.log('Clic en Ganancias');
+});
+billetera.addEventListener('click', () => {
+    console.log('Clic en Billetera');
+});
+
+soporte.addEventListener('click', () => {
+    console.log('Clic en soporte');
+});
+
+politica.addEventListener('click', () => {
+    console.log('Clic en politica ');
+});
+
+cerrarsesion.addEventListener('click', () => {
+    console.log('Clic en cerrarcesion ');
+});
+
+
+</script>
+<footer>TecHome® 2023 | Derechos reservados</footer>
+</body>
+</html>

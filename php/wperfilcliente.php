@@ -1,33 +1,29 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['correo'])) {
-    
-    header("Location: inicioclientes.php"); 
+if (!isset($_SESSION['Correo_Cliente'])) {
+    header("Location: inicioclientes.php");
     exit();
 }
 
 $server = "localhost";
 $usuario = "root";
-$contraseña = "";
-$basededatos = "techome";
+$contrasena = "";
+$basededatos = "techomedef";
 
-$conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
+$conexion = new mysqli($server, $usuario, $contrasena, $basededatos);
 
 // Verificar la conexión
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
+$correo = $_SESSION['Correo_Cliente'];
+$nombre = $_SESSION['Nombre_cliente'];
+$contraseñaC = $_SESSION['contraseña'];
 
-$correo = $_SESSION['correo']; 
-$nombre=$_SESSION['nombre_cliente'];
-$contraseñaC=$_SESSION['contraseña'];
-$sql = "SELECT nombre_cliente, correo FROM clientes WHERE correo = '$correo'";
+$sql = "SELECT Nombre_cliente, Correo_Cliente, Contraseña FROM clientes WHERE Correo_Cliente = '$correo'";
 $result = $conexion->query($sql);
-
-
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si los campos existen en $_POST antes de acceder a ellos
@@ -35,13 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nuevo_nombre = $_POST["nombre"];
         $nuevo_email = $_POST["email"];
         $nueva_contraseña = $_POST["contrasena"];
-        
+
         // Actualizar el perfil en la base de datos
-        $sql = "UPDATE clientes SET nombre_cliente='$nuevo_nombre', correo='$nuevo_email', contraseña='$nueva_contraseña' WHERE correo='$correo'";
+        $sql = "UPDATE clientes SET Nombre_cliente='$nuevo_nombre', Correo_Cliente='$nuevo_email', Contraseña='$nueva_contraseña' WHERE Correo_Cliente='$correo'";
 
         if ($conexion->query($sql) === TRUE) {
-            $_SESSION['nombre_cliente'] = $nuevo_nombre;
-            $_SESSION['correo'] = $nuevo_email;
+            $_SESSION['Nombre_cliente'] = $nuevo_nombre;
+            $_SESSION['Correo_Cliente'] = $nuevo_email;
             $_SESSION['contraseña'] = $nueva_contraseña;
             echo "Perfil actualizado con éxito.";
         } else {
@@ -51,9 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: Alguno de los campos del formulario no se envió correctamente.";
     }
 }
-
-
-
 
 $conexion->close();
 ?>

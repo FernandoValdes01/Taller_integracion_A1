@@ -5,7 +5,7 @@ session_start();
 $server = "localhost";
 $usuario = "root";
 $contraseña = "";
-$basededatos = "techome";
+$basededatos = "techomedef";
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
@@ -18,28 +18,34 @@ if ($conexion->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $contrasena_usuario = $_POST["contrasena"];
     $confirmar_contrasena = $_POST["confirmar_contrasena"];
-    $contraseñadb_ = $_SESSION['contraseña'];
-    $correo = $_SESSION['correo'];
 
-    if ($contrasena_usuario === $confirmar_contrasena && $contrasena_usuario === $contraseñadb_) {
-        // Consulta SQL para eliminar la cuenta del usuario
-        $sql = "DELETE FROM clientes WHERE correo = '$correo'";
-        $result = $conexion->query($sql);
+    // Asegúrate de que estas variables de sesión existan antes de usarlas
+    if (isset($_SESSION['contraseña']) && isset($_SESSION['Correo_Cliente'])) {
+        $contraseñadb_ = $_SESSION['contraseña'];
+        $correo = $_SESSION['Correo_Cliente'];
 
-        // Comprobar si la consulta SQL fue exitosa
-        if ($result === false) {
-            die("Error en la consulta SQL: " . $conexion->error);
-        }
+        if ($contrasena_usuario === $confirmar_contrasena && $contrasena_usuario === $contraseñadb_) {
+            // Consulta SQL para eliminar la cuenta del usuario
+            $sql = "DELETE FROM clientes WHERE Correo_Cliente = '$correo'";
+            $result = $conexion->query($sql);
 
-        if ($conexion->query($sql) === TRUE) {
-            echo "Cuenta eliminada exitosamente.";
+            // Comprobar si la consulta SQL fue exitosa
+            if ($result === false) {
+                die("Error en la consulta SQL: " . $conexion->error);
+            }
 
-            session_destroy();
+            if ($conexion->query($sql) === TRUE) {
+                echo "Cuenta eliminada exitosamente.";
+
+                session_destroy();
+            } else {
+                echo "Error al eliminar la cuenta: " . $conexion->error;
+            }
         } else {
-            echo "Error al eliminar la cuenta: " . $conexion->error;
+            echo "La contraseña no coincide o es incorrecta. No se pudo eliminar la cuenta.";
         }
     } else {
-        echo "La contraseña no coincide o es incorrecta. No se pudo eliminar la cuenta.";
+        echo "Los valores de sesión no están definidos.";
     }
 }
 ?>

@@ -3,7 +3,7 @@
 $server = "localhost";
 $usuario = "root";
 $contraseña = "";
-$basededatos = "techome";
+$basededatos = "techomedef";
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasena = $_POST['contrasena'];
 
     // Crear una consulta SQL para buscar un usuario por correo
-    $sql = "SELECT correo, contraseña,nombre_cliente FROM clientes WHERE correo = '$correo'";
+    $sql = "SELECT Correo_Cliente, contraseña,Nombre_cliente FROM clientes WHERE Correo_Cliente = '$correo'";
     $result = $conexion->query($sql);
 
     // Comprobar si la consulta SQL fue exitosa
@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($contrasena == $contrasena_db) {
             $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
             session_start();
-            $_SESSION['correo'] = $correo;
+            $_SESSION['Correo_Cliente'] = $correo;
             $_SESSION['contraseña'] = $contrasena_db;
-            $_SESSION['nombre_cliente'] = $nombre;
+            $_SESSION['Nombre_cliente'] = $nombre;
             header('Location: Menu.php'); 
             exit();
         } else {

@@ -10,23 +10,25 @@
     $host = "localhost";
     $usuario = "root";
     $contrasena = "";
-    $base_datos = "techome";
+    $base_datos = "techomedef";
 
     // Función para generar un ID único
     function generarIDUnico($conexion) {
         return rand(1000, 9999);
     }
 
-    // Función para generar una calle y número aleatorio
-    function generarCalleNumero() {
-        $calle = "Calle " . rand(1, 100);
-        $numero = rand(1, 500);
-        return [$calle, $numero];
+    // Función para generar una dirección aleatoria
+    function generarDireccion() {
+        $direccion = "Calle " . rand(1, 100);
+        $indicaciones = "Indicaciones " . rand(1, 10);
+        $ciudad = "Ciudad " . rand(1, 5);
+        $region = "Región " . rand(1, 3);
+        return [$direccion, $indicaciones, $ciudad, $region];
     }
 
     // Función para verificar si un correo ya existe en la base de datos
     function verificarCorreoExistente($conexion, $correo) {
-        $sql = "SELECT ID_Cliente FROM clientes WHERE correo = '$correo'";
+        $sql = "SELECT Correo_Cliente FROM clientes WHERE Correo_Cliente = '$correo'";
         $result = $conexion->query($sql);
         return $result && $result->num_rows > 0; 
     }
@@ -53,24 +55,26 @@
                 echo "Las contraseñas no coinciden.";
             } else {
                 // Generar una dirección aleatoria
-                list($calle, $numero) = generarCalleNumero();
+                list($direccion, $indicaciones, $ciudad, $region) = generarDireccion();
 
                 // Generar IDs únicos para cliente y dirección
                 $id_cliente = generarIDUnico($conexion);
                 $id_direccion = generarIDUnico($conexion);
 
                 // Insertar la dirección en la base de datos
-                $sql = "INSERT INTO direccion (ID_Direccion, calle, numero) VALUES ('$id_direccion', '$calle', '$numero')";
+                $sql = "INSERT INTO direccion (ID_Direccion, Direccion, Indicaciones, Ciudad, Region) VALUES ('$id_direccion', '$direccion', '$indicaciones', '$ciudad', '$region')";
                 if ($conexion->query($sql) === TRUE) {
                     // Insertar el cliente en la base de datos
-                    $sql = "INSERT INTO clientes (ID_Cliente, nombre_cliente, correo, contraseña, ID_Direccion) VALUES ('$id_cliente', '$nombre', '$correo', '$contrasena', '$id_direccion')";
+                    $sql = "INSERT INTO clientes (Correo_Cliente, Nombre_cliente, Contraseña, ID_Direccion) VALUES ('$correo','$nombre','$contrasena', '$id_direccion')";
                     if ($conexion->query($sql) === TRUE) {
                         echo "Registro exitoso.";
                     } else {
                         // Manejar errores si la inserción del cliente falla
+                        echo "Error al registrar el cliente: " . $conexion->error;
                     }
                 } else {
                     // Manejar errores si la inserción de la dirección falla
+                    echo "Error al registrar la dirección: " . $conexion->error;
                 }
             }
 
@@ -97,4 +101,3 @@
     </form>
 </body>
 </html>
-

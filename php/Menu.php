@@ -5,7 +5,7 @@
 session_start();
 
 // Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION['correo'])) {
+if (!isset($_SESSION['Correo_Cliente'])) {
     // Si el usuario no ha iniciado sesión, mostrar otro maquetado
 ?>
 <!DOCTYPE html>
@@ -525,7 +525,7 @@ if (!isset($_SESSION['correo'])) {
             <li id="soporte"> <a href="soportec1.html">Soporte</a></li>
             <li id="politica_de_privacidadc"> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
             <li id="cerrar-sesion"> <a href="/cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
-            <li id="Eliminar_cuenta"> <a href="EliminarCuenta.php"> Eliminar Cuenta</a></li>
+            <li id="Eliminar_cuenta"> <a href="eliminar_cuentaC.php"> Eliminar Cuenta</a></li>
         </ul>
 
         </div>

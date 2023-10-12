@@ -1,64 +1,115 @@
-<?php
-session_start();
-
-// Configuración de la conexión a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contraseña = "";
-$basededatos = "techome";
-
-// Establecer la conexión a la base de datos
-$conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
-
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $contrasena_usuario = $_POST["contrasena"];
-    $confirmar_contrasena = $_POST["confirmar_contrasena"];
-    $contraseñadb_ = $_SESSION['contraseña'];
-    $correo = $_SESSION['correo'];
-
-    if ($contrasena_usuario === $confirmar_contrasena && $contrasena_usuario === $contraseñadb_) {
-        // Consulta SQL para eliminar la cuenta del usuario
-        $sql = "DELETE FROM clientes WHERE correo = '$correo'";
-        $result = $conexion->query($sql);
-
-        // Comprobar si la consulta SQL fue exitosa
-        if ($result === false) {
-            die("Error en la consulta SQL: " . $conexion->error);
-        }
-
-        if ($conexion->query($sql) === TRUE) {
-            echo "Cuenta eliminada exitosamente.";
-
-            session_destroy();
-        } else {
-            echo "Error al eliminar la cuenta: " . $conexion->error;
-        }
-    } else {
-        echo "La contraseña no coincide o es incorrecta. No se pudo eliminar la cuenta.";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eliminar Cuenta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar cuenta Cliente</title>
+    <script>
+        function validarFormulario() {
+            // Asegurarse de que el campo de correo está lleno
+            var correo = document.getElementById('correo').value;
+            if (correo === '') {
+                alert('Por favor, ingrese su correo electrónico.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        h1 {
+            font-family: verdana;
+            font-size: 30px;
+            text-align: center;
+        }
+        p {
+            margin-left: 15%;
+            margin-top: 40px;
+            font-family: Arial;
+            font-size: 20px;
+        }
+        .Correo {
+            font-family: Arial;
+            font-size: 20px;
+            margin-top: 60px;
+            margin-left: 15%;
+        }
+        .Contraseña {
+            font-family: Arial;
+            font-size: 20px;
+            margin-top: 20px;
+            margin-left: 15%;
+        }
+        .Correo label {
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 0%;
+        }
+        .Botón_de_enviar {
+            margin-left: 15%;
+        }
+    </style>
 </head>
 <body>
-    <h2>Eliminar Cuenta</h2>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" name="contrasena" id="contrasena" required>
-        <br>
-        <label for="confirmar_contrasena">Confirmar Contraseña:</label>
-        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" required>
-        <br>
-        <button type="submit">Eliminar Cuenta</button>
+    <h1>¿Por qué desea eliminar su cuenta?</h1>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return validarFormulario();">
+        <div class="Contraseña">
+            <label for="Correo_Cliente">Correo Cliente:</label>
+            <input type="email" name="Correo_Cliente" required><br>
+
+            <label for="Contraseña">Contraseña:</label>
+            <input type="password" name="Contraseña" required><br>
+
+            <label for="ID_Direccion">ID_Direccion:</label>
+            <input type="text" name="ID_Direccion" required><br>
+
+            <label for="Nombre_cliente">Nombre Cliente:</label>
+            <input type="text" name="Nombre_cliente" required><br>
+
+            <label for="Direccion">Direccion:</label>
+            <input type="text" name="Direccion" required><br>
+
+            <label for="Indicaciones">Indicaciones:</label>
+            <input type="text" name="Indicaciones" required><br>
+
+            <label for="Ciudad">Ciudad:</label>
+            <input type="text" name="Ciudad" required><br>
+
+            <label for="Region">Region:</label>
+            <input type="text" name="Region" required><br>
+
+            <input type="submit" value="Eliminar">
+        </div>
     </form>
+    <?php
+    session_start();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        // Recoger los datos del formulario
+        $Correo_Cliente = $_POST['Correo_Cliente'];
+        $Contraseña = $_POST['Contraseña'];
+
+        // Conectar a la base de datos
+        $host = "localhost";
+        $usuario = "root";
+        $contrasena = "";  // Contraseña en lugar de Contraseña
+        $base_datos = "techome";
+        $conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
+
+        if ($conexion->connect_error) {
+            die("Error de conexión a la base de datos: " . $conexion->connect_error);
+        }
+
+        // Sentencia SQL para eliminar al cliente
+        $sql = "DELETE FROM clientes WHERE Correo_Cliente = '$Correo_Cliente' AND Contraseña = '$Contraseña'";
+
+        if ($conexion->query($sql) === TRUE) {
+            echo "Cliente eliminado con éxito.";
+        } else {
+            echo "Error al eliminar al cliente: " . $conexion->error;
+        }
+
+        $conexion->close();
+    }
+    ?>
 </body>
 </html>

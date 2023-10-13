@@ -94,10 +94,10 @@ if($_POST){
     <form action="Solicitud.php" method="post" enctype="multipart/form-data">
         <div class="Box">
             <label for="servicio">Selecciona un servicio:</label>
-            <select id="servicio" name="servicio">
-                <option value="servicio1">Servicio 1</option>
-                <option value="servicio2">Servicio 2</option>
-                <option value="servicio3">Servicio 3</option>
+            <select id="tipo_servicio" name="tipo_servicio">
+                <option value="Mantención">Mantención</option>
+                <option value="Reparación">Reparación</option>
+                <option value="Instalación">Instalación</option>
             </select>
     
             <p>Describe tu problema:</p>

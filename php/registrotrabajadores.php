@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "techomedef";
+$database = "techome";
 
 $conn = new mysqli($servername, $username, $password, $database);
 

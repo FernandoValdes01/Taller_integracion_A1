@@ -2,7 +2,107 @@
 <html>
 <head>
     <title>Registro de Cliente</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<style>
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+    header{
+
+        background-color: #0d3c6e;
+        color: #fff;
+        text-align: center;
+        padding: 25px;
+        margin-top: -11px;
+        margin-left: 0px;
+        margin-right: 0px;
+
+    }
+
+    footer{ 
+
+        color: #fff;
+        text-align: center;
+        background-color: #0d3c6e;
+        margin-top: 252px;
+        margin-bottom: -10px;
+        margin-left: 0px;
+        margin-right: 0px;
+
+    }
+
+    input{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: block;
+        margin-bottom: 0px;
+        margin-top: 0%;
+    }
+
+    select{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 0%;
+    }
+
+    .st_correcto{
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #90ee90;
+        display: block;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px;
+        margin-left: 44.2%;
+        margin-bottom: 190px;
+        width: 200px;
+        text-align: center;
+    }
+
+        .st_incorrecto{
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fa7268;
+            display: block;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px;
+            margin-left: 44.2%;
+            margin-bottom: 190px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .Box {
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    text-align: center; /* Para centrar el contenido horizontalmente */
+}
+
+input, select, label {
+    margin-bottom: 10px;
+}
+
+
+
+</style>
 <body>
     <h1>Registro de Cliente</h1>
     <?php
@@ -10,7 +110,7 @@
     $host = "localhost";
     $usuario = "root";
     $contrasena = "";
-    $base_datos = "techomedef";
+    $base_datos = "techome";
 
     // Función para generar un ID único
     function generarIDUnico($conexion) {

@@ -3,7 +3,7 @@
 $server = "localhost";
 $usuario = "root";
 $contraseña = "";
-$basededatos = "techomedef";//a modificar por al nombre
+$basededatos = "techome";//a modificar por al nombre
 
 // Establecer la conexión a la base de datos
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);

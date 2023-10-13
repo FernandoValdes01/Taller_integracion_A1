@@ -519,7 +519,7 @@ if (!isset($_SESSION['Correo_Cliente'])) {
 
     <div id="menu">
         <ul>
-            <li id="config"> <a href="PerfilclienteBoceto.php">Configuracion de perfil</a></li>
+            <li id="config"> <a href="Perfilcliente.php">Configuracion de perfil</a></li>
             <li id="quienes-somos"> <a href="NuestrahistoriaC1.html">Quienes somos</a></li>
             <li id="direcciones"> <a href="Direcciones1.html">Direcciones</a></li>
             <li id="soporte"> <a href="soportec1.html">Soporte</a></li>

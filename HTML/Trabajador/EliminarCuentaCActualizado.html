@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar cuenta Cliente</title>
+    <script>
+        function mostrarOtroMotivo() {
+            var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;
+            var otroMotivoCampo = document.querySelector('.Otro_motivo');
+            
+            if (motivoSeleccionado === 'Other') {
+                otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+            } else {
+            
+            otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+            }
+        }
+
+        function validarFormulario() {
+            // Aquí puedes agregar más validaciones si es necesario
+            // Por ejemplo, asegurarte de que el campo de correo esté lleno
+            var correo = document.getElementById('correo').value;
+            if (correo === '') {
+                alert('Por favor, ingrese su correo electrónico.');
+                return false; // Detener el envío del formulario
+            }
+            return true; // Continuar con el envío del formulario
+        }
+    </script>
+<style>
+body{
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #27496D;
+    color: #F1EFEF;
+
+}
+
+header{
+
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    color: #F1EFEF;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 5%;
+    padding: 2%;
+    border-radius: 10px;
+
+}
+
+section{
+
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    padding: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+
+}
+
+footer{ 
+
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    color: #F1EFEF;
+    text-align: center;
+    margin: 1%;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+    
+h1{
+    font-family: verdana;
+    font-size: 30px;
+    text-align: center;
+}
+
+p{
+    margin-left: 15%;
+    margin-top: 40px;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+a{
+
+    text-decoration: none;
+    color: #F1EFEF;
+
+}
+
+input{
+
+    border-radius: 3px;
+    border: 5px solid #2C74B3;
+
+}
+
+textarea{
+
+    border-radius: 3px;
+    border: 5px solid #2C74B3;
+
+}
+
+button{
+
+    background-color: #27496D;
+    border: 2px solid #2C74B3;
+    color: #F1EFEF;
+    padding: 1%;
+    border-radius: 10px;
+
+}
+
+button:hover{
+
+    background-color: #2C74B3;
+    color: #fff;
+
+}
+
+.q_text{
+
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center;
+
+}
+
+.Correo{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 15%;
+    
+}
+
+.Contraseña{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 15%;
+}
+
+.Contraseña label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Correo label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Botón_de_enviar{
+    margin-left: 15%;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: -253px; 
+    width: 250px;
+    height: 100%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    color: #fff;
+    transition: right 0.3s; 
+}
+
+#menu.active {
+    right: 0; 
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu ul li {
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#content {
+    margin-right: 250px; 
+    padding: 20px;
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #fff;
+    padding: 1%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Eliminar cuenta</h1>
+
+        <div id="menu">
+            <ul>
+                <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
+                <li> <a href="ganancias.html">Ganancias</a></li>
+                <li> <a href="historial_de_pedidos.html">Pedidos anteriores</a></li>
+                <li> <a href="billetera.html">Billetera</a></li>
+                <li> <a href="soporte.html">Soporte</a></li>
+                <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
+                <li><a href="EliminarCuentaCActualizado.html">Eliminar cuenta</a></li>
+                <li> <a href="InicioT.html">Cerrar sesion</a></li>
+            
+            
+            </ul>
+        </div>
+
+    </header>
+
+    <div class="q_text">
+        <h2>¿Por qué desea eliminar su cuenta?</h2>
+    </div>
+<section>
+    <form action="eliminar_cuentaC.php" method="post" onsubmit="return validarFormulario();">
+        
+        <div class="Contraseña">
+            <label for="contrasena">Contraseña:</label>
+            <input type="email" id="contrasena" name="contrasena" required>
+        </div>
+        <div class="Confirmar Contraseña">
+            <label for="contrasena">Confirmar Contraseña:</label>
+            <input type="text" id="contrasena" name="contrasena" required>
+        </div>
+        <div class="Opciones">
+            <p>
+                <input type="radio" name="motivo" value="No longer need the account" onclick="mostrarOtroMotivo()"> No me satisface la empresa<br>
+                <input type="radio" name="motivo" value="Found a better service" onclick="mostrarOtroMotivo()"> Encontré un servicio mejor<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Los trabajadores no son eficientes<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Preocupaciones de privacidad<br>
+                <input type="radio" name="motivo" value="Other" onclick="mostrarOtroMotivo()"> Otro (especificar razón)<br>
+            </p>
+        </div>
+        <div class="Otro_motivo" style="display: none;">
+            <p>
+                Razón: <br>
+                <textarea name="otro_motivo" rows="4" cols="50"></textarea>
+            </p>
+        </div>
+        <div class="Botón_de_enviar">
+            <button type="submit" id="botonEnviar">Enviar</button>
+        </div>
+    </form>
+</section>
+
+<footer>TecHome® 2023 | Derechos reservados</footer>
+
+<div id="menu-toggle">&#9776;</div> 
+    <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const perfil = document.getElementById('perfil');
+        const config = document.getElementById('configuracion');
+        const quienesSomos = document.getElementById('ganancias');
+        const direcciones = document.getElementById('billetera');
+        const soporte = document.getElementById('soporte');
+        const politicadeprivacidad = document.getElementById('politica');
+        const cerrarsesion = document.getElementById('cerrarsesion');
+    
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    
+        perfil.addEventListener('click', () => {
+            console.log('Clic en Perfil');
+        });
+    
+        config.addEventListener('click', () => {
+            console.log('Clic en Config');
+        });
+    
+        Ganancias.addEventListener('click', () => {
+            console.log('Clic en Ganancias');
+        });
+    
+        billetera.addEventListener('click', () => {
+            console.log('Clic en Billetera');
+        });
+    
+        soporte.addEventListener('click', () => {
+            console.log('Clic en soporte');
+        });
+    
+        politica.addEventListener('click', () => {
+            console.log('Clic en politica ');
+        });
+    
+        cerrarsesion.addEventListener('click', () => {
+            console.log('Clic en cerrarcesion ');
+        });
+    </script>
+
+</body>
+</html>

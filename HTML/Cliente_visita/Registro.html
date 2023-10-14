@@ -4,9 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Registro.css">
-    <title>TecHome</title>
+    <title>TecHome® | Registrate</title>
 </head>
+
+<style>
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #27496D;
+    color: #F1EFEF;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+input{
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 5px solid #2C74B3;
+}
+
+a{
+    text-decoration: none;
+    color: #F1EFEF;
+}
+
+footer{
+    position: absolute; 
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    text-align: center;
+    margin-top: 50%;
+    margin-bottom: 5%;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button{
+    padding: 10px 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    color: #F1EFEF;
+    background-color: #27496D;
+    border: 2px solid #2C74B3;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #2C74B3;
+}
+
+.container{
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: -305px; 
+    width: 300px;
+    height: 100%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+    color: #fff;
+    transition: right 0.3s;  
+}
+
+#menu.active {
+    right: 0; 
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu ul li {
+    padding: 15px;
+    text-align: left;
+    margin-left: 5%;
+    cursor: pointer;
+    border-bottom: 1px solid #142850;
+}
+
+#content {
+    margin-right: 250px;
+    padding: 20px;
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #fff;
+    padding: 1%;
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+}
+
+</style>
+
 <body>
+
+    <div id="menu">
+        <ul>
+            <li></li>
+            <li><a href="clientevisita.html">Inicio</a></li>
+            <li><a href="InicioC.html">Iniciar sesion</a></li>
+            <li><a href="Registro.html">Registro</a></li>
+            <li><a href="Nuestrahistoria2.html">Quienes somos</a></li>
+            <li><a href="soporte.html">Soporte</a></li>
+            <li><a href="politica de privacidadc.html">Politica de privacidad</a></li>
+        </ul>
+    </div>
+
     <div class="container">
         <h1>Registrar</h1>
         <form id="registro-form">
@@ -29,7 +167,7 @@
             <input type="tel" id="numero" required>
 
             <button type="submit">Listo</button>
-            <button type="button" onclick="window.location.href='Inicio.html'">Iniciar Sesión</button>
+            <button type="button" onclick="window.location.href='InicioC.html'">Iniciar Sesión</button>
 
             <div>
             <a class="Olvidar" href="#">¿Olvidaste tu contraseña?</a>
@@ -43,6 +181,39 @@
             </script>
         </form>
     </div>
-  </div>     
+</div>
+
+<footer>TecHome® 2023 | Derechos reservados</footer>
+
+<div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+<script>
+    
+    const menu = document.getElementById('menu');
+    const menuToggle = document.getElementById('menu-toggle');
+    const Inicio = document.getElementById("Iniciar sesion");
+    const config = document.getElementById('config');
+    const quienesSomos = document.getElementById('quienes-somos');
+
+  /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+});
+
+perfil.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Perfil"
+    console.log('Clic en Perfil');
+});
+
+config.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Config"
+    console.log('Clic en Config');
+});
+
+quienesSomos.addEventListener('click', () => {
+    // Agregar aquí el código para la acción de "Quienes somos"
+    console.log('Clic en Quienes Somos');
+});
+</script>
+
 </body>
 </html>

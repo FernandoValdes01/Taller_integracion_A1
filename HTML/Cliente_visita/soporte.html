@@ -3,28 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soporte Técnico TecHome</title>
+    <title>TecHome® | Soporte técnico</title>
     <style>
 
         body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-color: #27496D;
+            color: #F1EFEF;
         }
 
         header {
-            background-color: #0d3c6e;
-            color: #fff;
-            text-align: center;
-            margin-top: -1px;
-            padding: 20px;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
+            text-align: left;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            margin-left: 1%;
+            margin-right: 7%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 3%;
+            padding-right: 1%;
+            border-radius: 10px;
+        }
+
+        section{
+            background-color: #0A2647;
+            border: 3px solid #144272;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-radius: 10px;
         }
 
         footer{ 
-            color: #fff;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
             text-align: center;
-            background-color: #0d3c6e;
-            margin-bottom: -10px;
+            margin: 1%;
+            padding: 2%;
+            border-radius: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         a{
@@ -72,6 +92,7 @@
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 3px;
+            border: 5px solid #2C74B3;
         }
 
         .contact-form textarea {
@@ -81,12 +102,15 @@
         .contact-form button {
             padding: 10px 20px;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
+            color: #F1EFEF;
+            background-color: #27496D;
+            border: 2px solid #2C74B3;
         }
 
         .contact-form button:hover {
-            background-color: #555;
+            background-color: #2C74B3;
         }
 
         .faq {
@@ -110,12 +134,14 @@
         #menu {
             position: fixed;
             top: 0;
-            right: -250px; 
-            width: 250px;
+            right: -303px; 
+            width: 300px;
             height: 100%;
-            background-color: #0f66c3;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
+            border-radius: 10px;
             color: #fff;
-            transition: right 0.3s; 
+            transition: right 0.3s;  
         }
 
         #menu.active {
@@ -129,9 +155,10 @@
 
         #menu ul li {
             padding: 15px;
-            text-align: center;
+            text-align: left;
+            margin-left: 5%;
             cursor: pointer;
-            border-bottom: 1px solid #0f66c3;
+            border-bottom: 1px solid #142850;
         }
 
         #content {
@@ -145,6 +172,12 @@
             right: 20px;
             cursor: pointer;
             color: #fff;
+            padding: 1%;
+            margin-top: 1%;
+            margin-right: 1%;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
+            border-radius: 10px;
         }
 
     </style>
@@ -156,17 +189,17 @@
 
     <div id="menu">
         <ul>
-
+            <li></li>
             <li><a href="clientevisita.html">Inicio</a></li>
             <li><a href="InicioC.html">Iniciar sesion</a></li>
             <li><a href="Registro.html">Registro</a></li>
             <li><a href="Nuestrahistoria2.html">Quienes somos</a></li>
             <li><a href="soporte.html">Soporte</a></li>
             <li><a href="politica de privacidadc.html">Politica de privacidad</a></li>
-    
         </ul>
     </div>
 
+    <section>
     <div class="container">
         <h2>Bienvenido al soporte tecnico de TecHome</h2>
         <p>Aquí encontrarás todo lo que necesitas.</p>
@@ -244,6 +277,7 @@
             <button type="submit">Enviar Mensaje</button>
         </form>
     </div>
+    </section>
     <footer>TecHome® 2023 | Derechos reservados</footer>
 
     <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->

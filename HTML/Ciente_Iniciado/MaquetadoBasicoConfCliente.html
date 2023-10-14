@@ -5,12 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración de Cliente</title>
 </head>
+
+<style>
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #27496D;
+    color: #F1EFEF;
+}
+
+header{
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    text-align: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 7%;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+footer{
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    text-align: center;
+    margin: 1%;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+section{
+    background-color: #0A2647;
+    border: 3px solid #144272;
+    padding-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 7%;
+    border-radius: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width:15%;
+    background-color: #0A2647;
+    border: 5px solid #144272;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 10%;
+    padding-right: 12%;
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-right: 2%;
+}
+
+a{
+    background-color: #27496D;
+    border: 2px solid #2C74B3;
+    color: #F1EFEF;
+    border-radius: 5px;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+a:hover{
+    background-color: #2C74B3;
+}
+
+input{
+
+    margin-bottom: 15%;
+    border: 5px solid #2C74B3;
+    border-radius: 5px;
+
+}
+
+
+
+</style>
+
 <body>
     <header>
         <h1>Configuración de Cliente</h1>
     </header>
+
     <div class="configuracion-cliente">
-        <h2>Editar Perfil</h2>
+        <form action="">
+            <h2>Editar Perfil</h2>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Nombre del cliente">
 
@@ -22,8 +111,11 @@
 
             <label for="numero">Numero de Teléfono:</label>
             <input type="text" id="numero" name="contrasena" placeholder="Ej: +56911111117">
-
-            <button type="submit">Guardar</button>
+            <a href="configuracion de cliente.html">Guardar</button></a>
+        </form>
     </div>
+
+    <footer>TecHome® 2023 | Derechos reservados</footer>
+
 </body>
 </html>

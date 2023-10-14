@@ -1,59 +1,65 @@
 <?php
-// Configuración de la conexión a la base de datos
+
 $server = "localhost";
 $usuario = "root";
 $contraseña = "";
-$basededatos = "techome";//a modificar por al nombre
+$basededatos = "techome";
 
-// Establecer la conexión a la base de datos
+
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
-$mensaje = ""; // Variable para almacenar mensajes de resultado
+$mensaje = ""; 
 
-// Comprobar si la conexión a la base de datos fue exitosa
+
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Comprobar si la solicitud HTTP es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los valores del formulario
+
     $correo = $_POST['Correo_Trabajador'];
     $contrasena = $_POST['contrasena'];
 
-    // Crear una consulta SQL para buscar un usuario por correo
-    $sql = "SELECT Correo_Trabajador, contraseña,Nombre_Trabajador FROM trabajadores WHERE Correo_Trabajador = '$correo'";
+
+    $sql = "SELECT Rut_Trabajador,Correo_Trabajador, contraseña,Nombre_Trabajador,Foto,Profesion,Monto_Cuenta,Calificacion,Descripcion FROM trabajador WHERE Correo_Trabajador = '$correo'";
     $result = $conexion->query($sql);
 
-    // Comprobar si la consulta SQL fue exitosa
+
     if ($result === false) {
         die("Error en la consulta SQL: " . $conexion->error);
     }
 
-    // Comprobar si se encontraron resultados en la consulta
+
     if ($result->num_rows > 0) {
-        // Obtener la primera fila de resultados
+
         $row = $result->fetch_assoc();
+        $rut_trabajador=$row['Rut_Trabajador'];
         $contrasena_db = $row['contraseña'];
-        $nombre=$row["Nombre_Trabajador"];
+        $nombre = $row["Nombre_Trabajador"];
+        $calificacion = $row["Calificacion"];    
+        $Monto_cuenta = $row["Monto_Cuenta"];
+        $descripcion = $row["Descripcion"];
+        $foto = $row["Foto"];
+        $profesion=$row["Profesion"];
 
-        // Comprobar si la contraseña ingresada coincide con la almacenada en la base de datos
-        if ($contrasena == $contrasena_db) {
-            $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
-            session_start();
-            $_SESSION['Correo_Trabajador'] = $correo;
-            $_SESSION['contraseña'] = $contrasena_db;
-            $_SESSION['Nombre_Trabajador'] = $nombre;
-            header('Location:session.php'); 
-            exit();
-        } else {
-            $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
-        }
+}   
+    if ($contrasena == $contrasena_db) {
+    $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
+    session_start();
+    $_SESSION['Rut_Trabajador']=$rut_trabajador;
+    $_SESSION['Correo_Trabajador'] = $correo;
+    $_SESSION['contraseña'] = $contrasena_db;
+    $_SESSION['Nombre_Trabajador'] = $nombre;
+    $_SESSION['Calificacion'] = $calificacion;
+    $_SESSION['Monto_Cuenta'] = $Monto_cuenta;
+    $_SESSION['Descripcion'] = $descripcion;
+    $_SESSION['Foto'] = $foto; 
+    $_SESSION['Profesion']=$profesion;
+    header('Location:perfiltrabajador.php');
+    exit();
     } else {
-        $mensaje = "Error en el inicio de sesión. El correo no existe en la base de datos.";
-    }
+    $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
+    } 
 }
-
-// Cerrar la conexión a la base de datos
 $conexion->close();
 ?>
 

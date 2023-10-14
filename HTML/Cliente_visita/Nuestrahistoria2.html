@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>        
-        <title> Nuestra Historia </title>
+        <title>TecHome® | Nuestra historia</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
+
             .nav_menu {
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                 background-color: black;
@@ -12,38 +13,58 @@
                 color: white;
                 overflow: hidden;
             }
+
             body{
-
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+                background-color: #27496D;
+                color: #F1EFEF;
             }
-            
+
             p {
-                margin-top: 70px;
-                margin-left: 100px;
-                margin-right:  100px;
+                margin-top: 5%;
+                margin-bottom: 5%;
+                margin-left: 10%;
+                margin-right:  10%;
+            }
+
+            a{
+                color: #fff;
+                text-decoration: none;
             }
 
             header{
+                background-color: #142850;
+                border: 2px solid #2C74B3;
+                text-align: left;
+                margin-top: 1%;
+                margin-bottom: 1%;
+                margin-left: 1%;
+                margin-right: 7%;
+                padding-top: 1%;
+                padding-bottom: 1%;
+                padding-left: 3%;
+                padding-right: 1%;
+                border-radius: 10px;
+            }
 
-                background-color: #0d3c6e;
-                margin-top: -20px;
-                margin-left: -8px;
-                margin-bottom: 0px;
-                margin-right: -8px;
-                padding: 9px;
+            section{
+                background-color: #0A2647;
+                border: 3px solid #144272;
+                margin-top: 5%;
+                margin-bottom: 5%;
+                margin-left: 10%;
+                margin-right: 10%;
+                border-radius: 10px;
             }
 
             footer{
-                
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                color: #fff;
+                background-color: #142850;
+                border: 2px solid #2C74B3;
                 text-align: center;
-                background-color: #0d3c6e;
-                margin-bottom: -13px;
-                margin-left: -8px;
-                margin-right: -8px;
-
+                margin: 1%;
+                padding: 2%;
+                border-radius: 10px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
 
             .imgs {
@@ -53,66 +74,55 @@
                 margin-bottom: 30px;
             }
 
-            #maintext{
-
-                color: #fff;
-                text-align: center;
-
-            }
-
-            #empty{
-
-                color: #fff;
-                margin-left: -15px;
-                margin-bottom: 28px;
-
-            }
-
             #menu {
                 position: fixed;
                 top: 0;
-                right: -250px; 
-                width: 250px;
+                right: -303px; 
+                width: 300px;
                 height: 100%;
-                background-color: #0f66c3;
+                background-color: #142850;
+                border: 2px solid #2C74B3;
+                border-radius: 10px;
                 color: #fff;
                 transition: right 0.3s; 
             }
-            
+
             #menu.active {
                 right: 0; 
             }
-            
+
             #menu ul {
                 list-style: none;
                 padding: 0;
             }
-            
+
             #menu ul li {
                 padding: 15px;
-                text-align: center;
+                text-align: left;
+                margin-left: 5%;
                 cursor: pointer;
-                border-bottom: 1px solid #0f66c3;
+                border-bottom: 1px solid #142850;
             }
-            
+
             #content {
-                margin-right: 250px; /* Dejar espacio para el menú */
                 padding: 20px;
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
-            
-            a{
 
-                color: #fff;
-                text-decoration: none;
-
-            }
-            
             #menu-toggle {
                 position: fixed;
                 top: 20px;
                 right: 20px;
                 cursor: pointer;
                 color: #fff;
+                padding: 1%;
+                margin-top: 1%;
+                margin-right: 1%;
+                background-color: #142850;
+                border: 2px solid #2C74B3;
+                border-radius: 10px;
             }
 
         </style>
@@ -120,14 +130,14 @@
     <body>
         <header>
             <div id="maintext">
-                <h2>Nuestra Historia</h2>
+                <h1>Nuestra Historia</h1>
                 <h3>Techome </h3>
             </div>
         </header>
 
         <div id="menu">
             <ul>
-    
+                <li></li>
                 <li><a href="clientevisita.html">Inicio</a></li>
                 <li><a href="InicioC.html">Iniciar sesion</a></li>
                 <li><a href="Registro.html">Registro</a></li>
@@ -138,6 +148,7 @@
             </ul>
         </div>
 
+        <section>
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo, dui elementum porttitor imperdiet,
             tortor neque volutpat sapien, ut ullamcorper metus massa eu est. Vivamus dolor massa, euismod non dapibus at,
             laoreet vitae lacus. Ut dapibus, leo eget commodo cursus, tortor ex lobortis tortor,
@@ -183,20 +194,16 @@
             at varius lectus. Nullam id molestie ex. Cras libero orci, tincidunt ut rutrum ac, dictum et tortor. 
             Pellentesque lobortis sapien et lorem rhoncus feugiat. </p>
 
-            <div id="empty">
-                <h6>.</h6>
-            </div>
-
             <div class = "imgs">
                 <img src="UCTlogo1.png"> 
                 <img src="UCTlogo2.png" width="100" height="100px">
             </div>
+            </section>
 
             <footer>TecHome® 2023 | Derechos reservados</footer>
 
             <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
             <script>
-            
             const menu = document.getElementById('menu');
             const menuToggle = document.getElementById('menu-toggle');
             const Inicio = document.getElementById("Iniciar sesion");

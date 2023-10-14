@@ -4,45 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de pedidos</title>
-    <?php
-    session_start();
-
-    
-if (isset($_SESSION['Rut_Trabajador'])) {
-    $rut_trabajador = $_SESSION['Rut_Trabajador']; 
-
-
-    $connection = new mysqli("localhost", "root", "", "techome");
-
-    if ($connection->connect_error) {
-        die("La conexión ha fallado: " . $connection->connect_error);
-    }
-
-    $sql = "SELECT * FROM pedido_aceptado WHERE estado='Finalizado' AND Rut_Trabajador='$rut_trabajador'";
-    $result = $connection->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="container">';
-            echo '<p>ID_pedido: ' . $row["ID_pedido"] . '</p>';
-            echo '<p>Nombre pedido: ' . $row["nombre_pedido"] . '</p>';
-            echo '<p>Precio: ' . $row["precio"] . '</p>';
-            echo '<p>Fecha: ' . $row["fecha"] . '</p>';
-            echo '<p>ID_solicitud: ' . $row["ID_solicitud"] . '</p>';
-            echo '<p>Rut_Trabajador: ' . $row["Rut_Trabajador"] . '</p>';
-            echo '<p>Estado: ' . $row["estado"] . '</p>';
-            echo '</div>';
-        }
-    } else {
-        echo "No se encontraron resultados.";
-    }
-    $connection->close();
-} else {
-    echo "La variable de sesión 'rut_trabajador' no está definida.";
-}
-?>
-</head>
-
 <style>
         .container {
         border: 1px solid #ccc;
@@ -205,26 +166,62 @@ if (isset($_SESSION['Rut_Trabajador'])) {
         border: 2px solid #2C74B3;
         border-radius: 10px;
     }
-
-
 </style>
+</head>
+<body>
+<?php
+session_start();
 
-    <div id="pedidosContainer"></div>
+if (isset($_SESSION['Rut_Trabajador'])) {
+    $rut_trabajador = $_SESSION['Rut_Trabajador']; 
 
-    <script>
-        function getPedidos() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("pedidosContainer").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "same_file.php", true);
-            xmlhttp.send();
+    $connection = new mysqli("localhost", "root", "", "techome");
+
+    if ($connection->connect_error) {
+        die("La conexión ha fallado: " . $connection->connect_error);
+    }
+
+    echo '<h1>Trabajos anteriores</h1>';
+    echo '<h3>Monto de la cuenta del trabajador: ' . obtenerMontoCuenta($rut_trabajador, $connection) . '</h3>';
+
+    $sql = "SELECT * FROM pedido_aceptado WHERE estado='Finalizado' AND Rut_Trabajador='$rut_trabajador'";
+    $result = $connection->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="container">';
+            echo '<p>ID_pedido: ' . $row["ID_pedido"] . '</p>';
+            echo '<p>Nombre pedido: ' . $row["nombre_pedido"] . '</p>';
+            echo '<p>Precio: ' . $row["precio"] . '</p>';
+            echo '<p>Fecha: ' . $row["fecha"] . '</p>';
+            echo '<p>ID_solicitud: ' . $row["ID_solicitud"] . '</p>';
+            echo '<p>Rut_Trabajador: ' . $row["Rut_Trabajador"] . '</p>';
+            echo '<p>Estado: ' . $row["estado"] . '</p>';
+            echo '</div>';
         }
+    } else {
+        echo "No se encontraron resultados.";
+    }
+    $connection->close();
+} else {
+    echo "La variable de sesión 'rut_trabajador' no está definida.";
+}
 
-        getPedidos();
-    </script>
+
+function obtenerMontoCuenta($rut, $connection) {
+    $sql = "SELECT monto_cuenta FROM trabajador WHERE Rut_Trabajador='$rut'";
+    $result = $connection->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row["monto_cuenta"];
+    } else {
+        return "No se encontró el monto de la cuenta.";
+    }
+}
+?>
+
+
 
 </body>
 <div id="menu">

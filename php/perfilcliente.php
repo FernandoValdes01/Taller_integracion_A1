@@ -31,7 +31,6 @@
             $nuevo_email = $_POST["email"];
             $nueva_contraseña = $_POST["contrasena"];
 
-            // Actualizar el perfil en la base de datos
             $sql = "UPDATE clientes SET nombre_cliente='$nuevo_nombre', Correo_Cliente='$nuevo_email', Contraseña='$nueva_contraseña' WHERE Correo_Cliente='$correo'";
 
             if ($conexion->query($sql) === TRUE) {
@@ -258,7 +257,7 @@
 
     <footer>TecHome® 2023 | Derechos reservados</footer>
 
-    <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+    <div id="menu-toggle">&#9776;</div> 
 
     <script>
             const menu = document.getElementById('menu');

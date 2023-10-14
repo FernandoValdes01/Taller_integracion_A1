@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Rut_Trabajador = $_SESSION['Rut_Trabajador'];
     $Nombre_Trabajador = $_POST['Nombre_Trabajador'];
     $Correo_Trabajador = $_POST['Correo_Trabajador'];
-    $Profesion = $_SESSION['Profesion']; // Se debe obtener de la sesión, ya que no se recibe del formulario
+    $Profesion = $_SESSION['Profesion'];
     $contraseña = $_POST['contraseña'];
     $Descripcion = $_POST['Descripcion'];
 

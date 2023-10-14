@@ -1,5 +1,5 @@
 <?php
-// Conexión a la base de datos (reemplaza con tus propias credenciales)
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,12 +10,10 @@ $conn = new mysqli($servername, $username, $password, $database);
 $correcto = "Registrado exitosamente";
 $incorrecto = "Error al registrar";
 
-// Verifica la conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Verifica si se enviaron datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rut = $_POST["rut"];
     $nombre = $_POST["nombre"];
@@ -23,13 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulos = $_POST["titulos"];
     $profesion = $_POST["profesion"];
 
-    // Verifica que la profesión sea una de las opciones válidas
     $profesionesValidas = ["mecanico", "electricista", "informatico", "gasfiteria", "carpinteria"];
     if (!in_array($profesion, $profesionesValidas)) {
         die("La profesión ingresada no es válida.");
     }
 
-    // Consulta SQL para insertar un nuevo trabajador
     $sql = "INSERT INTO trabajadores (Rut_Trabajador, Nombre_Trabajador, Correo_Trabajador, Titulos, Profesion)
             VALUES ('$rut', '$nombre', '$correo', '$titulos', '$profesion')";
 
@@ -41,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-// Cierra la conexión a la base de datos
 $conn->close();
 ?>
 

@@ -7,10 +7,10 @@ $usuario = "root";
 $contraseña = "";
 $basededatos = "techome";
 
-// Establecer la conexión a la base de datos
+
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
 
-// Verificar la conexión
+
 if ($conexion->connect_error) {
     die("Error de conexión a la base de datos: " . $conexion->connect_error);
 }
@@ -19,17 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $contrasena_usuario = $_POST["contrasena"];
     $confirmar_contrasena = $_POST["confirmar_contrasena"];
 
-    // Asegúrate de que estas variables de sesión existan antes de usarlas
+
     if (isset($_SESSION['contraseña']) && isset($_SESSION['Correo_Cliente'])) {
         $contraseñadb_ = $_SESSION['contraseña'];
         $correo = $_SESSION['Correo_Cliente'];
 
         if ($contrasena_usuario === $confirmar_contrasena && $contrasena_usuario === $contraseñadb_) {
-            // Consulta SQL para eliminar la cuenta del usuario
+
             $sql = "DELETE FROM clientes WHERE Correo_Cliente = '$correo'";
             $result = $conexion->query($sql);
 
-            // Comprobar si la consulta SQL fue exitosa
             if ($result === false) {
                 die("Error en la consulta SQL: " . $conexion->error);
             }
@@ -105,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </body>
 </html>
 
-<div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+<div id="menu-toggle">&#9776;</div> 
 <script>
 const menu = document.getElementById('menu');
 const menuToggle = document.getElementById('menu-toggle');
@@ -133,7 +132,6 @@ quienesSomos.addEventListener('click', () => {
 </body>
 </html>
 
-<!-- JavaScript para manejar la lógica del formulario y el menú desplegable -->
 <script>
 function mostrarOtroMotivo() {
     var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;

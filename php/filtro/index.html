@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function showTrabajadores(str) {
+if (str=="") {
+    document.getElementById("tabla").innerHTML="";
+    return;
+}
+if (window.XMLHttpRequest) {
+    xmlhttp=new XMLHttpRequest();
+} else {
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+    document.getElementById("tabla").innerHTML=this.responseText;
+    }
+}
+xmlhttp.open("GET","gettrabajadores.php?order="+str,true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<label for="order">Ordenar por:</label>
+<select name="order" id="order" onchange="showTrabajadores(this.value)">
+<option value="normal">Normal o predeterminado</option>
+<option value="mejor">De mejor a peor calificación</option>
+<option value="peor">De peor a mejor calificación</option>
+</select>
+<br><br>
+<div id="tabla"><b>La tabla se mostrará aquí.</b></div>
+
+</body>
+</html>

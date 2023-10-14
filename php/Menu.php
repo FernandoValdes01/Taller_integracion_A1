@@ -1,12 +1,10 @@
 <?php
-// aqui voy a intentar juntar los dos menus en 1 ocupando php
 
-// Iniciar la sesión para acceder a las variables de sesión
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
+
 if (!isset($_SESSION['Correo_Cliente'])) {
-    // Si el usuario no ha iniciado sesión, mostrar otro maquetado
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

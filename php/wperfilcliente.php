@@ -13,7 +13,7 @@ $basededatos = "techomedef";
 
 $conexion = new mysqli($server, $usuario, $contrasena, $basededatos);
 
-// Verificar la conexión
+
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
@@ -26,13 +26,12 @@ $sql = "SELECT Nombre_cliente, Correo_Cliente, Contraseña FROM clientes WHERE C
 $result = $conexion->query($sql);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar si los campos existen en $_POST antes de acceder a ellos
+
     if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["contrasena"])) {
         $nuevo_nombre = $_POST["nombre"];
         $nuevo_email = $_POST["email"];
         $nueva_contraseña = $_POST["contrasena"];
 
-        // Actualizar el perfil en la base de datos
         $sql = "UPDATE clientes SET Nombre_cliente='$nuevo_nombre', Correo_Cliente='$nuevo_email', Contraseña='$nueva_contraseña' WHERE Correo_Cliente='$correo'";
 
         if ($conexion->query($sql) === TRUE) {

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Trabajador</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const button = document.getElementById("solicitarServicio");
+            button.addEventListener("click", function () {
+                alert("No disponible por ahora.");
+    });
+});
+
+    </script>
+    <style>
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0d3c6e;
+            color: #fff;
+            text-align: center;
+            padding: 41px;
+        }   
+
+        h1 {    
+            margin: 0;
+        }
+
+        footer{ 
+
+            color: #fff;
+            text-align: center;
+            background-color: #0d3c6e;
+            margin-top: 246px;
+            margin-bottom: -10px;
+
+        }
+
+        .trabajador-info {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .trabajador-avatar {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            display: inline-block;
+        }
+
+        .trabajador-nombre {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .trabajos-disponibles {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .trabajo {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .trabajador {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+        background-color: #0f66c3;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #0f66c3;
+        }
+
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -250px; 
+            width: 250px;
+            height: 100%;
+            background-color: #0f66c3;
+            color: #fff;
+            transition: right 0.3s; 
+        }
+        #menu.active {
+            right: 0; 
+        }
+        #menu ul {
+            list-style: none;
+            padding: 0;
+        }   
+        #menu ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #0f66c3;
+        }
+        #content {
+            margin-right: 250px; /* Dejar espacio para el menú */
+            padding: 20px;
+        }
+        a{
+
+            color: #fff;
+            text-decoration: none;
+
+        }
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Informaticos  Disponibles</h1>
+    </header>
+    </div>
+    <div class="trabajos-disponibles">
+        <ul>
+            <li>
+                <div class="trabajador">
+                    <h3>Andrés Díaz</h3>
+                    <p>Eficiencia en resolución de problemas.</p>
+                    <button id="solicitarServicio">Solicitar Servicio</button>
+                </div>
+            </li>
+            <li>
+                <div class="trabajador">
+                    <h3>Camila Araya</h3>
+                    <p>Agilidad en programación y desarrollo.</p>
+                    <button id="solicitarServicio">Solicitar Servicio</button>
+                </div>
+            </li>
+            <li>
+                <div class="trabajador">
+                    <h3>Cristián Soto</h3>
+                    <p>Precisión en análisis de datos.</p>
+                    <button id="solicitarServicio">Solicitar Servicio</button>
+                </div>
+            </li>
+            <li>
+                <div class="trabajador">
+                    <h3>Valeria Romero</h3>
+                    <p>Creatividad en soluciones tecnológicas.</p>
+                    <button id="solicitarServicio">Solicitar Servicio</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="clienteiniciado.html">Inicio</a></li>
+            <li> <a href="configuracion de cliente.html">Configuracion</a></li>
+            <li> <a href="NuestrahistoriaC1.html">Quienes somos</li>
+            <li> <a href="Direcciones1.html">Direcciones</a></li>
+            <li> <a href="soportec1.html">Soporte</a></li>
+            <li> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
+            <li> <a href="/Cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
+    
+        </ul>
+        </div>
+
+        <footer>TecHome® 2023 | Derechos reservados</footer>
+
+        <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+        <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const perfil = document.getElementById('perfil');
+        const config = document.getElementById('config');
+        const quienesSomos = document.getElementById('quienes-somos');
+        const direcciones = document.getElementById('direcciones');
+        const cerrarsesion = document.getElementById('cerrar-sesion');
+        
+          /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+        });
+        
+        perfil.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Perfil"
+            console.log('Clic en Perfil');
+        });
+        
+        config.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Config"
+            console.log('Clic en Config');
+        });
+        
+        quienesSomos.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Quienes somos"
+            console.log('Clic en Quienes Somos');
+        });
+        </script>
+</body>
+</html>
+
+HTML: Esta página muestra información sobre trabajadores disponibles y permite a los usuarios solicitar sus servicios. También incluye un menú de navegación.
+
+JavaScript: Cuando se hace clic en el botón "Solicitar Servicio," muestra una alerta (por ahora no realiza ninguna acción).
+
+Estilos: Se aplican estilos al cuerpo de la página, al encabezado, a la lista de trabajadores disponibles y al menú de navegación.
+
+Menú de Navegación: El menú de navegación se puede abrir/cerrar haciendo clic en un icono de tres líneas horizontales en la esquina superior derecha.
+
+Funciones de Evento: Se han definido funciones de evento para las opciones del menú, como "Perfil," "Configuración," y "Quiénes Somos," aunque aún no tienen funcionalidad.

@@ -48,6 +48,24 @@
             text-decoration: none;
         }
 
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        button {
+            background-color: #27496D;
+            border: 2px solid #2C74B3;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2C74B3;
+        }
+
         .trabajador-info {
             text-align: center;
             padding: 20px;
@@ -78,11 +96,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
         .trabajo {
             background-color: #f2f2f2;
             padding: 10px;
@@ -100,65 +113,54 @@
             border-radius: 5px;
         }
 
-    button {
-        background-color: #27496D;
-        border: 2px solid #2C74B3;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -303px; 
+            width: 300px;
+            height: 100%;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
+            border-radius: 10px;
+            color: #fff;
+            transition: right 0.3s;
+        }
 
-    button:hover {
-        background-color: #2C74B3;
-    }
+        #menu.active {
+            right: 0; 
+        }
 
-    #menu {
-        position: fixed;
-        top: 0;
-        right: -303px; 
-        width: 300px;
-        height: 100%;
-        background-color: #142850;
-        border: 2px solid #2C74B3;
-        border-radius: 10px;
-        color: #fff;
-        transition: right 0.3s;
-    }
+        #menu ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    #menu.active {
-        right: 0; 
-    }
-    #menu ul {
-        list-style: none;
-        padding: 0;
-    }
-    #menu ul li {
-        padding: 15px;
-        text-align: left;
-        margin-left: 5%;
-        cursor: pointer;
-        border-bottom: 1px solid #142850;
-    }
+        #menu ul li {
+            padding: 15px;
+            text-align: left;
+            margin-left: 5%;
+            cursor: pointer;
+            border-bottom: 1px solid #142850;
+        }
 
-    #content {
-        margin-right: 250px;
-        padding: 20px;
-    }
+        #content {
+            margin-right: 250px;
+            padding: 20px;
+        }
 
-    #menu-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        color: #fff;
-        padding: 1%;
-        margin-top: 1%;
-        margin-right: 1%;
-        background-color: #142850;
-        border: 2px solid #2C74B3;
-        border-radius: 10px;
-    }
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+            padding: 1%;
+            margin-top: 1%;
+            margin-right: 1%;
+            background-color: #142850;
+            border: 2px solid #2C74B3;
+            border-radius: 10px;
+        }
 
     </style>
 </head>
@@ -209,7 +211,7 @@
             <li> <a href="Direcciones1.html">Direcciones</a></li>
             <li> <a href="soportec1.html">Soporte</a></li>
             <li> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
-            <li> <a href="/Cliente/cliente2/clientevisita.html">Cerrar sesion</a></li>
+            <li> <a href="/HTML/Cliente_visita/clientevisita.html">Cerrar sesion</a></li>
     
         </ul>
         </div>

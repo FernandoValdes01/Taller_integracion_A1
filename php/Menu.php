@@ -268,7 +268,7 @@ if (!isset($_SESSION['Correo_Cliente'])) {
     exit(); // Salir del script si el usuario no ha iniciado sesión
 }
 
-// Si el usuario ha iniciado sesión, mostrar el contenido de la página de inicio
+
 ?>
 
 <!DOCTYPE html>

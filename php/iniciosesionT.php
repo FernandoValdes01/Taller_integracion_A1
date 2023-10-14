@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['Descripcion'] = $descripcion;
     $_SESSION['Foto'] = $foto; 
     $_SESSION['Profesion']=$profesion;
-    header('Location:perfiltrabajador.php');
+    header('Location:pedidosyganancias.php');
     exit();
     } else {
     $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="EliminarCuentaC.css">
+    <title>Eliminar cuenta Cliente</title>
+    <script>
+        function mostrarOtroMotivo() {
+            var motivoSeleccionado = document.querySelector('input[name="motivo"]:checked').value;
+            var otroMotivoCampo = document.querySelector('.Otro_motivo');
+            
+            if (motivoSeleccionado === 'Other') {
+                otroMotivoCampo.style.display = 'block'; // Mostrar el campo de texto
+            } else {
+                otroMotivoCampo.style.display = 'none'; // Ocultar el campo de texto
+            }
+        }
+
+        function validarFormulario() {
+            // Aquí puedes agregar más validaciones si es necesario
+            // Por ejemplo, asegurarte de que el campo de correo esté lleno
+            var correo = document.getElementById('correo').value;
+            if (correo === '') {
+                alert('Por favor, ingrese su correo electrónico.');
+                return false; // Detener el envío del formulario
+            }
+            return true; // Continuar con el envío del formulario
+        }
+    </script>
+
+    <style>
+h1{
+    font-family: verdana;
+    font-size: 30px;
+    text-align: center;
+}
+
+p{
+    margin-left: 15%;
+    margin-top: 40px;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.Correo{
+    font-family: Arial;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 15%;
+}
+
+.Contraseña{
+    font-family: Arial;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 15%;
+}
+
+.Contraseña label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Correo label{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0%;
+}
+
+.Botón_de_enviar{
+    margin-left: 15%;
+}
+    </style>
+</head>
+<body>
+    <h1>¿Por qué desea eliminar su cuenta?</h1>
+    <form action="eliminar_cuentaC.php" method="post" onsubmit="return validarFormulario();">
+        
+        <div class="Correo">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="Contraseña">
+            <label for="contrasena">Contraseña:</label>
+            <input type="text" id="contrasena" required>
+        </div>
+        <div class="Opciones">
+            <p>
+                <input type="radio" name="motivo" value="No longer need the account" onclick="mostrarOtroMotivo()"> No me satisface la empresa<br>
+                <input type="radio" name="motivo" value="Found a better service" onclick="mostrarOtroMotivo()"> Encontré un servicio mejor<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Los trabajadores no son eficientes<br>
+                <input type="radio" name="motivo" value="Privacy concerns" onclick="mostrarOtroMotivo()"> Preocupaciones de privacidad<br>
+                <input type="radio" name="motivo" value="Other" onclick="mostrarOtroMotivo()"> Otro (especificar abajo)<br>
+            </p>
+        </div>
+        <div class="Otro_motivo" style="display: none;">
+            <p>
+                Razón personalizada (si seleccionó "Otro"): <br>
+                <textarea name="otro_motivo" rows="4" cols="50"></textarea>
+            </p>
+        </div>
+        <div class="Botón_de_enviar">
+            <button type="submit" id="botonEnviar">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title>Test de buscador</title>
+</head>
+
+<style>
+
+    body{
+        background-color: black;
+    }
+
+    input{
+        outline: none;
+        box-sizing: border-box;
+        height: 60px;
+        width: 0;
+        padding: 0 20px;
+        color: black;
+        border-radius: 50px;
+        font-size: 20px;
+        border: 5px solid #2C74B3;
+        transition: all .7s ease;
+    }
+
+    .container{
+        display: block;
+        position: absolute;
+        left: 48%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+
+    ::placeholder{
+        color: #2C74B3;
+    }
+
+    .boton{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80px;
+        height: 80px;
+        background-color: #2C74B3;
+        line-height: 80px;
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+        transition: .5s;    
+    }
+
+    .boton i{
+        font-size: 20px;
+        color: #fff;
+        line-height: 80px;
+        transition: all .7s ease;
+    }
+
+    .container:hover input{
+        width: 350px;
+    }
+
+    .container:hover i{
+        transform: rotate(-360deg);
+    }
+
+    .boton:hover{
+        background-color: #0A2647;
+    }
+
+</style>
+
+<body>
+
+    <div class="container">
+        <input type="text" id="inputSearch" placeholder="Buscar">
+        <div class="boton">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+</body>
+</html>

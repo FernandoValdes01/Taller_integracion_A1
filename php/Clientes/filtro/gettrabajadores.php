@@ -23,13 +23,20 @@ if ($order === 'mejor') {
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>#</th><th>Nombre</th><th>Correo</th><th>Profesión</th><th>Calificación</th></tr>";
     $count = 1;
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $count . "</td><td>" . $row["Nombre_Trabajador"] . "</td><td>" . $row["Correo_Trabajador"] . "</td><td>" . $row["Profesion"] . "</td><td>" . $row["Calificacion"] . "</td></tr>";
+        echo "<div style='border: 1px solid #ccc; padding: 10px; margin: 10px;'>";
+        echo "<p><strong># " . $count . "</strong></p>";
+        echo "<p><strong>Nombre:</strong> " . $row["Nombre_Trabajador"] . "</p>";
+        echo "<p><strong>Correo:</strong> " . $row["Correo_Trabajador"] . "</p>";
+        echo "<p><strong>Profesión:</strong> " . $row["Profesion"] . "</p>";
+        echo "<p><strong>Calificación:</strong> " . $row["Calificacion"] . "</p>";
+        echo "<div style='display: flex;'>";
+        echo "<a href='solicitarservicio.php'><button style='margin-right: 10px;'>Solicitar Servicio</button></a>";
+        echo "</div>";
+        echo "</div>";
         $count++;
     }
-    echo "</table>";
 } else {
     echo "0 resultados";
 }

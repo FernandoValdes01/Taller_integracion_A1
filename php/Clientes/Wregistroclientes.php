@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Registro de Cliente</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <style>
 

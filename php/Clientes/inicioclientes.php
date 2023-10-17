@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
 
-    $sql = "SELECT Correo_Cliente, contraseña,Nombre_cliente FROM clientes WHERE Correo_Cliente = '$correo'";
+    $sql = "SELECT Correo_Cliente, contraseña,nombre_Cliente FROM clientes WHERE Correo_Cliente = '$correo'";
     $result = $conexion->query($sql);
 
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['Correo_Cliente'] = $correo;
             $_SESSION['contraseña'] = $contrasena_db;
-            $_SESSION['Nombre_cliente'] = $nombre;
+            $_SESSION['nombre_Cliente'] = $nombre;
             header('Location: Menu.php'); 
             exit();
         } else {

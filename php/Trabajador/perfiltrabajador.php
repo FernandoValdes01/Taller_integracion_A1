@@ -15,28 +15,61 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Rut_Trabajador = $_SESSION['Rut_Trabajador'];
-    $Nombre_Trabajador = $_POST['Nombre_Trabajador'];
-    $Correo_Trabajador = $_POST['Correo_Trabajador'];
-    $Profesion = $_SESSION['Profesion'];
-    $contraseña = $_POST['contraseña'];
-    $Descripcion = $_POST['Descripcion'];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    if (isset($_POST['Nombre_Trabajador'], $_POST['Correo_Trabajador'], $_POST['contraseña'], $_POST['Descripcion'])) {
+        $Rut_Trabajador = $_SESSION['Rut_Trabajador'];
+        $Nombre_Trabajador = $_POST['Nombre_Trabajador'];
+        $Correo_Trabajador = $_POST['Correo_Trabajador'];
+        $Profesion = $_SESSION['Profesion'];
+        $contraseña = $_POST['contraseña'];
+        $Descripcion = $_POST['Descripcion'];
 
-    $sql = "UPDATE trabajador SET Nombre_Trabajador='$Nombre_Trabajador', Correo_Trabajador='$Correo_Trabajador', contraseña='$contraseña', Descripcion='$Descripcion' WHERE Rut_Trabajador='$Rut_Trabajador'";
+        $sql = "UPDATE trabajador SET Nombre_Trabajador='$Nombre_Trabajador', Correo_Trabajador='$Correo_Trabajador', contraseña='$contraseña', Descripcion='$Descripcion' WHERE Rut_Trabajador='$Rut_Trabajador'";
 
-    if ($conn->query($sql) === TRUE) {
-        $_SESSION['Nombre_Trabajador'] = $Nombre_Trabajador;
-        $_SESSION['Correo_Trabajador'] = $Correo_Trabajador;
-        $_SESSION['contraseña'] = $contraseña;
-        $_SESSION['Descripcion'] = $Descripcion;
-        header("Location: perfilTrabajador.php");
-        exit();
-    } else {
-        echo "Error actualizando el registro: " . $conn->error;
+        if ($conn->query($sql) === TRUE) {
+            $_SESSION['Nombre_Trabajador'] = $Nombre_Trabajador;
+            $_SESSION['Correo_Trabajador'] = $Correo_Trabajador;
+            $_SESSION['contraseña'] = $contraseña;
+            $_SESSION['Descripcion'] = $Descripcion;
+            header("Location: perfilTrabajador.php");
+            exit();
+        } else {
+            echo "Error actualizando el registro: " . $conn->error;
+        }
     }
 }
 
+if (isset($_POST['logout'])) {
+
+    session_unset();
+    session_destroy();
+    header("Location: MenuTrabajador.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_cuenta'])) {
+    if (isset($_POST['contraseña'], $_POST['confirmar_contraseña'])) {
+        $contraseña = $_POST['contraseña'];
+        $confirmar_contraseña = $_POST['confirmar_contraseña'];
+        if ($contraseña === $confirmar_contraseña) {
+            $Rut_Trabajador = $_SESSION['Rut_Trabajador'];
+
+
+            $sql_delete = "DELETE FROM trabajador WHERE Rut_Trabajador='$Rut_Trabajador'";
+
+            if ($conn->query($sql_delete) === TRUE) {
+                session_unset();
+                session_destroy();
+                header("Location: index.php");
+                exit();
+            } else {
+                echo "Error al intentar eliminar la cuenta: " . $conn->error;
+            }
+        } else {
+            echo "Las contraseñas no coinciden. No se puede eliminar la cuenta.";
+        }
+    }
+}
 
 $Nombre_Trabajador = $_SESSION['Nombre_Trabajador'] ?? '';
 $Correo_Trabajador = $_SESSION['Correo_Trabajador'] ?? '';
@@ -48,6 +81,8 @@ $Profesion = $_SESSION['Profesion'] ?? '';
 
 $conn->close();
 ?>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecHome® | Perfil Trabajador</title>
@@ -291,14 +326,32 @@ $conn->close();
 
     <div class="boton"><a href="perfilTrabajador.html">Guardar</a></div>
     <div class="boton_c"><a href="perfilTrabajador.html">Cancelar</a></div>
-
-    <section>      
-        <div class="calificacion">
-            <p>Calificación: <?php echo isset($calificacion) ? htmlspecialchars($calificacion) : ''; ?></p>
-        </div>
-    </section>
 </section>
-    <footer>TecHome® 2023 | Derechos reservados</footer>
+
+<section>
+    <form method="post" action="">
+        <h2>Cerrar sesión</h2>
+        <button type="submit" name="logout">Salir</button>
+</section>
+
+
+<section>
+    <h2>Eliminar cuenta</h2>
+    <form method="post" action="">
+        <div class="eliminar-cuenta">
+            <label>Contraseña:</label>
+            <input type="password" name="contraseña" value="">
+
+            <label>Confirmar Contraseña:</label>
+            <input type="password" name="confirmar_contraseña" value="">
+        </div>
+
+        <input type="submit" value="Eliminar cuenta" name="eliminar_cuenta">
+    </form>
+</section>
+
+
+<footer>TecHome® 2023 | Derechos reservados</footer>
 
 
     <div id="menu-toggle">&#9776;</div> 

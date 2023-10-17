@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Slide Cliente</title>
+</head>
+
+<style>
+
+a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: -303px; 
+    width: 300px;
+    height: 100%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+    color: #fff;
+    transition: right 0.3s; 
+}
+
+#menu.active {
+    right: 0; 
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu ul li {
+    padding: 15px;
+    text-align: left;
+    margin-left: 5%;
+    cursor: pointer;
+    border-bottom: 1px solid #142850;
+}
+
+#content {
+    margin-top: 7%;
+    margin-left: 2%;
+    padding: 2%;
+}
+
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #fff;
+    padding: 1%;
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: #142850;
+    border: 2px solid #2C74B3;
+    border-radius: 10px;
+}
+
+</style>
+
+<body>
+    
+<div id="menu">
+    <ul>
+        <li></li>
+        <li id="config"> <a href="configuracion de cliente.html">Perfil</a></li>
+        <li id="quienes-somos"> <a href="NuestrahistoriaC1.html">Quienes somos</a></li>
+        <li id="direcciones"> <a href="Direcciones1.html">Direcciones</a></li>
+        <li id="soporte"> <a href="soportec1.html">Soporte</a></li>
+        <li id="politica_de_privacidadc"> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
+        <li id="cerrar-sesion"> <a href="/HTML/Cliente_visita/clientevisita.html">Cerrar sesion</a></li>
+        <li id="Eliminar_cuenta"> <a href="EliminarCuentaC.html"> Eliminar Cuenta</a></li>
+    </ul>
+
+</div>
+
+<div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+<script>
+    const menu = document.getElementById('menu');
+    const menuToggle = document.getElementById('menu-toggle');
+    const configuracion_de_perfil = document.getElementById('config');
+    const quienesSomos = document.getElementById('Nuestrahistoria2');
+    const direcciones = document.getElementById('direcciones');
+    const soporte = document.getElementById('soporte');
+    const cerrarSesion = document.getElementById('cerrar-sesion');
+    const politica_de_privacidad = document.getElementById('politica_de_privacidadc');
+    const Eliminar_Cuenta = document.getElementById('EliminarcuentaC')
+        
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+    });
+        
+    configuracion_de_perfil.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Config"
+        console.log('Clic en Configuración');
+    });
+        
+    quienesSomos.addEventListener('click', () => {
+            // Agregar aquí el código para la acción de "Quienes somos"
+        console.log('Clic en Quienes Somos');
+    });
+
+    politica_de_privacidadc.addEventListener('click', () => {
+        console.log('Clic en Politicas de Privacidad')
+    });
+
+    direcciones.addEventListener('click', ()=> {
+        console.log('Clic en Direcciones')
+    });
+
+    cerrarsesion.addEventListener('click', () => {
+        console.log('Click en Cerrar Sesión')
+    });
+
+    Eliminar_Cuenta.addEventListener('clic', () => {
+        console.log('Clic en Eliminar Cuenta')
+    });
+</script>
+
+</body>
+</html>

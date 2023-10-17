@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function showSolicitudes(str) {
+if (str=="") {
+    document.getElementById("tabla").innerHTML="";
+    return;
+}
+if (window.XMLHttpRequest) {
+
+    xmlhttp=new XMLHttpRequest();
+} else {
+
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+    document.getElementById("tabla").innerHTML=this.responseText;
+    }
+}
+xmlhttp.open("GET","getSolicitudServicio.php?order="+str,true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<label for="order">Ordenar por:</label>
+<select name="order" id="order" onchange="showSolicitudes(this.value)">
+<option value="normal">Normal o predeterminado</option>
+<option value="mejor">De mayor a menor precio</option>
+<option value="peor">De menor a mayor precio</option>
+</select>
+<br><br>
+<div id="tabla"><b>La tabla se mostrará aquí.</b></div>
+
+</body>
+</html>

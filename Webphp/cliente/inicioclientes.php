@@ -17,30 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
-
-    $sql = "SELECT Correo_Cliente, contraseña,nombre_Cliente FROM clientes WHERE Correo_Cliente = '$correo'";
+    $sql = "SELECT ID_cliente,Correo_Cliente, contraseña,nombre_Cliente FROM clientes WHERE Correo_Cliente = '$correo'";
     $result = $conexion->query($sql);
-
 
     if ($result === false) {
         die("Error en la consulta SQL: " . $conexion->error);
     }
 
-
     if ($result->num_rows > 0) {
-
         $row = $result->fetch_assoc();
         $contrasena_db = $row['contraseña'];
-        $nombre=$row["nombre_cliente"];
-
-
+        $nombre=$row["nombre_Cliente"];
+        $ID_cliente=$row["ID_cliente"];
         if ($contrasena == $contrasena_db) {
             $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
             session_start();
             $_SESSION['Correo_Cliente'] = $correo;
             $_SESSION['contraseña'] = $contrasena_db;
             $_SESSION['nombre_Cliente'] = $nombre;
-            header('Location: Menu.php'); 
+            $_SESSION['ID_cliente'] = $ID_cliente;
+            header('Location: Perfilcliente.php'); 
             exit();
         } else {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";

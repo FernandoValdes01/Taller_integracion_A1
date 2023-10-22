@@ -72,53 +72,56 @@
     </style>
 </head>
 <body>
-
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "techome";
 
-
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-if (isset($_POST['gmail'])) {
-    $gmail = $_POST['gmail'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['gmail'])) {
+        $gmail = $_POST['gmail'];
 
-    $sql_select = "SELECT * FROM solicitantes WHERE correo_solicitante = '$gmail'";
-    $result = $conn->query($sql_select);
+        $sql_select = "SELECT * FROM solicitantes WHERE correo_solicitante = ?";
+        $stmt = $conn->prepare($sql_select);
+        $stmt->bind_param("s", $gmail);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result && $result->num_rows > 0) {
-        
-        while ($row = $result->fetch_assoc()) {
-            $rut = $row["Rut_solicitante"];
-            $nombre = $row["nombre_solicitante"];
-            $correo = $row["correo_solicitante"];
-            $profesion = isset($row["Profesion"]) ? $row["Profesion"] : '';
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $rut = $row["Rut_solicitante"];
+                $nombre = $row["nombre_solicitante"];
+                $correo = $row["correo_solicitante"];
+                $profesion = isset($row["Profesion"]) ? $row["Profesion"] : '';
 
-        
-            $sql_delete = "DELETE FROM solicitantes WHERE correo_solicitante = '$gmail'";
-            $conn->query($sql_delete);
+                $sql_delete = "DELETE FROM solicitantes WHERE correo_solicitante = ?";
+                $stmt_delete = $conn->prepare($sql_delete);
+                $stmt_delete->bind_param("s", $gmail);
+                $stmt_delete->execute();
 
+                $password = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
 
-            $password = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
+                $sql_insert = "INSERT INTO trabajador (Rut_Trabajador, Nombre_Trabajador, Correo_Trabajador, Profesion, Foto, Monto_Cuenta, Contraseña, Calificacion, Descripcion) 
+                VALUES (?, ?, ?, ?, '', '', ?, '', '')";
 
-            $sql_insert = "INSERT INTO trabajador (Rut_Trabajador, Nombre_Trabajador, Correo_Trabajador, Profesion, Foto, Monto_Cuenta, Contraseña, Calificacion, Descripcion) 
-            VALUES ('$rut', '$nombre', '$correo', '$profesion', '', '', '$password', '', '')";
-
-            if ($conn->query($sql_insert) === TRUE) {
-                echo "<script>alert('Se ha asignado la siguiente contraseña al nuevo trabajador: $password');</script>";
-            } else {
-                echo "Error: " . $sql_insert . "<br>" . $conn->error;
+                $stmt_insert = $conn->prepare($sql_insert);
+                $stmt_insert->bind_param("sssss", $rut, $nombre, $correo, $profesion, $password);
+                if ($stmt_insert->execute()) {
+                    echo "<script>alert('Se ha asignado la siguiente contraseña al nuevo trabajador: $password');</script>";
+                } else {
+                    echo "Error: " . $sql_insert . "<br>" . $conn->error;
+                }
             }
+        } else {
+            echo "No se encontraron resultados para el correo proporcionado.";
         }
-    } else {
-        echo "No se encontraron resultados para el correo proporcionado.";
     }
 }
 
@@ -127,10 +130,7 @@ $conn->close();
 
 <form method="post">
     <input type="email" name="gmail" placeholder="Ingrese el correo del solicitante">
-    <button type="submit" onclick="mostrarSolicitantes(); return false;">Aceptar</button>
+    <button type="submit">Aceptar</button>
 </form>
 
 <div id="solicitantesTabla"></div>
-
-</body>
-</html>

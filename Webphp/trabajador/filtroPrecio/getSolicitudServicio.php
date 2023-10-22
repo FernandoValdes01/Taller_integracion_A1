@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
     echo "<table><tr><th>#</th><th>ID Solicitud</th><th>Tipo de Servicio</th><th>Descripción</th><th>Correo Cliente</th><th>Precio</th></tr>";
     $count = 1;
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $count . "</td><td>" . $row["ID_solicitud"] . "</td><td>" . $row["tipo_servicio"] . "</td><td>" . $row["descripcion"] . "</td><td>" . $row["Correo_Cliente"] . "</td><td>" . $row["precio"] . "</td></tr>";
+        echo "<tr><td>" . $count . "</td><td>" . $row["ID_solicitud"] . "</td><td>" . $row["tipo_servicio"] . "</td><td>" . $row["descripcion"] . "</td><td>" . $row["ID_cliente"] . "</td><td>" . $row["precio"] . "</td></tr>";
         $count++;
     }
     echo "</table>";

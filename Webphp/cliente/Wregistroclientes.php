@@ -111,7 +111,18 @@ input, select, label {
     $contrasena = "";
     $base_datos = "techome";
 
-
+    function generarIDUnicoCliente($conexion) {
+        $id_cliente = rand(1000, 9999);
+        $sql = "SELECT ID_Cliente FROM clientes WHERE ID_Cliente = $id_cliente";
+        $result = $conexion->query($sql);
+        while ($result && $result->num_rows > 0) {
+            $id_cliente = rand(1000, 9999);
+            $sql = "SELECT ID_Cliente FROM clientes WHERE ID_Cliente = $id_cliente";
+            $result = $conexion->query($sql);
+        }
+        return $id_cliente;
+    }
+    
     function generarIDUnico($conexion) {
         return rand(1000, 9999);
     }
@@ -162,9 +173,10 @@ input, select, label {
                 $sql = "INSERT INTO direccion (ID_Direccion, Direccion, Indicaciones, Ciudad, Region) VALUES ('$id_direccion', '$direccion', '$indicaciones', '$ciudad', '$region')";
                 if ($conexion->query($sql) === TRUE) {
 
-                    $sql = "INSERT INTO clientes (Correo_Cliente, Nombre_cliente, Contraseña, ID_Direccion) VALUES ('$correo','$nombre','$contrasena', '$id_direccion')";
+                    $sql = "INSERT INTO clientes (ID_cliente,Correo_Cliente, nombre_Cliente, contraseña, ID_Direccion) VALUES ('$id_cliente','$correo','$nombre','$contrasena', '$id_direccion')";
                     if ($conexion->query($sql) === TRUE) {
                         echo "Registro exitoso.";
+                        header('Location: inicioclientes.php');
                     } else {
 
                         echo "Error al registrar el cliente: " . $conexion->error;

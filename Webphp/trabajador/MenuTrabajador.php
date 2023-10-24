@@ -139,9 +139,9 @@ if (!isset($_SESSION['Correo_Trabajador'])){
 
         <h1>Techome</h1>
 
-        <a href="InicioT.html">Iniciar Sesión</a>
+        <a href="iniciosesionT.php">Iniciar Sesión</a>
 
-        <a href="/PHP/Solicitud_T/solicitud_T.html">Solicitar Trabajo</a>
+        <a href="solicitudT.php">Solicitar Trabajo</a>
 
     </header>
 

@@ -11,7 +11,7 @@ if (isset($_SESSION['Correo_Cliente'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="style.css">
-    <title>Techome</title>
+    <title>TecHome® | Home</title>
     <style>
 
         body {
@@ -426,7 +426,7 @@ if (isset($_SESSION['Correo_Cliente'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="style.css">
-    <title>TecHome</title>
+    <title>TecHome® | Home</title>
     <style>
 
 body {

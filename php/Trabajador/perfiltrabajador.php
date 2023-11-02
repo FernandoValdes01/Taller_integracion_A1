@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <?php
 session_start();
 
@@ -13,6 +10,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
+}
+
+if(!isset($_SESSION['Rut_Trabajador'])) {
+    header("Location: iniciosesionT.php");
+    exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -54,14 +56,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_cuenta'])) {
         if ($contraseña === $confirmar_contraseña) {
             $Rut_Trabajador = $_SESSION['Rut_Trabajador'];
 
-
-            $sql_delete = "DELETE FROM trabajador WHERE Rut_Trabajador='$Rut_Trabajador'";
-
-            if ($conn->query($sql_delete) === TRUE) {
-                session_unset();
-                session_destroy();
-                header("Location: index.php");
-                exit();
+            // Eliminar primero las referencias en 'pedido_aceptado'
+            $sql_delete_pedido = "DELETE FROM pedido_aceptado WHERE Rut_Trabajador='$Rut_Trabajador'";
+            if ($conn->query($sql_delete_pedido) === TRUE) {
+                // Luego eliminar la cuenta del trabajador
+                $sql_delete_trabajador = "DELETE FROM trabajador WHERE Rut_Trabajador='$Rut_Trabajador'";
+                if ($conn->query($sql_delete_trabajador) === TRUE) {
+                    session_unset();
+                    session_destroy();
+                    header("Location: index.php");
+                    exit();
+                } else {
+                    echo "Error al intentar eliminar la cuenta: " . $conn->error;
+                }
             } else {
                 echo "Error al intentar eliminar la cuenta: " . $conn->error;
             }
@@ -82,7 +89,9 @@ $Profesion = $_SESSION['Profesion'] ?? '';
 $conn->close();
 ?>
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecHome® | Perfil Trabajador</title>
@@ -287,16 +296,11 @@ $conn->close();
 
         <div id="menu">
             <ul>
-                <li> <a href="MaqPerfilTrabajador.html">Perfil</a></li>
-                <li> <a href="ganancias.html">Ganancias</a></li>
-                <li> <a href="historial_de_pedidos.html">Pedidos anteriores</a></li>
-                <li> <a href="billetera.html">Billetera</a></li>
+                <li> <a href="MenuTrabajador.php">Inicio</a></li>
+                <li> <a href="perfiltrabajador.php">Perfil</a></li>
+                <li> <a href="pedidosyganancias.php">Ganancias</a></li>
                 <li> <a href="soporte.html">Soporte</a></li>
                 <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
-                <li><a href="EliminarCuentaT.html">Eliminar cuenta</a></li>
-                <li> <a href="InicioT.html">Cerrar sesion</a></li>
-            
-            
             </ul>
         </div>
 
@@ -324,8 +328,6 @@ $conn->close();
         <input type="submit" value="Actualizar" name="submit">
     </form>
 
-    <div class="boton"><a href="perfilTrabajador.html">Guardar</a></div>
-    <div class="boton_c"><a href="perfilTrabajador.html">Cancelar</a></div>
 </section>
 
 <section>

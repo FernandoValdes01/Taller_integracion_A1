@@ -31,11 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $sql = "UPDATE clientes SET contraseña = '$nuevaContrasena' WHERE Correo_Cliente = '$correo'";
 
         if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('Contraseña actualizada correctamente.');</script>";
         } else {
-            echo "<script>alert('Error actualizando contraseña: " . $conn->error . "');</script>";
+            echo "Error actualizando contraseña: " . $conn->error;
         }
-        
     }
 }
 
@@ -57,12 +55,10 @@ body {
     background-color:  #27496D;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 a {
     color: #fff;
     text-decoration: none;
 }
-
 .formulario {
     width: 300px;
     padding: 20px;
@@ -71,36 +67,31 @@ a {
     background-color: #142850;
     color: #ffffff;
 }
-
 .formulario label {
     display: block;
     margin-bottom: 10px;
-    color: #000000; 
+    color: #ffffff;
 }
-
 .formulario input[type="email"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #d9e2ec;
-    color: #000000; 
+    color: #ffffff;
 }
-
 .formulario input[type="submit"] {
     width: calc(100% - 20px);
     padding: 10px;
     border-radius: 5px;
     border: none;
     background-color: #3498db;
-    color: #000000; 
+    color: #ffffff;
     cursor: pointer;
 }
-
 .formulario input[type="submit"]:hover {
     background-color: #2576a9;
 }
-
 footer {
     background-color: #142850;
     border: 2px solid #2C74B3;
@@ -111,7 +102,6 @@ footer {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #ffffff;
 }
-
 
     </style>
 </head>

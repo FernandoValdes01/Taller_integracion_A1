@@ -6,36 +6,31 @@ if (!(isset($_SESSION['rut']) && isset($_SESSION['nombre']))) {
     exit();
 }
 
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "techome";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     echo "<script>alert('Conexión fallida: " . $conn->connect_error . "');</script>";
 }
-
 $rut = isset($_SESSION['rut']) ? $_SESSION['rut'] : '';
 $nombre = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : '';
 $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
-
 if (isset($_POST['actualizar'])) {
     $nuevo_nombre = $_POST['nombre'];
-    $nuevo_cargo = $_POST['cargo']; // Nuevo valor del cargo
 
     $sql = "UPDATE administradores SET nombre_completo='$nuevo_nombre', cargo='$nuevo_cargo' WHERE Rut_administrador='$rut'";
 
     if ($conn->query($sql) === TRUE) {
-        $_SESSION['nombre'] = $nuevo_nombre; // Actualizar nombre en la sesión
-        $_SESSION['cargo'] = $nuevo_cargo; // Actualizar cargo en la sesión
+        $_SESSION['nombre'] = $nuevo_nombre; // cambiar nombre
         echo "<script>alert('Registro actualizado exitosamente');</script>";
     } else {
         echo "<script>alert('Error al actualizar el registro: " . $conn->error . "');</script>";
     }
 }
-
 if (isset($_POST['cambiar'])) {
     $contrasena = $_POST['contrasena'];
     $sql = "UPDATE administradores SET Contraseña_Administrador='$contrasena' WHERE Rut_administrador='$rut'";
@@ -45,7 +40,6 @@ if (isset($_POST['cambiar'])) {
         echo "<script>alert('Error al actualizar la contraseña: " . $conn->error . "');</script>";
     }
 }
-
 if (isset($_POST['eliminar_cuenta'])) {
     $contrasena = $_POST['password'];
     $sql = "SELECT Contraseña_Administrador FROM administradores WHERE Rut_administrador='$rut'";
@@ -92,7 +86,6 @@ $conn->close();
             align-items: center;
             height: 99vh;
         }
-
         header {
             background-color: #142850;
             border: 2px solid #2C74B3;
@@ -108,7 +101,6 @@ $conn->close();
             height: 99vh;
             border-radius: 9px;
         }
-
         footer{
             background-color: #142850;
             border: 2px solid #2C74B3;
@@ -118,12 +110,10 @@ $conn->close();
             border-radius: 9px;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
-
         a{
             text-decoration: none;
             color: #fff;
         }
-
         button.button-style {
         background-color: #142850;
         border: 2px solid #2C74B3;
@@ -138,7 +128,6 @@ $conn->close();
             border: 2px solid #2C74B3;
             border-radius: 9px;
         }
-
         section{
             background-color: #0A2647;
             border: 3px solid #144272;
@@ -148,16 +137,13 @@ $conn->close();
             padding-right: 6%;
             border-radius: 9px;
         }
-
         button:hover{
             background-color: #2C74B3;
             color: #fff;
         }
-
         .secondbutton{
             margin-bottom: 9%;
         }
-
         .container {
             max-width: 960px;
             margin-top: auto;
@@ -194,7 +180,6 @@ $conn->close();
         h1 {
             margin: 0;
         }
-
         .trabajador-info {
             text-align: center;
             padding: 20px;
@@ -231,34 +216,29 @@ $conn->close();
             padding: 3%;
             border-radius: 9px;
         }
-
         #passtext{
             margin-top: 20px;
             padding-top: 50px;
         }
-
         #menu {
             position: fixed;
             top: 0;
-            right: -303px; 
+            right: -303px;
             width: 300px;
             height: 99%;
             background-color: #142850;
             border: 2px solid #2C74B3;
             border-radius: 9px;
             color: #fff;
-            transition: right 0.3s; 
+            transition: right 0.3s;
         }
-        
         #menu.active {
-            right: 0; 
+            right: 0;
         }
-        
         #menu ul {
             list-style: none;
             padding: 0;
         }
-        
         #menu ul li {
             padding: 15px;
             text-align: left;
@@ -266,14 +246,12 @@ $conn->close();
             cursor: pointer;
             border-bottom: 1px solid #142850;
         }
-        
         #content {
             padding: 20px;
             text-align: center;
             margin-top: 9px;
             margin-bottom: 9px;
         }
-        
         #menu-toggle {
             position: fixed;
             top: 20px;

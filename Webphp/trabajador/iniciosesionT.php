@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasena = $_POST['contrasena'];
 
 
-    $sql = "SELECT Rut_Trabajador,Correo_Trabajador, contraseña,Nombre_Trabajador,Foto,Profesion,Monto_Cuenta,Calificacion,Descripcion FROM trabajador WHERE Correo_Trabajador = '$correo'";
+    $sql = "SELECT Rut_Trabajador,Correo_Trabajador, contraseña,Nombre_Trabajador,Profesion,Monto_Cuenta,Calificacion,Descripcion FROM trabajador WHERE Correo_Trabajador = '$correo'";
     $result = $conexion->query($sql);
 
 
@@ -52,9 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['Calificacion'] = $calificacion;
     $_SESSION['Monto_Cuenta'] = $Monto_cuenta;
     $_SESSION['Descripcion'] = $descripcion;
-    $_SESSION['Foto'] = $foto; 
     $_SESSION['Profesion']=$profesion;
-    header('Location:pedidosyganancias.php');
+    header('Location:MenuTrabajador.php');
     exit();
     } else {
     $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";

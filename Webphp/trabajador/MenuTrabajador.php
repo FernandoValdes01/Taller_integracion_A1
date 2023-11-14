@@ -211,7 +211,8 @@
     <?php
         $tipoServicioTrabajador = $profesion;
 
-        $query = "SELECT * FROM solicitudservicio WHERE Rut_trabajador = '$rutTrabajador'";
+        $query = "SELECT * FROM solicitudservicio WHERE Rut_trabajador = '$rutTrabajador' AND ID_solicitud NOT IN (SELECT ID_solicitud FROM pedido_aceptado )";
+
         $result = mysqli_query($conexion, $query);
 
         if (mysqli_num_rows($result) > 0) {
@@ -219,6 +220,7 @@
                 echo "<li>";
                 echo "Cliente: " . $row['ID_cliente'] . "<br>";
                 echo "Id de la Solicitud: "  . $row['ID_solicitud'] . "<br>";
+                echo "Precio: "  . $row['precio'] . "<br>";
                 echo '<form method="post" action="descripcion.php">';
                 echo '<input type="hidden" name="solicitud_id" value="' . $row['ID_solicitud'] . '">';
                 echo '<button type="submit" name="accion" value="ver_descripcion">Ver Descripción</button>';

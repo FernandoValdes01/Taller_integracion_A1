@@ -1,18 +1,28 @@
 <?php
+session_start();
 
-if (isset($_SESSION['Correo_Cliente'])) {
-    $Correo_Cliente = $_SESSION['Correo_Cliente'];
+$host = "localhost";
+$usuario = "root";
+$contrasena = "";
+$base_de_datos = "techome";
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+$conexion = mysqli_connect($host, $usuario, $contrasena, $base_de_datos);
+
+if (mysqli_connect_error()) {
+    die("Error de conexión a la base de datos: " . mysqli_connect_error());
+}
+
+if (!isset($_SESSION['Correo_Cliente'])) {
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="style.css">
     <title>TecHome® | Home</title>
-    <style>
+<style>
 
         body {
             background-color: #27496D;
@@ -85,6 +95,7 @@ if (isset($_SESSION['Correo_Cliente'])) {
             border-radius: 10px;
             color: #fff;
             transition: right 0.3s;
+            z-index: 11;
         }
 
         #menu.active {
@@ -122,6 +133,7 @@ if (isset($_SESSION['Correo_Cliente'])) {
             background-color: #142850;
             border: 2px solid #2C74B3;
             border-radius: 10px;
+            z-index: 12;
         }
 
         #maintext{
@@ -237,8 +249,8 @@ if (isset($_SESSION['Correo_Cliente'])) {
         }
 
         </style>
-</head>
-<body>
+    </head>
+    <body>
     <header>
         <div id="maintext">
             <h1>
@@ -325,7 +337,7 @@ if (isset($_SESSION['Correo_Cliente'])) {
                 die("Error de conexión: " . $conn->connect_error);
             }
 
-            $sql = "SELECT Profesion, Calificacion FROM trabajador";
+            $sql = "SELECT Profesion, Calificacion,Nombre_Trabajador,totalpedidos FROM trabajador";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -334,6 +346,8 @@ if (isset($_SESSION['Correo_Cliente'])) {
                     if ($count < 10) {
                         echo '<div class="valoracion">';
                         echo '<p><strong>Servicio:</strong> ' . $row["Profesion"] . '</p>';
+                        echo '<p><strong>Nombre:</strong> ' . $row["Nombre_Trabajador"] . '</p>';
+                        echo '<p><strong>Total Pedidos:</strong> ' . $row["totalpedidos"] . '</p>';
                         echo '<p><strong>Calificación:</strong> ' . $row["Calificacion"] . '</p>';
                         echo '</div>';
                         $count++;
@@ -390,39 +404,15 @@ if (isset($_SESSION['Correo_Cliente'])) {
         <script src="buscador.js"></script>
             </body>
     <footer>TecHome® 2023 | Derechos reservados</footer>
-</body>
-</html>
-<?php
-    session_start();
-    
-    $host = "localhost";
-    $usuario = "root";
-    $contrasena = "";
-    $base_de_datos = "techome";
-    
-    $conexion = mysqli_connect($host, $usuario, $contrasena, $base_de_datos);
-    
-    if (!$conexion) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $query = "SELECT * FROM clientes";
-    $result = $conexion->query($query);
-    
-    mysqli_close($conexion);
-    
-    
-    if (isset($_SESSION['Correo_Cliente'])) {
-        header("Location: inicioclientes.php");
-        exit();
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
+    </body>
+    </html>
+    <?php
+} else {
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="style.css">
@@ -698,9 +688,9 @@ button:hover{
 }
 
 </style>
-</head>
-<body>
-    <header>
+    </head>
+    <body>
+        <header>
         <div id="maintext">
             <h1>
                 Bievenido a TecHome
@@ -790,7 +780,7 @@ button:hover{
                     die("Error de conexión: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT Profesion, Calificacion FROM trabajador";
+                $sql = "SELECT Profesion, Calificacion,Nombre_Trabajador,totalpedidos FROM trabajador";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -800,6 +790,8 @@ button:hover{
                             echo "<li>";
                             echo '<div class="valoracion">';
                             echo '<p><strong>Servicio:</strong> ' . $row["Profesion"] . '</p>';
+                            echo '<p><strong>Nombre:</strong> ' . $row["Nombre_Trabajador"] . '</p>';
+                            echo '<p><strong>Total Pedidos:</strong> ' . $row["totalpedidos"] . '</p>';
                             echo '<p><strong>Calificación:</strong> ' . $row["Calificacion"] . '</p>';
                             echo '</div>';
                             echo "</li>";
@@ -860,7 +852,8 @@ button:hover{
         }
         </script>
         <script src="buscador.js"></script>
-</body>
-</html>
-
-
+    </body>
+    </html>
+    <?php
+}
+?>

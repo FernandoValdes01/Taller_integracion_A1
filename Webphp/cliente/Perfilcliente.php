@@ -1,12 +1,10 @@
-
 <?php
 session_start();
 
-if (!(isset($_SESSION['nombre_Cliente']) && isset($_SESSION['Correo_Cliente']))) {
+if (!(isset($_SESSION['Correo_Cliente']))) {
     header("Location: inicioclientes.php");
     exit();
 }
-
 
 $servername = "localhost";
 $username = "root";
@@ -16,75 +14,78 @@ $dbname = "techome";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    echo "<script>alert('Conexión fallida: ".$conn->connect_error."');</script>";
+    echo "<script>alert('Conexión fallida: " . $conn->connect_error . "');</script>";
 }
+
+$idcliente = $_SESSION['ID_cliente'];
 $nombre = isset($_SESSION['nombre_Cliente']) ? $_SESSION['nombre_Cliente'] : '';
 $correo = isset($_SESSION['Correo_Cliente']) ? $_SESSION['Correo_Cliente'] : '';
+$contraseña = $_SESSION['contraseña'];
 
 if (isset($_POST['actualizar'])) {
     $nuevo_nombre = $_POST['nombre'];
-    $nuevo_correo = $_POST['correo']; // Nuevo valor del correo
+    $nuevo_correo = $_POST['correo'];
 
-    $sql = "UPDATE clientes SET nombre_Cliente='$nuevo_nombre', Correo_Cliente='$nuevo_correo' WHERE Correo_Cliente='$correo'";
+    $sql_actualizar = "UPDATE clientes SET nombre_Cliente='$nuevo_nombre', Correo_Cliente='$nuevo_correo' WHERE ID_cliente='$idcliente'";
 
-    if ($conn->query($sql) === TRUE) {
-        $_SESSION['nombre_Cliente'] = $nuevo_nombre; // Actualizar nombre en la sesión
-        $_SESSION['Correo_Cliente'] = $nuevo_correo; // Actualizar correo en la sesión
-        echo "<script>alert('Registro actualizado exitosamente');</script>";
+    if ($conn->query($sql_actualizar) === TRUE) {
+        $_SESSION['nombre_Cliente'] = $nuevo_nombre; 
+        $_SESSION['Correo_Cliente'] = $nuevo_correo;
+        echo "<script>alert('Registro actualizado exitosamente'); window.location.href = window.location.href;</script>";
     } else {
         echo "<script>alert('Error al actualizar el registro: " . $conn->error . "');</script>";
     }
 }
 
+
 if (isset($_POST['cambiar'])) {
-    $contrasena = $_POST['contrasena'];
-    $sql = "UPDATE clientes SET contraseña='$contrasena' WHERE Correo_Cliente='$correo'";
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Contraseña actualizada exitosamente');</script>";
+    $nueva_contraseña = $_POST['contrasena'];
+    $sql_cambiar = "UPDATE clientes SET contraseña='$nueva_contraseña' WHERE ID_cliente='$idcliente'";
+
+    if ($conn->query($sql_cambiar) === TRUE) {
+        $_SESSION['contraseña'] = $nueva_contraseña; 
+        echo "<script>alert('Contraseña actualizada exitosamente'); window.location.href = window.location.href;</script>";
     } else {
-        echo "<script>alert('Error al actualizar la contraseña: ".$conn->error."');</script>";
+        echo "<script>alert('Error al actualizar la contraseña: " . $conn->error . "');</script>";
     }
 }
-
 if (isset($_POST['eliminar_cuenta'])) {
     $contrasena = $_POST['password'];
-    $sql = "SELECT contraseña, ID_cliente, ID_direccion FROM clientes WHERE Correo_Cliente='$correo'";
-    $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if ($contrasena == $row['contraseña']) {
-            $id_cliente = $row['ID_cliente'];
-            $id_direccion = $row['ID_direccion'];
+    $sql_password = "SELECT contraseña, ID_cliente FROM clientes WHERE Correo_Cliente='$correo'";
+    $result_password = $conn->query($sql_password);
 
-            // Eliminar referencias en la tabla clientes
-            $sql_delete_clientes = "DELETE FROM clientes WHERE ID_cliente='$id_cliente'";
+    if ($result_password->num_rows > 0) {
+        $row_password = $result_password->fetch_assoc();
+        $password_from_db = $row_password["contraseña"];
+        $id_cliente = $row_password["ID_cliente"];
 
-            if ($conn->query($sql_delete_clientes) === TRUE) {
-                // Eliminar registros en direccion
-                $sql_delete_direccion = "DELETE FROM direccion WHERE ID_direccion='$id_direccion'";
+        if ($contrasena == $password_from_db) {
+            $sql_delete_pedido = "DELETE FROM pedido_aceptado WHERE ID_solicitud IN (SELECT ID_solicitud FROM solicitudservicio WHERE ID_cliente='$id_cliente')";
+            $conn->query($sql_delete_pedido);
 
-                if ($conn->query($sql_delete_direccion) === TRUE) {
-                    session_destroy();
-                    echo "<script>alert('Cuenta y registros relacionados eliminados exitosamente');</script>";
-                } else {
-                    echo "<script>alert('Error al eliminar registros en la tabla de direccion: " . $conn->error . "');</script>";
-                }
+
+            $sql_delete_solicitud = "DELETE FROM solicitudservicio WHERE ID_cliente='$id_cliente'";
+            $conn->query($sql_delete_solicitud);
+
+            $sql_delete_cliente = "DELETE FROM clientes WHERE Correo_Cliente='$correo'";
+            if ($conn->query($sql_delete_cliente) === TRUE) {
+                echo "<script>alert('Cuenta eliminada exitosamente'); window.location.href = 'Menu.php';</script>";
+                exit();
             } else {
-                echo "<script>alert('Error al eliminar registros en la tabla de clientes: " . $conn->error . "');</script>";
+                echo "<script>alert('Error al eliminar la cuenta: " . $conn->error . "');</script>";
             }
         } else {
-            echo "<script>alert('La contraseña ingresada no coincide con la contraseña actual');</script>";
+            echo "<script>alert('La contraseña ingresada no coincide con la contraseña de la cuenta');</script>";
         }
     } else {
-        echo "<script>alert('No se encontró ninguna cuenta asociada a este correo electrónico');</script>";
+        echo "<script>alert('Error al obtener la contraseña de la base de datos');</script>";
     }
 }
 
-
 if (isset($_POST['logout'])) {
-    session_destroy(); 
-    echo "<script>alert('Has cerrado la sesión exitosamente'); window.location.href = 'login.php';</script>";
+    session_destroy();
+    echo "<script>alert('Has cerrado la sesión exitosamente'); window.location.href = 'Menu.php';</script>";
     exit();
 }
 
@@ -316,6 +317,20 @@ $conn->close();
     <header>
         <h1>Configuración del Cliente - TecHome</h1>
         </header>
+
+<div id="menu">
+    <ul>
+        <li></li>
+        <li id="config"> <a href="Menu.php">Inicio</a></li>
+        <li id="config"> <a href="Perfilcliente.php">Perfil</a></li>
+        <li id="quienes-somos"> <a href="NuestrahistoriaC1.html">Quienes somos</a></li>
+        <li id="direcciones"> <a href="DireccionesActualizado.html">Direcciones</a></li>
+        <li id="soporte"> <a href="soportec1.html">Soporte</a></li>
+        <li id="politica_de_privacidadc"> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
+    </ul>
+</div>
+
+
 <div class="container">
     <div class="profile-section">
         <h2>Tu Perfil</h2>
@@ -362,5 +377,47 @@ $conn->close();
         </form>
     </div>
 </div>
+
+<div id="menu-toggle">&#9776;</div> 
+        <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const configuracion_de_perfil = document.getElementById('config');
+        const quienesSomos = document.getElementById('Nuestrahistoria2');
+        const direcciones = document.getElementById('direcciones');
+        const soporte = document.getElementById('soporte');
+        const politica_de_privacidad = document.getElementById('politica_de_privacidadc');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active'); 
+        });
+        
+        configuracion_de_perfil.addEventListener('click', () => {
+            console.log('Clic en Configuración');
+        });
+        
+        quienesSomos.addEventListener('click', () => {
+            console.log('Clic en Quienes Somos');
+        });
+
+        politica_de_privacidadc.addEventListener('click', () => {
+            console.log('Clic en Politicas de Privacidad')
+        });
+
+        direcciones.addEventListener('click', ()=> {
+            console.log('Clic en Direcciones')
+        });
+
+        function fetchData(order) {
+            fetch('gettrabajadores.php?order=' + order)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('trabajadoresContainer').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Hubo un error al obtener los datos: ' + error);
+                });
+        }
+        </script>
 </body>
 </html>

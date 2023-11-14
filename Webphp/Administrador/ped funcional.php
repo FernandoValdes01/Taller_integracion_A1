@@ -19,8 +19,8 @@ $rut_trabajador = "";
 
 // Activa la visualización de errores en la salida
 // Esta línea activa la visualización de errores en la salida del script.
-// ini_set se utiliza para cambiar la configuración de tiempo de ejecución (display_errors en este caso) durante la ejecución del script.
-// 1 indica que los errores deben mostrarse en la salida.
+// ini_set se utiliza para cambiar la configuración de tiempo de ejecución
+// indica que los errores deben mostrarse en la salida.
 ini_set('display_errors', 1);
 
 // Similar a la primera línea, esta activa la visualización de errores de inicio en la salida.

@@ -16,7 +16,6 @@ $calificacion_pedido = "";
 $nombre_trabajador = "";
 $pedidos_trabajador = "";
 $rut_trabajador = "";
-
 // Activa la visualización de errores en la salida
 // Esta línea activa la visualización de errores en la salida del script.
 // ini_set se utiliza para cambiar la configuración de tiempo de ejecución

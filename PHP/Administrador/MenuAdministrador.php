@@ -1,3 +1,16 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['Rut_administrador'])) {
+        $correo = $_SESSION['Rut_administrador'];
+        $contraseñaC = $_SESSION['contrasena'];
+    } else {
+        header("Location: inicioAdministrador.php");
+        exit();
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

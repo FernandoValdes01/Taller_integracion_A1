@@ -1,32 +1,44 @@
 <?php
+$server = "localhost";
+$usuario = "root";
+$contraseña = "";
+$basededatos = "techome";
+
+$conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
 $mensaje = ""; 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "techome";
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $rut = $_POST['rut'];
+    $contrasena = $_POST['contrasena'];
+    $sql = "SELECT Rut_administrador, Contraseña_Administrador, nombre_completo FROM administradores WHERE Rut_administrador = '$rut'";
+    $result = $conexion->query($sql);
 
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+    if ($result === false) {
+        die("Error en la consulta SQL: " . $conexion->error);
     }
 
-    $rut = $_POST["rut"];
-    $contrasena = $_POST["contrasena"];
-
-    $sql = "SELECT * FROM administradores WHERE Rut_administrador = '$rut' AND Contraseña_Administrador = '$contrasena'";
-    $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        echo "Inicio de sesión exitoso.";
-        header("Location: menuadmin.php");
-        exit();
-    } else {
-        $mensaje = "Correo electrónico o contraseña incorrectos";
-    }
+        $row = $result->fetch_assoc();
+        $contrasena_db = $row['Contraseña_Administrador'];
+        $nombre = $row["nombre_completo"]; 
 
-    $conn->close();
+        if ($contrasena == $contrasena_db) {
+            $mensaje = "Inicio de sesión exitoso. ¡Bienvenido, $nombre!";
+            session_start();
+            $_SESSION['Rut_administrador'] = $rut;
+            $_SESSION['contrasena'] = $contrasena_db;
+            header('Location: MenuAdministrador.php'); 
+            exit();
+        } else {
+            $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
+        }
+    } else {
+        $mensaje = "Error en el inicio de sesión. El rut no existe en la base de datos.";
+    }
 }
 ?>
 

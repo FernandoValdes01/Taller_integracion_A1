@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['rut'] = $rut;
             $_SESSION['nombre'] = $nombre;
             $_SESSION['cargo'] = $cargo;
-            header('Location: Perfiladministrador.php');
+            $_SESSION['contrasena'] = $contrasena_db;
+            header('Location: Postulantes.php');
             exit();
         } else {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";

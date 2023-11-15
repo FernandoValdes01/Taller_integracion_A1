@@ -4,14 +4,11 @@ $username = "root";
 $password = "";
 $dbname = "techome";
 
-
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
 
 $sql = "SELECT * FROM solicitantes";
 $result = $conn->query($sql);
@@ -31,7 +28,6 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-
 header('Content-Type: application/json');
 echo json_encode($solicitantes);
 ?>

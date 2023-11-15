@@ -96,6 +96,7 @@
 
 
     </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <div id="menu">
@@ -169,8 +170,7 @@ if ($result) {
                     <div class="data">Rut del Trabajador: <?php echo $rutTrabajador; ?></div>
                 </div>
                 <div class="section" style="text-align: center;">
-                    <button>Aceptar</button>
-                    <button>Rechazar</button>
+                <a href="MenuTrabajador.php">Volver al menú</a>
                 </div>
             </div>
             <?php
@@ -203,6 +203,10 @@ $conn->close();
             }
         });
     }
+</script>
+
+</body>
+</html>
 </script>
 
 <div id="map" style="height: 400px; width: 100%;"></div>
@@ -254,7 +258,5 @@ $conn->close();
     async
     defer
 ></script>
-
 </body>
-
-</html>
+</html

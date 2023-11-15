@@ -4,8 +4,6 @@ $server = "localhost";
 $usuario = "root";
 $contraseña = "";
 $basededatos = "techome";
-
-
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
 $mensaje = ""; 
 
@@ -134,4 +132,3 @@ $conexion->close();
         </div>
     </div>
 </body>
-

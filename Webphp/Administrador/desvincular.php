@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-if (!(isset($_SESSION['rut']) && isset($_SESSION['nombre']))) {
-    header("Location: iniciadministradores.php");
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['rut'])) {
+    header('Location:inicioAdministrador.php'); // Redirigir a la página de inicio de sesión si no está autenticado
     exit();
 }
 
@@ -11,124 +12,45 @@ $username = "root";
 $password = "";
 $dbname = "techome";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    echo "<script>alert('Conexión fallida: " . $conn->connect_error . "');</script>";
+$conn = new mysqli($servername, $username, $password, $dbname); 
+
+function desvincularTrabajador($rut) {
+    global $conn;
+    // Eliminar de la tabla pedido_aceptado
+    $sql_pedido = "DELETE FROM pedido_aceptado WHERE Rut_trabajador = '$rut'";
+    mysqli_query($conn, $sql_pedido);
+
+    // Eliminar de la tabla solicitudservicio
+    $sql_solicitud = "DELETE FROM solicitudservicio WHERE Rut_trabajador = '$rut'";
+    mysqli_query($conn, $sql_solicitud);
+
+    // Eliminar de la tabla trabajador
+    $sql_trabajador = "DELETE FROM trabajador WHERE Rut_trabajador = '$rut'";
+    mysqli_query($conn, $sql_trabajador);
 }
 
-$rut = isset($_SESSION['rut']) ? $_SESSION['rut'] : '';
-$nombre = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : '';
-$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
-
-if (isset($_POST['actualizar'])) {
-    // ... (código de actualización)
+// Verificar si se hizo clic en el botón "Desvincular"
+if (isset($_POST['desvincular'])) {
+    $rut_trabajador = $_POST['rut_trabajador'];
+    desvincularTrabajador($rut_trabajador);
 }
 
-if (isset($_POST['cambiar'])) {
-    // ... (código de cambio de contraseña)
-}
+// Obtener datos de trabajadores
+$sql = "SELECT Rut_trabajador, Nombre_Trabajador, Profesion, Calificacion FROM trabajador";
+$result = mysqli_query($conn, $sql);
 
-if (isset($_POST['eliminar_cuenta'])) {
-    // ... (código de eliminación de cuenta)
-}
-
-if (isset($_POST['logout'])) {
-    // ... (código de cierre de sesión)
-}
-
-// Función para mostrar trabajadores y permitir desvincular
-function mostrarTrabajadores($conn, $rutAdmin) {
-    $sql = "SELECT Rut_trabajador, Nombre_Trabajador, Profesion, Pedidos FROM trabajador";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<div class='trabajador-container'>";
-            echo "<p>Rut: " . $row['Rut_trabajador'] . "</p>";
-            echo "<p>Nombre: " . $row['Nombre_Trabajador'] . "</p>";
-            echo "<p>Profesión: " . $row['Profesion'] . "</p>";
-            echo "<p>Total de Pedidos: " . $row['Pedidos'] . "</p>";
-
-            // Botón de desvinculación
-            echo "<form method='post' action=''>";
-            echo "<input type='hidden' name='rut_trabajador' value='" . $row['Rut_trabajador'] . "'>";
-            echo "<label for='contrasena_admin'>Contraseña del Administrador:</label>";
-            echo "<input type='password' name='contrasena_admin' required>";
-            echo "<button type='submit' name='desvincular'>Desvincular</button>";
-            echo "</form>";
-
-            echo "</div>";
-        }
-    } else {
-        echo "<p>No hay trabajadores registrados.</p>";
-    }
-}
-
-// Proceso para desvincular al trabajador
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['desvincular'])) {
-    $rut_trabajador_desvincular = $_POST['rut_trabajador'];
-    $contrasena_admin = $_POST['contrasena_admin'];
-
-    // Obtener la contraseña del administrador desde la base de datos
-    $sqlGetAdminPassword = "SELECT Contraseña_Administrador FROM administradores WHERE Rut_administrador = ?";
-    $stmtGetAdminPassword = $conn->prepare($sqlGetAdminPassword);
-    $stmtGetAdminPassword->bind_param("s", $rut);
-    $stmtGetAdminPassword->execute();
-    $resultAdminPassword = $stmtGetAdminPassword->get_result();
-
-    if ($resultAdminPassword->num_rows > 0) {
-        $rowAdminPassword = $resultAdminPassword->fetch_assoc();
-        $contrasena_admin_guardada = $rowAdminPassword['Contraseña_Administrador'];
-
-        // Verificar la contraseña del administrador
-        if ($contrasena_admin === $contrasena_admin_guardada) {
-            // Contraseña del administrador correcta, proceder con la desvinculación
-
-            // Consulta para actualizar las referencias del trabajador en la tabla pedido_aceptado
-            $sqlActualizarPedidos = "UPDATE pedido_aceptado SET Rut_Trabajador = NULL WHERE Rut_Trabajador = ?";
-            $stmtActualizarPedidos = $conn->prepare($sqlActualizarPedidos);
-            $stmtActualizarPedidos->bind_param("s", $rut_trabajador_desvincular);
-
-            if ($stmtActualizarPedidos->execute()) {
-                // Consulta para eliminar al trabajador
-                $sqlEliminarTrabajador = "DELETE FROM trabajador WHERE Rut_trabajador = ?";
-                $stmtEliminarTrabajador = $conn->prepare($sqlEliminarTrabajador);
-                $stmtEliminarTrabajador->bind_param("s", $rut_trabajador_desvincular);
-
-                if ($stmtEliminarTrabajador->execute()) {
-                    echo "<script>alert('Trabajador desvinculado exitosamente.');</script>";
-                } else {
-                    echo "<script>alert('Error al desvincular al trabajador.');</script>";
-                }
-
-                $stmtEliminarTrabajador->close();
-            } else {
-                echo "<script>alert('Error al actualizar las referencias de pedidos.');</script>";
-            }
-
-            $stmtActualizarPedidos->close();
-        } else {
-            echo "<script>alert('Contraseña del administrador incorrecta.');</script>";
-        }
-    }
-
-    $stmtGetAdminPassword->close();
-}
-
-// Mostrar trabajadores después de realizar todas las operaciones relacionadas con la base de datos
-mostrarTrabajadores($conn, $rut);
-
-// Cerrar la conexión después de completar todas las operaciones
-$conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajadores TecHome</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-        body {
+    body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             background-color: #27496D;
             color: #F1EFEF;
@@ -335,18 +257,33 @@ $conn->close();
     </style>
 </head>
 <body>
-    <header>
-        <h1>Configuración del Administrador - TecHome</h1>
-    </header>
-    <div class="container">
-        <div class="profile-section">
-            <!-- Código del perfil y formularios existentes ... -->
-        </div>
-    </div>
 
-    <div class="trabajadores-section">
-        <h2>Lista de Trabajadores</h2>
-        <!-- Aquí se mostrarán los trabajadores -->
-    </div>
+<div class="container mt-5">
+<a href="menuadmin.php" class="btn btn-primary float-right mb-3">Menú Admin</a>
+    <h2 class="mb-4">Trabajadores TecHome</h2>
+
+    <?php
+    // Mostrar datos de trabajadores
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<div class='card mb-3'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>{$row['Nombre_Trabajador']}</h5>";
+        echo "<p class='card-text'>Rut: {$row['Rut_trabajador']}</p>";
+        echo "<p class='card-text'>Profesión: {$row['Profesion']}</p>";
+        echo "<p class='card-text'>Calificación: {$row['Calificacion']}</p>";
+        echo "<form method='post' action=''>
+                <input type='hidden' name='rut_trabajador' value='{$row['Rut_trabajador']}'>
+                <button type='submit' name='desvincular' class='btn btn-danger'>Desvincular</button>
+              </form>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

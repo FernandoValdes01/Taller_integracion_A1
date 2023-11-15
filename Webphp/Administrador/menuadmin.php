@@ -15,7 +15,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 99vh;
         }
 
         h1 {
@@ -24,7 +24,7 @@
 
         .button {
             display: inline-block;
-            padding: 20px 40px;
+            padding: 20px 39px;
             margin: 20px;
             font-size: 18px;
             text-align: center;
@@ -34,7 +34,6 @@
             background-color: #3498db;
             transition: transform 0.3s ease-in-out;
         }
-
         .button:hover {
             transform: scale(1.25);
         }

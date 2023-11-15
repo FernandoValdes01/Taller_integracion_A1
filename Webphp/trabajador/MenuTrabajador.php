@@ -176,7 +176,6 @@
         border: 2px solid #2C74B3;
         border-radius: 10px;
     }
-
 </style>
 <body>
     <header>
@@ -186,9 +185,7 @@
         <div id="menu">
             <ul>
                 <li> <a href="perfiltrabajador.php">Perfil</a></li>
-                <li> <a href="ganancias.html">Ganancias</a></li>
-                <li> <a href="historial_de_pedidos.html">Pedidos anteriores</a></li>
-                <li> <a href="billetera.html">Billetera</a></li>
+                <li> <a href="pedidosyganancias.php">Ganancias</a></li>
                 <li> <a href="soporte.html">Soporte</a></li>
                 <li> <a href="politica de privacidad.html">Politíca de Privacidad</a></li>
             </ul>

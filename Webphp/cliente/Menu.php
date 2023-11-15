@@ -311,8 +311,8 @@ if (!isset($_SESSION['Correo_Cliente'])) {
     <div id="menu">
         <ul>
             <li></li>
-            <li><a href="inicioclientes.php">Iniciar sesion</a></li>
-            <li><a href="Wregistroclientes.php">Registro</a></li>
+            <li><a href="inicioyregistro.php">Iniciar sesion</a></li>
+            <li><a href="inicioyregistro.php">Registro</a></li>
             <li><a href="Nuestrahistoria2.html">Quienes somos</a></li>
             <li><a href="soporte.html">Soporte</a></li>
             <li><a href="politica de privacidadc.html">Politica de privacidad</a></li>
@@ -367,11 +367,11 @@ if (!isset($_SESSION['Correo_Cliente'])) {
         <div id="menu-toggle">&#9776;</div>
         <script>
             
-            const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menu-toggle');
-            const Inicio = document.getElementById("Iniciar sesion");
-            const config = document.getElementById('config');
-            const quienesSomos = document.getElementById('quienes-somos');
+            const menu1 = document.getElementById('menu');
+            const menuToggle1 = document.getElementById('menu-toggle');
+            const Inicio1 = document.getElementById("Iniciar sesion");
+            const config1 = document.getElementById('config');
+            const quienesSomos1 = document.getElementById('quienes-somos');
         
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('active'); 
@@ -418,7 +418,6 @@ if (!isset($_SESSION['Correo_Cliente'])) {
     <link rel="stylesheet" href="style.css">
     <title>TecHome® | Home</title>
     <style>
-
 body {
     background-color: #27496D;
     color: #F1EFEF;
@@ -437,9 +436,9 @@ header{
     margin-top: 1%;
     margin-bottom: 1%;
     margin-left: 1%;
-    margin-right: 7%;
+    margin-right: 6%;
     padding: 1%;
-    border-radius: 10px;
+    border-radius: 9px;
 }
 
 footer{ 
@@ -498,7 +497,7 @@ button:hover{
 
 #trabajadoresContainer {
     border: 2px solid #2C74B3;
-    border-radius: 10px;
+    border-radius: 9px;
     background-color: #142850;
     margin-left: 3%;
     margin-right: 3%;
@@ -528,10 +527,10 @@ button:hover{
     top: 0;
     right: -303px; 
     width: 300px;
-    height: 100%;
+    height: 99%;
     background-color: #142850;
     border: 2px solid #2C74B3;
-    border-radius: 10px;
+    border-radius: 9px;
     color: #fff;
     transition: right 0.3s;
     z-index: 11;
@@ -555,7 +554,7 @@ button:hover{
 }
 
 #content {
-    margin-top: 7%;
+    margin-top: 6%;
     margin-left: 2%;
     padding: 2%;
 }
@@ -571,8 +570,8 @@ button:hover{
     margin-right: 1%;
     background-color: #142850;
     border: 2px solid #2C74B3;
-    border-radius: 10px;
-    z-index: 12;
+    border-radius: 9px;
+    z-index: 11;
 }
 
 #maintext{
@@ -593,7 +592,7 @@ button:hover{
     width: 200px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 700;
+    font-weight: 698;
     background-color: #142850;
     border: 5px solid #2C74B3;
     border-radius: 50px;
@@ -608,7 +607,7 @@ button:hover{
     width: 200px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 700;
+    font-weight: 698;
     background-color: #142850;
     border: 5px solid #2C74B3;
     border-radius: 50px;
@@ -623,7 +622,7 @@ button:hover{
     width: 200px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 700;
+    font-weight: 698;
     background-color: #142850;
     border: 5px solid #2C74B3;
     border-radius: 50px;
@@ -812,13 +811,13 @@ button:hover{
 
         <div id="menu-toggle">&#9776;</div> 
         <script>
-        const menu = document.getElementById('menu');
-        const menuToggle = document.getElementById('menu-toggle');
-        const configuracion_de_perfil = document.getElementById('config');
-        const quienesSomos = document.getElementById('Nuestrahistoria2');
-        const direcciones = document.getElementById('direcciones');
-        const soporte = document.getElementById('soporte');
-        const politica_de_privacidad = document.getElementById('politica_de_privacidadc');
+        const menu2 = document.getElementById('menu');
+        const menuToggle2 = document.getElementById('menu-toggle');
+        const configuracion_de_perfil2 = document.getElementById('config');
+        const quienesSomos2 = document.getElementById('Nuestrahistoria2');
+        const direcciones2 = document.getElementById('direcciones');
+        const soporte2 = document.getElementById('soporte');
+        const politica_de_privacidad2 = document.getElementById('politica_de_privacidadc');
         
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('active'); 

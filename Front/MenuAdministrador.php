@@ -10,7 +10,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,7 +71,7 @@
 <body>
     <div class="Box">
     <h1>Recursos Humanos TecHome</h1>
-        <div class="container"> <!-- Corregido el nombre de la clase a "container" en lugar de "Conteiner" -->
+        <div class="container">
             <a href="trabajadores.php" class="button">Revisar Trabajadores</a>
             <a href="revisionsolicitantes.php" class="button">Revisar Solicitantes</a>
             <a href="asistenciacliente.php" class="button">Solicitudes de Asistencia Clientes</a>

@@ -23,19 +23,18 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 
 if (isset($_POST['actualizar'])) {
     $nuevo_nombre = $_POST['nombre'];
-    $nuevo_cargo = $_POST['cargo']; // Nuevo valor del cargo
+    $nuevo_cargo = $_POST['cargo'];
 
     $sql = "UPDATE administradores SET nombre_completo='$nuevo_nombre', cargo='$nuevo_cargo' WHERE Rut_administrador='$rut'";
 
     if ($conn->query($sql) === TRUE) {
-        $_SESSION['nombre'] = $nuevo_nombre; // Actualizar nombre en la sesión
-        $_SESSION['cargo'] = $nuevo_cargo; // Actualizar cargo en la sesión
+        $_SESSION['nombre'] = $nuevo_nombre;
+        $_SESSION['cargo'] = $nuevo_cargo;
         echo "<script>alert('Registro actualizado exitosamente');</script>";
     } else {
         echo "<script>alert('Error al actualizar el registro: " . $conn->error . "');</script>";
     }
 }
-
 if (isset($_POST['cambiar'])) {
     $contrasena = $_POST['contrasena'];
     $sql = "UPDATE administradores SET Contraseña_Administrador='$contrasena' WHERE Rut_administrador='$rut'";

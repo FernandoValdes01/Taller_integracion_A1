@@ -1,5 +1,3 @@
-// Js del buscador
-
 document.getElementById("icon-search").addEventListener("click", mostrar_buscador);
 document.getElementById("icon-menu").addEventListener("click", ocultar_buscador);
 document.getElementById("inputSearch").addEventListener("keyup", buscador_interno);
@@ -68,6 +66,3 @@ function buscador_interno(){
         }
     }
 }
-
-
-

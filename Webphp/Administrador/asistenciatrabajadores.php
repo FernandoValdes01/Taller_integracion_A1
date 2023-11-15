@@ -3,21 +3,13 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "techome";
-
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
-// Consulta SQL para obtener datos de la tabla asistenciat
 $sql = "SELECT ID_AsistenciaT, Rut_trabajador, nombre, correo, mensaje, fecha, respuesta FROM asistenciat WHERE respuesta IS NULL OR respuesta = ''";
-
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,34 +28,25 @@ $result = $conn->query($sql);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-
+    height: 99vh;}
 h1 {
     font-size: 36px;
-    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
-}
-
+    margin-bottom: 20px;}
 .container {
     border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
+    padding: 9px;
+    margin: 9px;
     border-radius: 5px;
     background-color: #f5f5f5;
-    color: black; /* Cambiado a negro */
-}
-
+    color: black;}
 .responder-btn {
-    padding: 5px 10px;
-    margin-top: 10px;
+    padding: 5px 9px;
+    margin-top: 9px;
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
+    border-radius: 3px;
+    cursor: pointer;}
     </style>
 </head>
 <body>
@@ -71,7 +54,6 @@ h1 {
         <a href="menuadmin.php">Menú Admin</a>
     </nav>
     <h2>Asistencias Trabajador</h2>
-
     <?php
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -87,25 +69,17 @@ h1 {
                 <button class="responder-btn" onclick='responder(<?php echo $row["ID_AsistenciaT"]; ?>)'>Responder</button>
             </div>
             <?php
-        }
-    } else {
-        echo "<p>No hay registros</p>";
-    }
+}} else {
+        echo "<p>No hay registros</p>";}
     ?>
-
     <script>
         function responder(idAsistenciaT) {
             var respuesta = prompt("Ingrese la respuesta:");
             if (respuesta !== null) {
-                // Enviar la respuesta al servidor (puedes usar AJAX para esto)
-                window.location.href = "responder.php?id=" + idAsistenciaT + "&respuesta=" + encodeURIComponent(respuesta);
-            }
-        }
+                window.location.href = "responder.php?id=" + idAsistenciaT + "&respuesta=" + encodeURIComponent(respuesta);}}
     </script>
-
 </body>
 </html>
-
 <?php
 $conn->close();
 ?>

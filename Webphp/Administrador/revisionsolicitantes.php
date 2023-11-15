@@ -10,24 +10,24 @@
 
   <style>
     body {
-      background-color: #001f3f; /* Azul oscuro */
+      background-color: #001f3f;
       color: white;
     }
 
     .container {
-      background-color: #0074cc; /* Celeste */
+      background-color: #0074cc;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 9px;
     }
 
     .card {
-      background-color: #ffffff; /* Blanco */
-      color: #001f3f; /* Azul oscuro */
+      background-color: #ffffff;
+      color: #001f3f;
       margin-bottom: 20px;
     }
 
     .navbar {
-      background-color: #001f3f; /* Azul oscuro */
+      background-color: #001f3f;
     }
 
     .navbar a {
@@ -75,7 +75,6 @@ function cargarSolicitantes() {
     }
   });
 }
-
 function rechazarSolicitante(rutSolicitante) {
   if (confirm('¿Estás seguro de que deseas rechazar a este solicitante?')) {
     $.ajax({
@@ -92,7 +91,6 @@ function rechazarSolicitante(rutSolicitante) {
     });
   }
 }
-
 function contratarSolicitante(rutSolicitante) {
   if (confirm('¿Estás seguro de que deseas contratar a este solicitante?')) {
     $.ajax({
@@ -109,11 +107,9 @@ function contratarSolicitante(rutSolicitante) {
     });
   }
 }
-
 $(document).ready(function() {
   cargarSolicitantes();
 });
 </script>
-
 </body>
 </html>

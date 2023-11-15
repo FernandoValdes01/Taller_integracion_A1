@@ -6,7 +6,6 @@ $password = "";
 $dbname = "techome";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
@@ -41,7 +40,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No se encontraron registros.";
 }
-
 $conn->close();
 ?>
 </ul>

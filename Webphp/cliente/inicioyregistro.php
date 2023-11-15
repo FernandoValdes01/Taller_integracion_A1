@@ -114,7 +114,7 @@ $conn->close();
             right: 7px;
             width: 100px;
             height: 30px;
-            font-size: 12px;
+            font-size: 11px;
             line-height: 25px;
             text-align: center;
             border-top: 2px solid #1A5276;
@@ -168,10 +168,10 @@ $conn->close();
         .contenedor-form input[type="submit"] {
             background: #1A5276;
             color: #fff;
-            width: 100%;
+            width: 99%;
             border: none;
-            padding: 10px 0;
-            font-size: 16px;
+            padding: 9px 0;
+            font-size: 15px;
             font-weight: normal;
             font-family: 'Verdana', 'Monaco', sans-serif;
             letter-spacing: 1px;
@@ -185,22 +185,22 @@ $conn->close();
 
         .contenedor-form .reset-password {
             background: #276A8C;
-            width: 100%;
+            width: 99%;
             padding: 15px 0;
             text-align: center;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 9px;
+            border-bottom-right-radius: 9px;
         }
 
         .contenedor-form .reset-password a {
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .contenedor-form .formulario {
             display: none;
-            padding: 40px;
+            padding: 39px;
         }
 
         .contenedor-form .formulario:nth-child(2) {
@@ -236,17 +236,17 @@ $conn->close();
         
         <div class="formulario">
         <h1>Inicia Sesión</h1>
-        <form method="POST" action="inicioyregistro.php"> <!-- Reemplaza 'nombre_de_esta_pagina.php' con el nombre de tu archivo PHP -->
+        <form method="POST" action="inicioyregistro.php">
             <div class="InputBox">
                 <label for="correo">Correo electrónico:</label>
-                <input type="email" id="correo" name="correo" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
+                <input type="email" id="correo" name="correo" required>
             </div>
             <div class="InputBox">
-                <label for="contrasena">Contraseña:</label> <!-- Corregimos el id de la etiqueta 'input' -->
-                <input type="password" id="contrasena" name="contrasena" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
             </div>
             <div class="Buttons">
-                <button type="submit">Listo</button>
+                <button onclick="RedirigirMenu()">Listo</button>
                 <?php echo $mensaje;  ?>
             </div>
         </form>
@@ -276,7 +276,7 @@ $conn->close();
                 </div>
 
                 <div class="Buttons">
-                    <button type="submit" id="submitButton" onclick="validarFormulario()">Listo</button>
+                    <button type="submit" id="submitButton"  onclick="validarFormulario()">Listo</button>
                 </div>
             </form>
         </div>
@@ -286,10 +286,10 @@ $conn->close();
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        document.getElementById('registro-form').addEventListener('submit', function(event) {
-                event.preventDefault(); 
-                window.location.href = 'Home.html';
-            });
+
+        function RedirigirMenu() {
+            window.location.href = 'Menu.php';
+        }
 
         function validarFormulario() {
         var contrasena = document.getElementById("contrasena").value;
@@ -332,7 +332,7 @@ $conn->close();
                 body.style.background = "linear-gradient(150deg, #009688, #66BB6A)";
             }
         }
-        
+
         function CambiarColor() {
         var button = document.getElementById('submitButton');
 
@@ -342,7 +342,6 @@ $conn->close();
             button.style.backgroundColor = '#009688';
         }
     }
-
     function CambiarColorDiv() {
         var a = document.querySelector('.reset-password');
         var toggleText = document.getElementById('toggleText').innerText.trim();
@@ -353,7 +352,6 @@ $conn->close();
             a.style.backgroundColor = '#35AD62';
         }
     }
-
     </script>
 </body>
 </html>

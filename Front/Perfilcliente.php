@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -6,7 +5,6 @@ if (!(isset($_SESSION['nombre_Cliente']) && isset($_SESSION['Correo_Cliente'])))
     header("Location: inicioclientes.php");
     exit();
 }
-
 
 $servername = "localhost";
 $username = "root";
@@ -23,13 +21,13 @@ $correo = isset($_SESSION['Correo_Cliente']) ? $_SESSION['Correo_Cliente'] : '';
 
 if (isset($_POST['actualizar'])) {
     $nuevo_nombre = $_POST['nombre'];
-    $nuevo_correo = $_POST['correo']; // Nuevo valor del correo
+    $nuevo_correo = $_POST['correo'];
 
     $sql = "UPDATE clientes SET nombre_Cliente='$nuevo_nombre', Correo_Cliente='$nuevo_correo' WHERE Correo_Cliente='$correo'";
 
     if ($conn->query($sql) === TRUE) {
-        $_SESSION['nombre_Cliente'] = $nuevo_nombre; // Actualizar nombre en la sesión
-        $_SESSION['Correo_Cliente'] = $nuevo_correo; // Actualizar correo en la sesión
+        $_SESSION['nombre_Cliente'] = $nuevo_nombre;
+        $_SESSION['Correo_Cliente'] = $nuevo_correo;
         echo "<script>alert('Registro actualizado exitosamente');</script>";
     } else {
         echo "<script>alert('Error al actualizar el registro: " . $conn->error . "');</script>";
@@ -56,12 +54,9 @@ if (isset($_POST['eliminar_cuenta'])) {
         if ($contrasena == $row['contraseña']) {
             $id_cliente = $row['ID_cliente'];
             $id_direccion = $row['ID_direccion'];
-
-            // Eliminar referencias en la tabla clientes
             $sql_delete_clientes = "DELETE FROM clientes WHERE ID_cliente='$id_cliente'";
 
             if ($conn->query($sql_delete_clientes) === TRUE) {
-                // Eliminar registros en direccion
                 $sql_delete_direccion = "DELETE FROM direccion WHERE ID_direccion='$id_direccion'";
 
                 if ($conn->query($sql_delete_direccion) === TRUE) {
@@ -101,6 +96,7 @@ $conn->close();
         body {
             text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
             background: url(background-body.png);
+            background-color: #FAFAFA;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             color: #F1EFEF;
         }
@@ -424,7 +420,6 @@ $conn->close();
         </div>
     </div>
 </div>
-
 <footer>
         <div class = "footer-info">
             <div class = "contactanos"><i class="fas fa-mobile-alt" style="color: #fafafa;"></i> Contactanos: <br>+56 9 89348303</div>

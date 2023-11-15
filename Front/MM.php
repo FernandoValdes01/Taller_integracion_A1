@@ -36,8 +36,6 @@
             $nuevo_nombre = $_POST["nombre"];
             $nuevo_email = $_POST["email"];
             $nueva_contraseña = $_POST["contrasena"];
-
-            // Actualizar el perfil en la base de datos
             $sql = "UPDATE clientes SET nombre_cliente='$nuevo_nombre', Correo_Cliente='$nuevo_email', Contraseña='$nueva_contraseña' WHERE Correo_Cliente='$correo'";
 
             if ($conexion->query($sql) === TRUE) {
@@ -71,7 +69,7 @@
         body{
             text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
             background: url(background-body.png);
-            background-color: #27496D;
+            background-color: #FAFAFA;
             color: #F1EFEF;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }  
@@ -96,6 +94,11 @@
 
         h1 {
             margin: 0;
+        }
+
+        #menu a{
+            color: #fff;
+            text-decoration: none;
         }
 
         .Trabajador{
@@ -123,14 +126,14 @@
             border-radius: 10px;
         }
 
-        ul {
+        .trabajos-disponibles ul {
             list-style-type: none;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
         }
 
-        li {
+        .trabajos-disponibles li {
             flex: 1;
             padding: 20px;
             text-align: center;
@@ -216,12 +219,88 @@
             padding: 1%;
         }
 
+        #menu {
+            text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            background: url(background.png);
+            position: fixed;
+            font-size: large;
+            top: 0;
+            right: -305px; 
+            width: 300px;
+            height: 100%;
+            border-left: 2px solid #142850;
+            color: #fff;
+            transition: right 0.3s;
+            z-index: 11;
+        }
+        
+        #menu.active {
+            right: 0; 
+        }
+        
+        #menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #menu ul li {
+            padding: 15px;
+            text-align: left;
+            margin-left: 5%;
+            cursor: pointer;
+        }
+        
+        #content {
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        #menu-toggle {
+            text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            background: url(background.png);
+            border: 2px solid #2C74B3;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+            padding: 1%;
+            margin-top: 1%;
+            margin-right: 1%;
+            border-radius: 10px;
+            z-index: 12;
+        }
+
+        #menu-toggle{
+            transition: all .7s ease;
+        }
+
+        #menu-toggle:hover{
+            transform: rotate(180deg);
+        }
+
     </style>
 </head>
 <body>
     <header>
         <h1>Servicio Mecanico | Disponible</h1>
     </header>
+
+    <div id="menu">
+        <ul>
+            <li></li>
+            <li><a href="clienteiniciado.html">Inicio</a></li>
+            <li> <a href="configuracion de cliente.html">Perfil</a></li>
+            <li> <a href="NuestrahistoriaC1.html">Quienes somos</li>
+            <li> <a href="Direcciones1.html">Direcciones</a></li>
+            <li> <a href="soportec1.html">Soporte</a></li>
+            <li> <a href="politica de privacidadc1.html">Politíca de Privacidad</a></li>
+            <li> <a href="/HTML/Cliente_visita/clientevisita.html">Cerrar sesion</a></li>
+    
+        </ul>
+    </div>
     <div class="trabajos-disponibles">
         <h2>Mecanicos Disponibles</h2>
         <ul>
@@ -261,6 +340,7 @@
         </ul>
     </div>
 
+    <div id="menu-toggle"><i class="fas fa-list-ul" style="color: #fafafa;"></i></div> 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.SolicitarServicio');
@@ -272,8 +352,28 @@
                 });
             });
         });
+    const menu = document.getElementById('menu');
+    const menuToggle = document.getElementById('menu-toggle');
+    const perfil = document.getElementById('perfil');
+    const config = document.getElementById('config');
+    const quienesSomos = document.getElementById('quienes-somos');
+    const direcciones = document.getElementById('direcciones');
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+    
+    perfil.addEventListener('click', () => {
+        console.log('Clic en Perfil');
+    });
+    
+    config.addEventListener('click', () => {
+        console.log('Clic en Config');
+    });
+    
+    quienesSomos.addEventListener('click', () => {
+        console.log('Clic en Quienes Somos');
+    });
     </script>
-
     <footer>
         <div class = "footer-info">
             <div class = "contactanos"><i class="fas fa-mobile-alt" style="color: #fafafa;"></i> Contactanos: <br>+56 9 89348303</div>
@@ -282,6 +382,5 @@
         </div>
         <div class = "bottom-footer-text">TecHome® 2023 | Derechos reservados</div>
     </footer>
-
 </body>
 </html>

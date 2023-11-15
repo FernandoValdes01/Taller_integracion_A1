@@ -112,7 +112,7 @@
     <div id="content">
     <h3>¡Estas son las direcciones que haz compartido con nosotros!.</h3>
     </div>
-    <div id="menu-toggle">&#9776;</div> <!-- Ícono de tres líneas horizontales -->
+    <div id="menu-toggle">&#9776;</div> 
     <script>
     const menu = document.getElementById('menu');
     const menuToggle = document.getElementById('menu-toggle');
@@ -121,23 +121,22 @@
     const quienesSomos = document.getElementById('quienes-somos');
     const direcciones = document.getElementById('direcciones');
     
-      /* Manejar el clic en el ícono de menú para mostrar/ocultar el menú deslizante */
     menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active'); // Cambiar la clase para mostrar/ocultar el menú
+        menu.classList.toggle('active'); 
     });
     
     perfil.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Perfil"
+
         console.log('Clic en Perfil');
     });
     
     config.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Config"
+
         console.log('Clic en Config');
     });
     
     quienesSomos.addEventListener('click', () => {
-        // Agregar aquí el código para la acción de "Quienes somos"
+
         console.log('Clic en Quienes Somos');
     });
     </script>
@@ -146,17 +145,17 @@
         <form action="DireccionInsertar.php" method="POST">
             <h2>Lista de Direcciones:</h2>
             <ul id="direccion-menu" class="direccion-menu">
-                <!-- Aquí se agregará la lista numerada de direcciones -->
+
             </ul>
             <div id="direcciones">
-                <!-- Aquí se agregarán las secciones de direcciones -->
+
             </div>
                 <div>
                     <button type="button" onclick="agregarDireccion()">Agregar Dirección</button>
                     <input type="submit" id="Guardar-BSD" value="Guardar">
                 </div>
                     <script>
-                        // Define las regiones y sus ciudades correspondientes
+
                         var regionesYCiudades = {
                             "Región de Arica y Parinacota": ["Arica", "Camarones", "General lagos","Putre"],
                             "Región de Tarapacá": ["Alto Hospicio", "Camiña", "Colchane","Huara", "Iquique", "Pica","Pozo Almonte"],
@@ -175,11 +174,10 @@
                             "Región de Magallanes": ["Antartica","Cabo de hornos","Laguna blanca","natales","porvenir","primavera","punta arenas","Rio verde","san gregorio","timaukel","torres del paine"],
                         };
             
-                        var id = 1; // Inicializa el contador de ID
+                        var id = 1; 
                         var regionesConId = {};
                         var ciudadesConId = {};
 
-                        // Asigna identificadores únicos a las regiones y ciudades
                         for (var region in regionesYCiudades) {
                             regionesConId[region] = "region" + id;
                             for (var ciudad of regionesYCiudades[region]) {
@@ -188,37 +186,32 @@
                             id++;
                         }
 
-                        // Combina los objetos de regiones y ciudades con identificadores únicos
                         var regionesYCiudadesConId = {
                             regiones: regionesConId,
                             ciudades: ciudadesConId
                         };
 
-                        var direccionCount = 0; // Contador de direcciones
+                        var direccionCount = 0;
 
                         function agregarDireccion() {
-                            // Incrementar el contador de direcciones antes de agregar una nueva dirección
+
                             direccionCount++;
 
-                            // Crear un elemento section con un id único
                             var section = document.createElement("section");
                             section.id = "ID_direccion" + direccionCount;
                             section.name = "ID_direccion";
 
-                            // Crear un elemento div para el número de dirección con un id único
                             var numeroDireccion = document.createElement("div");
                             numeroDireccion.textContent = direccionCount + "°";
                             numeroDireccion.id = "numeroDireccion" + direccionCount;
 
-                            // Crear selección para la región con un id único
                             var labelRegion = document.createElement("label");
                             labelRegion.textContent = "Región: ";
 
                             var selectRegion = document.createElement("select");
-                            selectRegion.name = "region"; // Establecer el nombre del campo
+                            selectRegion.name = "region";
                             selectRegion.id = "selectRegion" + direccionCount;
 
-                            // Llenar opciones de región
                             for (var region in regionesYCiudades) {
                                 var option = document.createElement("option");
                                 option.value = region;
@@ -226,23 +219,19 @@
                                 selectRegion.appendChild(option);
                             }
 
-                            // Crear selección para la ciudad con un id único
                             var labelCiudad = document.createElement("label");
                             labelCiudad.textContent = "Ciudad: ";
 
                             var selectCiudad = document.createElement("select");
-                            selectCiudad.name = "ciudad"; // Establecer el nombre del campo
+                            selectCiudad.name = "ciudad";
                             selectCiudad.id = "selectCiudad" + direccionCount;
 
-                            // Función para actualizar las opciones de ciudad cuando se cambia la región
                             selectRegion.addEventListener("change", function () {
                                 var selectedRegion = selectRegion.value;
                                 var ciudades = regionesYCiudades[selectedRegion] || [];
 
-                                // Limpiar opciones anteriores
                                 selectCiudad.innerHTML = "";
 
-                                // Agregar las opciones de ciudad específicas para la región seleccionada
                                 for (var i = 0; i < ciudades.length; i++) {
                                     var option = document.createElement("option");
                                     option.value = ciudades[i];
@@ -251,43 +240,36 @@
                                 }
                             });
 
-                            // Código JavaScript para generar campos de formulario dinámicamente
                             var labelDireccion = document.createElement("label");
                             labelDireccion.textContent = "Dirección: ";
 
                             var inputDireccion = document.createElement("input");
                             inputDireccion.type = "text";
-                            inputDireccion.name = "direccion"; // El nombre debe coincidir con el nombre utilizado en el script PHP
+                            inputDireccion.name = "direccion"; 
 
                             var labelIndicaciones = document.createElement("label");
                             labelIndicaciones.textContent = "Indicaciones Extra: ";
 
                             var inputIndicaciones = document.createElement("input");
                             inputIndicaciones.type = "text";
-                            inputIndicaciones.name = "indicaciones"; // El nombre debe coincidir con el nombre utilizado en el script PHP
+                            inputIndicaciones.name = "indicaciones";
 
-                            // Crear botón para eliminar la dirección
                             var eliminarBoton = document.createElement("button");
                             eliminarBoton.textContent = "Eliminar Lista de Dirección";
                             eliminarBoton.addEventListener("click", function () {
-                                // Obtener el número de dirección de la sección actual
+
                                 var numDireccion = parseInt(numeroDireccion.textContent);
 
-                                // Eliminar esta sección de dirección cuando se hace clic en el botón
                                 document.getElementById("direcciones").removeChild(section);
 
-                                // Actualizar el contador de direcciones
                                 direccionCount--;
 
-                                // Actualizar los números de dirección en las secciones restantes
                                 actualizarNumerosDirecciones(numDireccion);
 
-                                // Actualizar la lista numerada de direcciones
                                 actualizarListaDirecciones();
                             });
 
-                            // Agregar los elementos al section
-                            section.appendChild(numeroDireccion); // Agregar el número de dirección
+                            section.appendChild(numeroDireccion);
                             section.appendChild(labelRegion);
                             section.appendChild(selectRegion);
                             section.appendChild(labelCiudad);
@@ -296,16 +278,13 @@
                             section.appendChild(inputDireccion);
                             section.appendChild(labelIndicaciones);
                             section.appendChild(inputIndicaciones);
-                            section.appendChild(eliminarBoton); // Agregar el botón de eliminación
+                            section.appendChild(eliminarBoton);
 
-                            // Agregar el section al contenedor de direcciones
                             document.getElementById("direcciones").appendChild(section);
 
-                            // Actualizar la lista numerada de direcciones
                             actualizarListaDirecciones();
                         }
 
-                        // Función para actualizar la lista numerada de direcciones
                         function actualizarListaDirecciones() {
                             var direccionMenu = document.getElementById("direccion-menu");
                             direccionMenu.innerHTML = "";
@@ -340,9 +319,8 @@
                             }
                         }
 
-                        // Evento que activa la solicitud HTTP, por ejemplo, cuando se hace clic en un botón
                         document.getElementById("Guardar-BSD").addEventListener("click", function () {
-                            // Recopila los datos que deseas enviar al script PHP
+
                             var datos = {
                                 region: document.getElementById("selectRegion").value,
                                 ciudad: document.getElementById("selectCiudad").value,
@@ -359,27 +337,23 @@
                         });
 
                         eliminarBoton.addEventListener("click", function () {
-                            // Obtener el número de dirección de la sección actual
                             var numDireccion = parseInt(numeroDireccion.textContent);
 
-                            // Realizar una solicitud HTTP POST al archivo PHP para eliminar los datos
                             fetch('DireccionEliminar.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded',
                                 },
-                                body: 'id=' + numDireccion, // Enviar el identificador o parámetro necesario
+                                body: 'id=' + numDireccion,
                             })
                                 .then(response => {
                                     if (response.ok) {
-                                        // Si la solicitud se realizó con éxito, procede a eliminar la sección de dirección
+
                                         document.getElementById("direcciones").removeChild(section);
                                         direccionCount--;
 
-                                        // Actualizar los números de dirección en las secciones restantes
                                         actualizarNumerosDirecciones(numDireccion);
 
-                                        // Actualizar la lista numerada de direcciones
                                         actualizarListaDirecciones();
                                     } else {
                                         console.error('Error al eliminar datos');

@@ -95,8 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .InputBox input{
             width: 100%;
             padding: 0 5px;
-            height: 40px;
-            font-size: 16px;
+            height: 39px;
+            font-size: 15px;
             border: none;
             background: none;
             outline: none;
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             left: 5px;
             color: #adadad;
             transform: translate(-10%);
-            font-size: 16px;
+            font-size: 15px;
             pointer-events: none;
             transition: .5s;
         }
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .InputBox span::before{
             content: '';
             position: absolute;
-            top: 40px;
+            top: 39px;
             left: 0;
             width: 100%;
             height: 2px;
@@ -176,8 +176,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         
             <div class="InputBox">
-                <input type="password" id="contrasena" name="contrasena" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
-                <label for="contrasena">Contraseña:</label> <!-- Corregimos el id de la etiqueta 'input' -->
+                <input type="password" id="contrasena" name="contrasena" required>
+                <label for="contrasena">Contraseña:</label>
             </div>
             <div class="link">
                 <a href="#">¿Olvidaste la clave?</a>

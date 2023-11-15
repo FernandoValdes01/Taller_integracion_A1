@@ -7,7 +7,6 @@
 </head>
 
 <style>
-
 a{
     color: #fff;
     text-decoration: none;

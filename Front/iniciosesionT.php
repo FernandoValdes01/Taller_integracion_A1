@@ -3,27 +3,19 @@ $server = "localhost";
 $usuario = "root";
 $contraseña = "";
 $basededatos = "techome";
-
 $conexion = new mysqli($server, $usuario, $contraseña, $basededatos);
 $mensaje = ""; 
-
-
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
     $sql = "SELECT ID_cliente,Correo_Cliente, contraseña,nombre_Cliente FROM clientes WHERE Correo_Cliente = '$correo'";
     $result = $conexion->query($sql);
-
     if ($result === false) {
-        die("Error en la consulta SQL: " . $conexion->error);
-    }
-
+        die("Error en la consulta SQL: " . $conexion->error);}
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $contrasena_db = $row['contraseña'];
@@ -42,11 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = "Error en el inicio de sesión. Comprueba tus credenciales.";
         }
     } else {
-        $mensaje = "Error en el inicio de sesión. El correo no existe en la base de datos.";
-    }
-}
-
-
+        $mensaje = "Error en el inicio de sesión. El correo no existe en la base de datos.";}}
 $conexion->close();
 ?>
 
@@ -147,12 +135,12 @@ $conexion->close();
         }
 
         button[type="submit"]{
-            width: 100%;
+            width: 99%;
             height: 50px;
             border: 1px solid;
             background: #0061FF ;
-            border-radius: 25px;
-            font-size: 10px;
+            border-radius: 24px;
+            font-size: 9px;
             margin: 2px;
             color: white;
             cursor: pointer;
@@ -165,12 +153,12 @@ $conexion->close();
         }
 
         button[type="button"]{
-            width: 100%;
+            width: 99%;
             height: 50px;
             border: 1px solid;
             background: #00BFFF;
-            border-radius: 25px;
-            font-size: 10px;
+            border-radius: 24px;
+            font-size: 9px;
             margin: 2px;
             color: white;
             cursor: pointer;
@@ -181,44 +169,40 @@ $conexion->close();
             border-color: #00BFFF;
             transition: .5s;
         }
-
     </style>
 </head>
 <body>
     <div class="Formulario">
         <h1>Inicia Sesión</h1>
-        <form method="POST" action="iniciosesionT.php"> <!-- Reemplaza 'nombre_de_esta_pagina.php' con el nombre de tu archivo PHP -->
+        <form method="POST" action="iniciosesionT.php">
             <div class="InputBox">
-                <input type="email" id="correo" name="correo" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
+                <input type="email" id="correo" name="correo" required>
                 <label for="correo">Correo electrónico:</label>
             </div>
             <div class="InputBox">
-                <input type="password" id="contrasena" name="contrasena" required> <!-- Agregamos el atributo 'name' para que los datos se envíen correctamente -->
-                <label for="contrasena">Contraseña:</label> <!-- Corregimos el id de la etiqueta 'input' -->
+                <input type="password" id="contrasena" name="contrasena" required>
+                <label for="contrasena">Contraseña:</label>
             </div>
             <div class="link">
                 <a href="#">¿Olvidaste la clave?</a>
             </div>
             <div class="Buttons">
                 <button type="submit">Listo</button>
-                <button type="button" onclick="window.location.href=''">Registrarse</button>
+                <button type="button" onclick="window.location.href='../registrotrabajadores.php'">Registrarse</button>
                 <?php echo $mensaje;  ?>
             </div>
         </form>
     </div>
-
         <script>
         function moveLabelUp(inputId) {
             const input = document.getElementById(inputId);
-            const label = input.nextElementSibling; // Get the label element next to the input
+            const label = input.nextElementSibling;
             if (input.value.trim() !== '') {
-                label.style.transform = 'translate(-10%)'; // Move label up
-                label.style.fontSize = '16px';
+                label.style.transform = 'translate(-9%)';
+                label.style.fontSize = '15px';
             } else {
-                label.style.transform = ''; // Reset label position
-                label.style.fontSize = '16px';
-            }
-        }
+                label.style.transform = '';
+                label.style.fontSize = '15px';}}
     </script>
     </div>
 </body>

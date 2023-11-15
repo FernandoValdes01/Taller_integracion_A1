@@ -129,16 +129,13 @@ $conn->close();
         text-align: center;
     }
 
-
     h1 {
         color: var(--main-color);
     }
 
-
     h2 {
         color: var(--dark-color-1);
     }
-
 
     form {
         margin-top: 20px;
@@ -147,7 +144,7 @@ $conn->close();
     input[type="submit"] {
         background-color: var(--main-color);
         color: white;
-        padding: 10px 20px;
+        padding: 9px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -158,12 +155,12 @@ $conn->close();
     }
 
     input[type="text"] {
-        width: 100%;
-        padding: 12px 20px;
+        width: 99%;
+        padding: 11px 20px;
         margin: 8px 0;
         box-sizing: border-box;
         border: 2px solid var(--light-color-1);
-        border-radius: 4px;
+        border-radius: 3px;
     }
     #menu {
     position: fixed;
@@ -227,7 +224,6 @@ $conn->close();
         <li><a href="EliminarCuentaCActualizado.html">Eliminar cuenta</a></li>
         <li> <a href="InicioT.html">Cerrar sesion</a></li>
         
-        
     </ul>
 </div>
 <div id="menu-toggle">&#9776;</div> 
@@ -273,36 +269,29 @@ if (!empty($nombre_trabajador)) {
     const politicadeprivacidad = document.getElementById('politica');
     const cerrarsesion = document.getElementById('cerrarsesion');
 
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active');
+    menuToggle.addEventListener('click', () =>
+    {menu.classList.toggle('active');
     });
-
-    perfil.addEventListener('click', () => {
-        console.log('Clic en Perfil');
+    perfil.addEventListener('click', () => 
+    {console.log('Clic en Perfil');
     });
-
-    config.addEventListener('click', () => {
-        console.log('Clic en Config');
+    config.addEventListener('click', () => 
+    {console.log('Clic en Config');
     });
-
     Ganancias.addEventListener('click', () => {
         console.log('Clic en Ganancias');
     });
-
-    billetera.addEventListener('click', () => {
-        console.log('Clic en Billetera');
+    billetera.addEventListener('click', () =>
+    {console.log('Clic en Billetera');
     });
-
-    soporte.addEventListener('click', () => {
-        console.log('Clic en soporte');
+    soporte.addEventListener('click', () => 
+    {console.log('Clic en soporte');
     });
-
-    politica.addEventListener('click', () => {
-        console.log('Clic en politica ');
+    politica.addEventListener('click', () => 
+    {console.log('Clic en politica ');
     });
-
-    cerrarsesion.addEventListener('click', () => {
-        console.log('Clic en cerrarcesion ');
+    cerrarsesion.addEventListener('click', () => 
+    {console.log('Clic en cerrarcesion ');
     });
 </script>
 </div>
